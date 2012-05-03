@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Room (Dimension, Receiver, Bar, Tables)>
+<!ATTLIST Room name(#PCDATA)>
+<!ELEMENT Dimension (Width, Height, NTables, TCapacity)>
+<!ELEMENT Width (#PCDATA)>
+<!ELEMENT Height (#PCDATA)>
+<!ELEMENT NTables (#PCDATA)>
+<!ELEMENT TCapacity (#PCDATA)>
+<!ELEMENT Receiver (Boxes)>
+<!ELEMENT Bar (Boxes)>
+<!ELEMENT Tables (Table)+>
+<!ELEMENT Table (Capacity, Boxes)>
+<!ATTLIST Table id(#PCDATA)>
+<!ELEMENT Capacity (#PCDATA)>
+<!ELEMENT Boxes (Box)+>
+<!ELEMENT Box (X, Y)>
+<!ELEMENT X (#PCDATA)>
+<!ELEMENT Y (#PCDATA)>

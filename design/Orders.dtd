@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Orders (Order)+>
+<!ELEMENT Order (Table, Product, Amount, Status, Date)>
+<!ATTLIST Order id(#PCDATA)>
+<!ELEMENT Table (#PCDATA)>
+<!ELEMENT Product (#PCDATA)>
+<!ELEMENT Amount (#PCDATA)>
+<!ELEMENT Status (#PCDATA)>
+<!ELEMENT Date (#PCDATA)>

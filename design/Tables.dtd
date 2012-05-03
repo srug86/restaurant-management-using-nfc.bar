@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Tables (Table)+>
+<!ELEMENT Table (Status, Client, Guests)>
+<!ATTLIST Table id(#PCDATA)>
+<!ELEMENT Status (#PCDATA)>
+<!ELEMENT Client (#PCDATA)>
+<!ELEMENT Guests (#PCDATA)>

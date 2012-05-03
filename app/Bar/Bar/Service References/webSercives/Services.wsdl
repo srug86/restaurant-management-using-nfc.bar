@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://localhost/MobiCarta" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://localhost/MobiCarta" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Servicio web que gestiona la información de la aplicación MobiCarta</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/MobiCarta">
+      <s:element name="connect">
+        <s:complexType />
+      </s:element>
+      <s:element name="connectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="connectResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRooms">
+        <s:complexType />
+      </s:element>
+      <s:element name="getRoomsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRoomsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRoom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRoomResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRoomResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="saveRoom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="saveRoomResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getTablesStatus">
+        <s:complexType />
+      </s:element>
+      <s:element name="getTablesStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTablesStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="resetJourney">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="room" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="resetJourneyResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getClientStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="surname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getClientStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getClientStatusResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setAllocationTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="tableID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="guests" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setAllocationTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setAllocationTableResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDeallocationTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tableID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDeallocationTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setDeallocationTableResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDeallocationClient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDeallocationClientResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setDeallocationClientResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="saveProductsList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="saveProductsListResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getProducts">
+        <s:complexType />
+      </s:element>
+      <s:element name="getProductsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProductsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getOrdersStatus">
+        <s:complexType />
+      </s:element>
+      <s:element name="getOrdersStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getOrdersStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTableStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tableID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTableStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTableStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addBillPaid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bill" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addBillPaidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addBillPaidResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addNewOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addNewOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addNewOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setOrderStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="orderID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setOrderStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setOrderStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setProductAmount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="orderID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setProductAmountResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="setOrderTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="orderID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="tableID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setOrderTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setOrderTableResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTableID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTableIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getTableIDResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="connectSoapIn">
+    <wsdl:part name="parameters" element="tns:connect" />
+  </wsdl:message>
+  <wsdl:message name="connectSoapOut">
+    <wsdl:part name="parameters" element="tns:connectResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRoomsSoapIn">
+    <wsdl:part name="parameters" element="tns:getRooms" />
+  </wsdl:message>
+  <wsdl:message name="getRoomsSoapOut">
+    <wsdl:part name="parameters" element="tns:getRoomsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRoomSoapIn">
+    <wsdl:part name="parameters" element="tns:getRoom" />
+  </wsdl:message>
+  <wsdl:message name="getRoomSoapOut">
+    <wsdl:part name="parameters" element="tns:getRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="saveRoomSoapIn">
+    <wsdl:part name="parameters" element="tns:saveRoom" />
+  </wsdl:message>
+  <wsdl:message name="saveRoomSoapOut">
+    <wsdl:part name="parameters" element="tns:saveRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTablesStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:getTablesStatus" />
+  </wsdl:message>
+  <wsdl:message name="getTablesStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:getTablesStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="resetJourneySoapIn">
+    <wsdl:part name="parameters" element="tns:resetJourney" />
+  </wsdl:message>
+  <wsdl:message name="resetJourneySoapOut">
+    <wsdl:part name="parameters" element="tns:resetJourneyResponse" />
+  </wsdl:message>
+  <wsdl:message name="getClientStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:getClientStatus" />
+  </wsdl:message>
+  <wsdl:message name="getClientStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:getClientStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="setAllocationTableSoapIn">
+    <wsdl:part name="parameters" element="tns:setAllocationTable" />
+  </wsdl:message>
+  <wsdl:message name="setAllocationTableSoapOut">
+    <wsdl:part name="parameters" element="tns:setAllocationTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDeallocationTableSoapIn">
+    <wsdl:part name="parameters" element="tns:setDeallocationTable" />
+  </wsdl:message>
+  <wsdl:message name="setDeallocationTableSoapOut">
+    <wsdl:part name="parameters" element="tns:setDeallocationTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDeallocationClientSoapIn">
+    <wsdl:part name="parameters" element="tns:setDeallocationClient" />
+  </wsdl:message>
+  <wsdl:message name="setDeallocationClientSoapOut">
+    <wsdl:part name="parameters" element="tns:setDeallocationClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="saveProductsListSoapIn">
+    <wsdl:part name="parameters" element="tns:saveProductsList" />
+  </wsdl:message>
+  <wsdl:message name="saveProductsListSoapOut">
+    <wsdl:part name="parameters" element="tns:saveProductsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProductsSoapIn">
+    <wsdl:part name="parameters" element="tns:getProducts" />
+  </wsdl:message>
+  <wsdl:message name="getProductsSoapOut">
+    <wsdl:part name="parameters" element="tns:getProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOrdersStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:getOrdersStatus" />
+  </wsdl:message>
+  <wsdl:message name="getOrdersStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:getOrdersStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTableStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:getTableStatus" />
+  </wsdl:message>
+  <wsdl:message name="getTableStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:getTableStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="addBillPaidSoapIn">
+    <wsdl:part name="parameters" element="tns:addBillPaid" />
+  </wsdl:message>
+  <wsdl:message name="addBillPaidSoapOut">
+    <wsdl:part name="parameters" element="tns:addBillPaidResponse" />
+  </wsdl:message>
+  <wsdl:message name="addNewOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:addNewOrder" />
+  </wsdl:message>
+  <wsdl:message name="addNewOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:addNewOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="setOrderStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:setOrderStatus" />
+  </wsdl:message>
+  <wsdl:message name="setOrderStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:setOrderStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="setProductAmountSoapIn">
+    <wsdl:part name="parameters" element="tns:setProductAmount" />
+  </wsdl:message>
+  <wsdl:message name="setProductAmountSoapOut">
+    <wsdl:part name="parameters" element="tns:setProductAmountResponse" />
+  </wsdl:message>
+  <wsdl:message name="setOrderTableSoapIn">
+    <wsdl:part name="parameters" element="tns:setOrderTable" />
+  </wsdl:message>
+  <wsdl:message name="setOrderTableSoapOut">
+    <wsdl:part name="parameters" element="tns:setOrderTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTableIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getTableID" />
+  </wsdl:message>
+  <wsdl:message name="getTableIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getTableIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MobiCartaWebServicesSoap">
+    <wsdl:operation name="connect">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve true si se ha invocado al método satisfactoriamente</wsdl:documentation>
+      <wsdl:input message="tns:connectSoapIn" />
+      <wsdl:output message="tns:connectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRooms">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con la lista de restaurantes almacenados en la BBDD</wsdl:documentation>
+      <wsdl:input message="tns:getRoomsSoapIn" />
+      <wsdl:output message="tns:getRoomsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRoom">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con la especificación de los elementos del restaurante 'name'</wsdl:documentation>
+      <wsdl:input message="tns:getRoomSoapIn" />
+      <wsdl:output message="tns:getRoomSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="saveRoom">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Guarda en la BD la especificación del restaurante (contenida en 'xml')</wsdl:documentation>
+      <wsdl:input message="tns:saveRoomSoapIn" />
+      <wsdl:output message="tns:saveRoomSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTablesStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con el estado en el que se encuentran las mesas del restaurante</wsdl:documentation>
+      <wsdl:input message="tns:getTablesStatusSoapIn" />
+      <wsdl:output message="tns:getTablesStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="resetJourney">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Resetea de la BBDD los datos de la jornada anterior (estado de las mesas, pedidos y clientes)</wsdl:documentation>
+      <wsdl:input message="tns:resetJourneySoapIn" />
+      <wsdl:output message="tns:resetJourneySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getClientStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve el estado almacenado del cliente con id 'clientID' y lo actualiza</wsdl:documentation>
+      <wsdl:input message="tns:getClientStatusSoapIn" />
+      <wsdl:output message="tns:getClientStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setAllocationTable">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con el estado de las mesas después de asignar un cliente a una mesa</wsdl:documentation>
+      <wsdl:input message="tns:setAllocationTableSoapIn" />
+      <wsdl:output message="tns:setAllocationTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDeallocationTable">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con el estado de las mesas después de que un cliente abandone una mesa</wsdl:documentation>
+      <wsdl:input message="tns:setDeallocationTableSoapIn" />
+      <wsdl:output message="tns:setDeallocationTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDeallocationClient">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con el estado de las mesas después de que un cliente abandone el restaurante</wsdl:documentation>
+      <wsdl:input message="tns:setDeallocationClientSoapIn" />
+      <wsdl:output message="tns:setDeallocationClientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="saveProductsList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Genera una nueva lista de productos</wsdl:documentation>
+      <wsdl:input message="tns:saveProductsListSoapIn" />
+      <wsdl:output message="tns:saveProductsListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProducts">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con la lista de productos almacenada en la BBDD</wsdl:documentation>
+      <wsdl:input message="tns:getProductsSoapIn" />
+      <wsdl:output message="tns:getProductsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrdersStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con la lista de pedidos almacenados en la BBDD</wsdl:documentation>
+      <wsdl:input message="tns:getOrdersStatusSoapIn" />
+      <wsdl:output message="tns:getOrdersStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTableStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con los datos de la mesa, los datos del cliente y los datos de los pedidos para esa mesa</wsdl:documentation>
+      <wsdl:input message="tns:getTableStatusSoapIn" />
+      <wsdl:output message="tns:getTableStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addBillPaid">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con el estado de las mesas después de haber cobrado la factura 'bill' (también en formato XML)</wsdl:documentation>
+      <wsdl:input message="tns:addBillPaidSoapIn" />
+      <wsdl:output message="tns:addBillPaidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addNewOrder">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Añade un pedido 'order' (en formato XML) a la lista de pedidos de la BBDD</wsdl:documentation>
+      <wsdl:input message="tns:addNewOrderSoapIn" />
+      <wsdl:output message="tns:addNewOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setOrderStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cambia el estado actual del pedido 'orderID' por el nuevo estado 'status'</wsdl:documentation>
+      <wsdl:input message="tns:setOrderStatusSoapIn" />
+      <wsdl:output message="tns:setOrderStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setProductAmount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cambia la cantidad actual del pedido 'orderID' por la cantidad 'amount'</wsdl:documentation>
+      <wsdl:input message="tns:setProductAmountSoapIn" />
+      <wsdl:output message="tns:setProductAmountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setOrderTable">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cambia la mesa actual del pedido 'orderID' por la mesa con identificador 'tableID'</wsdl:documentation>
+      <wsdl:input message="tns:setOrderTableSoapIn" />
+      <wsdl:output message="tns:setOrderTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTableID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve el identificador (int) de la mesa que ocupa el cliente con identificador 'dni'</wsdl:documentation>
+      <wsdl:input message="tns:getTableIDSoapIn" />
+      <wsdl:output message="tns:getTableIDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MobiCartaWebServicesSoap" type="tns:MobiCartaWebServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="connect">
+      <soap:operation soapAction="http://localhost/MobiCarta/connect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRooms">
+      <soap:operation soapAction="http://localhost/MobiCarta/getRooms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRoom">
+      <soap:operation soapAction="http://localhost/MobiCarta/getRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveRoom">
+      <soap:operation soapAction="http://localhost/MobiCarta/saveRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTablesStatus">
+      <soap:operation soapAction="http://localhost/MobiCarta/getTablesStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resetJourney">
+      <soap:operation soapAction="http://localhost/MobiCarta/resetJourney" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClientStatus">
+      <soap:operation soapAction="http://localhost/MobiCarta/getClientStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAllocationTable">
+      <soap:operation soapAction="http://localhost/MobiCarta/setAllocationTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDeallocationTable">
+      <soap:operation soapAction="http://localhost/MobiCarta/setDeallocationTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDeallocationClient">
+      <soap:operation soapAction="http://localhost/MobiCarta/setDeallocationClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveProductsList">
+      <soap:operation soapAction="http://localhost/MobiCarta/saveProductsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProducts">
+      <soap:operation soapAction="http://localhost/MobiCarta/getProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrdersStatus">
+      <soap:operation soapAction="http://localhost/MobiCarta/getOrdersStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTableStatus">
+      <soap:operation soapAction="http://localhost/MobiCarta/getTableStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBillPaid">
+      <soap:operation soapAction="http://localhost/MobiCarta/addBillPaid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addNewOrder">
+      <soap:operation soapAction="http://localhost/MobiCarta/addNewOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setOrderStatus">
+      <soap:operation soapAction="http://localhost/MobiCarta/setOrderStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setProductAmount">
+      <soap:operation soapAction="http://localhost/MobiCarta/setProductAmount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setOrderTable">
+      <soap:operation soapAction="http://localhost/MobiCarta/setOrderTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTableID">
+      <soap:operation soapAction="http://localhost/MobiCarta/getTableID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MobiCartaWebServicesSoap12" type="tns:MobiCartaWebServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="connect">
+      <soap12:operation soapAction="http://localhost/MobiCarta/connect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRooms">
+      <soap12:operation soapAction="http://localhost/MobiCarta/getRooms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRoom">
+      <soap12:operation soapAction="http://localhost/MobiCarta/getRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveRoom">
+      <soap12:operation soapAction="http://localhost/MobiCarta/saveRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTablesStatus">
+      <soap12:operation soapAction="http://localhost/MobiCarta/getTablesStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resetJourney">
+      <soap12:operation soapAction="http://localhost/MobiCarta/resetJourney" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClientStatus">
+      <soap12:operation soapAction="http://localhost/MobiCarta/getClientStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAllocationTable">
+      <soap12:operation soapAction="http://localhost/MobiCarta/setAllocationTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDeallocationTable">
+      <soap12:operation soapAction="http://localhost/MobiCarta/setDeallocationTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDeallocationClient">
+      <soap12:operation soapAction="http://localhost/MobiCarta/setDeallocationClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveProductsList">
+      <soap12:operation soapAction="http://localhost/MobiCarta/saveProductsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProducts">
+      <soap12:operation soapAction="http://localhost/MobiCarta/getProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrdersStatus">
+      <soap12:operation soapAction="http://localhost/MobiCarta/getOrdersStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTableStatus">
+      <soap12:operation soapAction="http://localhost/MobiCarta/getTableStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBillPaid">
+      <soap12:operation soapAction="http://localhost/MobiCarta/addBillPaid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addNewOrder">
+      <soap12:operation soapAction="http://localhost/MobiCarta/addNewOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setOrderStatus">
+      <soap12:operation soapAction="http://localhost/MobiCarta/setOrderStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setProductAmount">
+      <soap12:operation soapAction="http://localhost/MobiCarta/setProductAmount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setOrderTable">
+      <soap12:operation soapAction="http://localhost/MobiCarta/setOrderTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTableID">
+      <soap12:operation soapAction="http://localhost/MobiCarta/getTableID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MobiCartaWebServices">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Servicio web que gestiona la información de la aplicación MobiCarta</wsdl:documentation>
+    <wsdl:port name="MobiCartaWebServicesSoap" binding="tns:MobiCartaWebServicesSoap">
+      <soap:address location="http://localhost:49504/Services.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MobiCartaWebServicesSoap12" binding="tns:MobiCartaWebServicesSoap12">
+      <soap12:address location="http://localhost:49504/Services.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

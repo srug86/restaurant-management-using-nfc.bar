@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Tables SYSTEM "Tables.dtd">
+<Tables>
+	<Table id="1">
+		<Status>0</Status>
+		<Client>05692939W</Client>
+		<Guests>2</Guests>
+	</Table>
+	<Table id="2">
+		<Status>2</Status>
+		<Client>70555525A</Client>
+		<Guests></Guests>
+	</Table>
+	<Table id="3">
+		<Status>0</Status>
+		<Client>05678453Z</Client>
+		<Guests></Guests>
+	</Table>
+	<Table id="4">
+		<Status>1</Status>
+		<Client>70052125Q</Client>
+		<Guests></Guests>
+	</Table>
+	<Table id="5">
+		<Status>2</Status>
+		<Client>C20120425142035</Client>
+		<Guests></Guests>
+	</Table>
+	<Table id="6">
+		<Status>-1</Status>
+		<Client></Client>
+		<Guests></Guests>
+	</Table>
+	<Table id="7">
+		<Status>3</Status>
+		<Client>C20120425142150</Client>
+		<Guests></Guests>
+	</Table>
+	<Table id="8">
+		<Status>2</Status>
+		<Client>05702008A</Client>
+		<Guests></Guests>
+	</Table>
+	<Table id="9">
+		<Status>-1</Status>
+		<Client></Client>
+		<Guests></Guests>
+	</Table>
+</Tables>

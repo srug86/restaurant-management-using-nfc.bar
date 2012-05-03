@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Products>
+	<Product name="Coca Cola 200ml">
+		<Category>Refrescos</Category>
+		<Price>1.2</Price>
+		<Description></Description>
+	</Product>
+	<Product name="Fanta Naranja 200ml">
+		<Category>Refrescos</Category>
+		<Price>1.2</Price>
+		<Description></Description>
+	</Product>
+	<Product name="Agua con gas 330ml">
+		<Category>Refrescos</Category>
+		<Price>1.0</Price>
+		<Description></Description>
+	</Product>
+	<Product name="Nacional">
+		<Category>Combinados</Category>
+		<Price>3.5</Price>
+		<Description></Description>
+	</Product>
+	<Product name="Importación">
+		<Category>Combinados</Category>
+		<Price>4.5</Price>
+		<Description></Description>
+	</Product>
+	<Product name="Pollo asado">
+		<Category>Carnes</Category>
+		<Price>5.0</Price>
+		<Description></Description>
+	</Product>
+	<Product name="Solomillo a la pimienta">
+		<Category>Carnes</Category>
+		<Price>8.0</Price>
+		<Description></Description>
+	</Product>
+	<Product name="Tarta helada">
+		<Category>Postres</Category>
+		<Price>2.0</Price>
+		<Description></Description>
+	</Product>
+</Products>

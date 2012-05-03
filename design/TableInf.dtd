@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT TableInf (Table, Client, Orders)>
+<!ELEMENT Table (Id, Capacity, Status)>
+<!ELEMENT Id (#PCDATA)>
+<!ELEMENT Capacity (#PCDATA)>
+<!ELEMENT Status (#PCDATA)>
+<!ELEMENT Client (DNI, Name, Surname, Guests, Appearances)>
+<!ELEMENT DNI (#PCDATA)>
+<!ELEMENT Name (#PCDATA)>
+<!ELEMENT Surname (#PCDATA)>
+<!ELEMENT Guests (#PCDATA)>
+<!ELEMENT Appearances (#PCDATA)>
+<!ELEMENT Orders (Order)+>
+<!ELEMENT Order (Product, Amount)>
+<!ATTLIST Order id(#PCDATA)>
+<!ELEMENT Product (#PCDATA)>
+<!ELEMENT Amount (#PCDATA)>

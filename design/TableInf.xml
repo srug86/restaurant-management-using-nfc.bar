@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Table SYSTEM "TableInf.dtd">
+<TableInf>
+	<Table>
+		<Id>7</Id>
+		<Capacity>4</Capacity>
+		<Status>3</Status>
+	</Table>
+	<Client>
+		<DNI>05692939W</DNI>
+		<Name>Sergio</Name>
+		<Surname>de la Rubia García-Carpintero</Surname>
+		<Guests>2</Guests>
+		<Appearances>3</Appearances>
+	</Client>
+	<Orders>
+		<Order id="1">
+			<Product>Coca Cola 200ml</Product>
+			<Amount>2</Amount>
+			<Status>2</Status>
+			<Date>2012-04-25 14:30:23</Date>
+		</Order>
+		<Order id="2">
+			<Product>Solomillo a la pimienta</Product>
+			<Amount>1</Amount>
+			<Status>1</Status>
+			<Date>2012-04-25 14:32:00</Date>
+		</Order>
+		<Order id="3">
+			<Product>Pollo asado</Product>
+			<Amount>1</Amount>
+			<Status>0</Status>
+			<Date>2012-04-25 14:35:34</Date>
+		</Order>
+	</Orders>
+</TableInf>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Rooms SYSTEM "Rooms.dtd">
+<Rooms>
+	<Room name="Room1">
+		<Width>12</Width>
+		<Height>8</Height>
+		<Tables>9</Tables>
+		<Capacity>36</Capacity>
+	</Room>
+	<Room name="Room2">
+		<Width>16</Width>
+		<Height>12</Height>
+		<Tables>12</Tables>
+		<Capacity>48</Capacity>
+	</Room>
+</Rooms>

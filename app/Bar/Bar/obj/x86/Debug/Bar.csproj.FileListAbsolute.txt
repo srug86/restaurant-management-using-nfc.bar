@@ -1,5 +1,4 @@
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\BillWin.baml
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\ConnectDialog.baml
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\EditOrderDialog.baml
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\EditProductsWin.baml
@@ -8,7 +7,6 @@ C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\Journey
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\LoadRoomDialog.baml
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\MessageDialog.baml
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\NewOrderWin.baml
-C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\BillWin.g.cs
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\ConnectDialog.g.cs
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\EditOrderDialog.g.cs
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\EditProductsWin.g.cs
@@ -28,3 +26,5 @@ C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\bin\Debug\Bar.exe
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\bin\Debug\Bar.pdb
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\Bar.exe
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\Bar.pdb
+C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\BillDialog.baml
+C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\obj\x86\Debug\presentation\BillDialog.g.cs

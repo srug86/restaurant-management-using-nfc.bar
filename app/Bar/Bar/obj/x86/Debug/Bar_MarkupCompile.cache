@@ -10,9 +10,9 @@ none
 false
 DEBUG;TRACE
 C:\Users\Sergio\Documents\pfc\bar\app\Bar\Bar\App.xaml
-9165465295
+9268278403
 
-28-1870855447
+291343389823
 12-1130677057
-presentation\BillWin.xaml;presentation\ConnectDialog.xaml;presentation\EditOrderDialog.xaml;presentation\EditProductsWin.xaml;presentation\InitWin.xaml;presentation\JourneyManagerWin.xaml;presentation\LoadRoomDialog.xaml;presentation\MessageDialog.xaml;presentation\NewOrderWin.xaml;
+presentation\BillDialog.xaml;presentation\ConnectDialog.xaml;presentation\EditOrderDialog.xaml;presentation\EditProductsWin.xaml;presentation\InitWin.xaml;presentation\JourneyManagerWin.xaml;presentation\LoadRoomDialog.xaml;presentation\MessageDialog.xaml;presentation\NewOrderWin.xaml;
 

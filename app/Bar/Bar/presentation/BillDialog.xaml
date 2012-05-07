@@ -1,0 +1,108 @@
+﻿<Window x:Class="Bar.presentation.BillDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MobiCarta - Factura" Height="600" Width="800" Icon="/Bar;component/Images/ico.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600">
+    <Grid Margin="5" Background="Azure">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.12*" />
+            <RowDefinition Height="0.08*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="3" Height="Auto" HorizontalAlignment="Stretch" Name="grid1" VerticalAlignment="Stretch" Width="Auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*" />
+            </Grid.ColumnDefinitions>
+            <Button Content="Cancelar" Grid.Column="2" Height="Auto" HorizontalAlignment="Stretch" Margin="10,5" Name="btnCancel" VerticalAlignment="Stretch" Width="Auto" Click="btnCancel_Click" />
+            <Button Content="PAGADA" Grid.Column="3" Height="Auto" HorizontalAlignment="Stretch" Margin="10,5" Name="btnCharge" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" Click="btnCharge_Click" />
+            <Button Content="Imprimir" Height="Auto" HorizontalAlignment="Stretch" Margin="10,5,60,5" Name="btnPrint" VerticalAlignment="Stretch" Width="Auto" Click="btnPrint_Click" />
+        </Grid>
+        <Grid Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="5,2" Name="grid3" VerticalAlignment="Stretch" Width="Auto" Background="{x:Null}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.33*" />
+                <ColumnDefinition Width="0.17*" />
+                <ColumnDefinition Width="0.17*" />
+                <ColumnDefinition Width="0.33*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+            </Grid.RowDefinitions>
+            <Label Content="Base imponible" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="label1" VerticalAlignment="Stretch" Width="Auto" FontSize="12" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" />
+            <Label Content="IVA" Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="label2" VerticalAlignment="Stretch" Width="Auto" FontSize="12" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" />
+            <Label Content="Cuota" Grid.Column="2" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="label3" VerticalAlignment="Stretch" Width="Auto" FontSize="12" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Black" />
+            <Label Content="TOTAL" Grid.Column="3" Height="Auto" HorizontalAlignment="Stretch" Margin="10,0" Name="label4" VerticalAlignment="Stretch" Width="Auto" FontSize="12" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Gray" />
+            <TextBox Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="10,2" Name="txtbTaxBase" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <TextBox Grid.Column="1" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="10,2" Name="txtbIVA" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <TextBox Grid.Column="2" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="10,2" Name="txtbQuote" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <TextBox Grid.Column="3" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="10,2" Name="txtbTotal" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        </Grid>
+        <Grid Height="Auto" HorizontalAlignment="Stretch" Margin="5,2" Name="grid4" VerticalAlignment="Stretch" Width="Auto" Background="{x:Null}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.4*" />
+                <ColumnDefinition Width="0.4*" />
+            </Grid.ColumnDefinitions>
+            <Image Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="imgLogo" Stretch="Fill" VerticalAlignment="Stretch" Width="Auto" Source="/Bar;component/Images/logo.png" OpacityMask="White" />
+            <Grid Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" Margin="2,0" Name="grid7" VerticalAlignment="Stretch" Width="Auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="82*" />
+                    <ColumnDefinition Width="217*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.25*" />
+                    <RowDefinition Height="0.25*" />
+                    <RowDefinition Height="0.25*" />
+                    <RowDefinition Height="0.25*" />
+                </Grid.RowDefinitions>
+                <Label Height="Auto" HorizontalAlignment="Stretch" Name="lblBill" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Normal" Grid.ColumnSpan="1" Content="Factura:" Foreground="Black" />
+                <Label Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Name="lblSerial" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="1" Content="Serie:" Foreground="Black" />
+                <Label Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Name="lblTable" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="1" Content="Mesa:" Foreground="Black" />
+                <Label Grid.Row="3" Height="Auto" HorizontalAlignment="Stretch" Name="lblDate" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="1" Content="Fecha:" Foreground="Black" />
+                <TextBox Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0,5,5,5" Name="txtbBill" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0,5,5,5" Name="txtbSerial" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="0,5,5,5" Name="txtbTable" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="3" Height="Auto" HorizontalAlignment="Stretch" Margin="0,5,5,5" Name="txtbDate" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            </Grid>
+            <Grid Grid.Column="2" Height="Auto" HorizontalAlignment="Stretch" Margin="2,0" Name="grid8" VerticalAlignment="Stretch" Width="Auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="93*" />
+                    <ColumnDefinition Width="206*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*" />
+                    <RowDefinition Height="0.2*" />
+                    <RowDefinition Height="0.2*" />
+                    <RowDefinition Height="0.2*" />
+                    <RowDefinition Height="0.2*" />
+                </Grid.RowDefinitions>
+                <Label Height="Auto" HorizontalAlignment="Stretch" Name="lblDNI" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="1" Content="DNI:" Foreground="Black" />
+                <Label Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Name="lblName" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="1" Content="Nombre:" Foreground="Black" />
+                <Label Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Name="lblAddress" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="1" Content="Dirección:" Foreground="Black" />
+                <Label Grid.Row="3" Height="Auto" HorizontalAlignment="Stretch" Name="lblTown" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="1" Content="Localidad:" Foreground="Black" />
+                <Label Grid.Row="4" Height="Auto" HorizontalAlignment="Stretch" Name="lblState" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="1" Content="Provincia:" Foreground="Black" />
+                <TextBox Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0,3,5,3" Name="txtbDNI" VerticalAlignment="Stretch" Width="Auto" Text="" FontWeight="Bold" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0,3,5,3" Name="txtbName" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="0,3,5,3" Name="txtbAddress" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="3" Height="Auto" HorizontalAlignment="Stretch" Margin="0,3,5,3" Name="txtbTown" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="4" Height="Auto" HorizontalAlignment="Stretch" Margin="0,3,5,3" Name="txtbState" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+            </Grid>
+        </Grid>
+        <ListView Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="5,2,0,0" Name="listVBill" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nº" DisplayMemberBinding="{Binding Path=Id}" Width="Auto" />
+                    <GridViewColumn Header="Concepto" DisplayMemberBinding="{Binding Path=Product}" Width="Auto" />
+                    <GridViewColumn Header="Precio" DisplayMemberBinding="{Binding Path=Price}" Width="Auto" />
+                    <GridViewColumn Header="Uds" DisplayMemberBinding="{Binding Path=Amount}" Width="Auto" />
+                    <GridViewColumn Header="IVA" DisplayMemberBinding="{Binding Path=Iva}" Width="Auto" />
+                    <GridViewColumn Header="Dto" DisplayMemberBinding="{Binding Path=Discount}" Width="Auto" />
+                    <GridViewColumn Header="Total" DisplayMemberBinding="{Binding Path=Total}" Width="Auto" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

@@ -56,6 +56,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="domain\BillsManager.cs" />
     <Compile Include="domain\Category.cs" />
     <Compile Include="Service References\webSercives\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -77,8 +78,8 @@
     <Compile Include="domain\RoomInf.cs" />
     <Compile Include="domain\RoomManager.cs" />
     <Compile Include="domain\Table.cs" />
-    <Compile Include="presentation\BillWin.xaml.cs">
-      <DependentUpon>BillWin.xaml</DependentUpon>
+    <Compile Include="presentation\BillDialog.xaml.cs">
+      <DependentUpon>BillDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="presentation\ConnectDialog.xaml.cs">
       <DependentUpon>ConnectDialog.xaml</DependentUpon>
@@ -133,7 +134,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="presentation\BillWin.xaml">
+    <Page Include="presentation\BillDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

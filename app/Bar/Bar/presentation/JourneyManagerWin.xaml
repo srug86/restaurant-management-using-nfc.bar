@@ -195,7 +195,7 @@
                             <ColumnDefinition Width="0.5*" />
                         </Grid.ColumnDefinitions>
                         <Button Content="Atrás" Height="Auto" HorizontalAlignment="Stretch" Margin="6,0,6,4" Name="btnBack" VerticalAlignment="Stretch" Width="Auto" Click="btnBack_Click" FontWeight="Bold" />
-                        <Button Content="Facturar" Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" Margin="6,0,6,4" Name="btnCheckIn" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" />
+                        <Button Content="Facturar" Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" Margin="6,0,6,4" Name="btnCheckIn" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" Click="btnCheckIn_Click" />
                     </Grid>
                     <Grid HorizontalAlignment="Stretch" Margin="8" Name="grid6" VerticalAlignment="Stretch" Width="Auto" Grid.RowSpan="2" Background="White">
                         <Grid.ColumnDefinitions>

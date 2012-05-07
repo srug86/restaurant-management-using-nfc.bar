@@ -70,9 +70,7 @@
       <s:element name="getClientStatus">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="surname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xmlClient" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -127,6 +125,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="setRestaurantInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setRestaurantInfoResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="saveProductsList">
         <s:complexType>
           <s:sequence>
@@ -168,20 +176,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="getTableStatusResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="addBillPaid">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="bill" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="addBillPaidResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="addBillPaidResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -254,6 +248,35 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tableID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBillResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="payBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="billID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="payBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="payBillResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="connectSoapIn">
@@ -316,6 +339,12 @@
   <wsdl:message name="setDeallocationClientSoapOut">
     <wsdl:part name="parameters" element="tns:setDeallocationClientResponse" />
   </wsdl:message>
+  <wsdl:message name="setRestaurantInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:setRestaurantInfo" />
+  </wsdl:message>
+  <wsdl:message name="setRestaurantInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:setRestaurantInfoResponse" />
+  </wsdl:message>
   <wsdl:message name="saveProductsListSoapIn">
     <wsdl:part name="parameters" element="tns:saveProductsList" />
   </wsdl:message>
@@ -339,12 +368,6 @@
   </wsdl:message>
   <wsdl:message name="getTableStatusSoapOut">
     <wsdl:part name="parameters" element="tns:getTableStatusResponse" />
-  </wsdl:message>
-  <wsdl:message name="addBillPaidSoapIn">
-    <wsdl:part name="parameters" element="tns:addBillPaid" />
-  </wsdl:message>
-  <wsdl:message name="addBillPaidSoapOut">
-    <wsdl:part name="parameters" element="tns:addBillPaidResponse" />
   </wsdl:message>
   <wsdl:message name="addNewOrderSoapIn">
     <wsdl:part name="parameters" element="tns:addNewOrder" />
@@ -375,6 +398,18 @@
   </wsdl:message>
   <wsdl:message name="getTableIDSoapOut">
     <wsdl:part name="parameters" element="tns:getTableIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBillSoapIn">
+    <wsdl:part name="parameters" element="tns:getBill" />
+  </wsdl:message>
+  <wsdl:message name="getBillSoapOut">
+    <wsdl:part name="parameters" element="tns:getBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="payBillSoapIn">
+    <wsdl:part name="parameters" element="tns:payBill" />
+  </wsdl:message>
+  <wsdl:message name="payBillSoapOut">
+    <wsdl:part name="parameters" element="tns:payBillResponse" />
   </wsdl:message>
   <wsdl:portType name="MobiCartaWebServicesSoap">
     <wsdl:operation name="connect">
@@ -427,6 +462,11 @@
       <wsdl:input message="tns:setDeallocationClientSoapIn" />
       <wsdl:output message="tns:setDeallocationClientSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="setRestaurantInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inicializa los datos corporativos del restaurante</wsdl:documentation>
+      <wsdl:input message="tns:setRestaurantInfoSoapIn" />
+      <wsdl:output message="tns:setRestaurantInfoSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="saveProductsList">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Genera una nueva lista de productos</wsdl:documentation>
       <wsdl:input message="tns:saveProductsListSoapIn" />
@@ -446,11 +486,6 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con los datos de la mesa, los datos del cliente y los datos de los pedidos para esa mesa</wsdl:documentation>
       <wsdl:input message="tns:getTableStatusSoapIn" />
       <wsdl:output message="tns:getTableStatusSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="addBillPaid">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con el estado de las mesas después de haber cobrado la factura 'bill' (también en formato XML)</wsdl:documentation>
-      <wsdl:input message="tns:addBillPaidSoapIn" />
-      <wsdl:output message="tns:addBillPaidSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="addNewOrder">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Añade un pedido 'order' (en formato XML) a la lista de pedidos de la BBDD</wsdl:documentation>
@@ -476,6 +511,16 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve el identificador (int) de la mesa que ocupa el cliente con identificador 'dni'</wsdl:documentation>
       <wsdl:input message="tns:getTableIDSoapIn" />
       <wsdl:output message="tns:getTableIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBill">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Calcula la factura de una mesa y la devuelve en formato XML</wsdl:documentation>
+      <wsdl:input message="tns:getBillSoapIn" />
+      <wsdl:output message="tns:getBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="payBill">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Marca la factura y todos sus pedidos como 'pagados' y devuelve el estado actual de las mesas</wsdl:documentation>
+      <wsdl:input message="tns:payBillSoapIn" />
+      <wsdl:output message="tns:payBillSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MobiCartaWebServicesSoap" type="tns:MobiCartaWebServicesSoap">
@@ -570,6 +615,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="setRestaurantInfo">
+      <soap:operation soapAction="http://localhost/MobiCarta/setRestaurantInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="saveProductsList">
       <soap:operation soapAction="http://localhost/MobiCarta/saveProductsList" style="document" />
       <wsdl:input>
@@ -599,15 +653,6 @@
     </wsdl:operation>
     <wsdl:operation name="getTableStatus">
       <soap:operation soapAction="http://localhost/MobiCarta/getTableStatus" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="addBillPaid">
-      <soap:operation soapAction="http://localhost/MobiCarta/addBillPaid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -653,6 +698,24 @@
     </wsdl:operation>
     <wsdl:operation name="getTableID">
       <soap:operation soapAction="http://localhost/MobiCarta/getTableID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBill">
+      <soap:operation soapAction="http://localhost/MobiCarta/getBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payBill">
+      <soap:operation soapAction="http://localhost/MobiCarta/payBill" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -753,6 +816,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="setRestaurantInfo">
+      <soap12:operation soapAction="http://localhost/MobiCarta/setRestaurantInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="saveProductsList">
       <soap12:operation soapAction="http://localhost/MobiCarta/saveProductsList" style="document" />
       <wsdl:input>
@@ -782,15 +854,6 @@
     </wsdl:operation>
     <wsdl:operation name="getTableStatus">
       <soap12:operation soapAction="http://localhost/MobiCarta/getTableStatus" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="addBillPaid">
-      <soap12:operation soapAction="http://localhost/MobiCarta/addBillPaid" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -836,6 +899,24 @@
     </wsdl:operation>
     <wsdl:operation name="getTableID">
       <soap12:operation soapAction="http://localhost/MobiCarta/getTableID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBill">
+      <soap12:operation soapAction="http://localhost/MobiCarta/getBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payBill">
+      <soap12:operation soapAction="http://localhost/MobiCarta/payBill" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

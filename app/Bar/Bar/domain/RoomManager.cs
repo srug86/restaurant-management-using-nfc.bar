@@ -131,7 +131,7 @@ namespace Bar.domain
             List<int> tables = new List<int>();
             xmlTablesStatus(adapter.sendMeTablesStatus());
             foreach (Table table in Room.Tables)
-                if (table.Status >= 0 && table.Status < 3)
+                if (table.Status >= 0)
                     tables.Add(table.Id);
             return tables;
         }

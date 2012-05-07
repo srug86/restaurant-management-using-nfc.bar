@@ -86,11 +86,6 @@ namespace Bar.communication
             return proxy.getOrdersStatus();
         }
 
-        public string sendBillPaid(string bill)
-        {
-            return proxy.addBillPaid(bill);
-        }
-
         public string sendNewOrder(string order)
         {
             return proxy.addNewOrder(order);
@@ -109,6 +104,16 @@ namespace Bar.communication
         public string sendChangeOrderTable(int orderID, int tableID)
         {
             return proxy.setOrderTable(orderID, tableID);
+        }
+
+        public string sendMeBill(int tableID)
+        {
+            return proxy.getBill(tableID);
+        }
+
+        public string sendBillPayment(int billID, int type)
+        {
+            return proxy.payBill(billID, type);
         }
 
         public void sendResetJourney(string room)

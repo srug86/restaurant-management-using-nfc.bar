@@ -202,6 +202,12 @@ namespace Bar.presentation
                 manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVTablesOrders.SelectedItem).Content).OrderID, -1);
         }
 
+        private void btnCheckIn_Click(object sender, RoutedEventArgs e)
+        {
+            BillDialog billDialog = new BillDialog(manager.BillsManager.getBill(Convert.ToInt16(txtbTableID.Text)));
+            billDialog.Show();
+        }
+
         public void loadSelectedRoom(string name, bool reset)
         {
             manager.createRoomManager();
@@ -268,6 +274,8 @@ namespace Bar.presentation
             cbbTablesView.Items.Clear();
             txtbDNI.Text = txtbName.Text = txtbSurname.Text = txtbAppearances.Text =
                 txtbTableID.Text = txtbTableOccupation.Text = txtbTableStatus.Text = "";
+            btnCheckIn.Content = "Facturar";
+            btnCheckIn.IsEnabled = false;
             listVTablesOrders.Items.Clear();
         }
 
@@ -295,6 +303,16 @@ namespace Bar.presentation
                 {
                     txtbTableID.Text = Convert.ToString(((Bar.domain.Table)o).Id);
                     txtbTableStatus.Text = tableStatus[((Bar.domain.Table)o).Status];
+                    if (((Bar.domain.Table)o).Status == 2)
+                    {
+                        btnCheckIn.IsEnabled = true;
+                        btnCheckIn.Content = "Facturar";
+                    }
+                    else if (((Bar.domain.Table)o).Status == 3)
+                    {
+                        btnCheckIn.IsEnabled = true;
+                        btnCheckIn.Content = "Ver factura";
+                    }
                     txtbTableOccupation.Text = Convert.ToString(((Bar.domain.Table)o).Guests) +
                         "/" + Convert.ToString(((Bar.domain.Table)o).Capacity);
                 }
@@ -391,9 +409,12 @@ namespace Bar.presentation
                 item.Amount = order.Amount;
                 item.State = orderStatus[order.Status];
                 item.Date = order.Date.ToString();
-                listVOrders.Items.Add(new ListViewItem());
-                ((ListViewItem)listVOrders.Items[listVOrders.Items.Count - 1]).Content = item;
-                ((ListViewItem)listVOrders.Items[listVOrders.Items.Count - 1]).Background = itemColor[order.Status];
+                if (order.Status < 3)
+                {
+                    listVOrders.Items.Add(new ListViewItem());
+                    ((ListViewItem)listVOrders.Items[listVOrders.Items.Count - 1]).Content = item;
+                    ((ListViewItem)listVOrders.Items[listVOrders.Items.Count - 1]).Background = itemColor[order.Status];
+                }
                 if (cbbTablesView.SelectedIndex != -1)
                     if (Convert.ToInt16(cbbTablesView.SelectedItem.ToString().Substring(5)) == order.TableID)
                     {

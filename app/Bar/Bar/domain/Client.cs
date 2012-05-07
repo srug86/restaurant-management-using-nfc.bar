@@ -35,7 +35,10 @@ namespace Bar.domain
             set { appearances = value; }
         }
 
-        public Client() { }
+        public Client() {
+            Name = Surname = "";
+            Appearances = 0;
+        }
 
         public Client(string dni, string name, string surname, int appearances)
         {

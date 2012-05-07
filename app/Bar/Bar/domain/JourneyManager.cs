@@ -37,6 +37,14 @@ namespace Bar.domain
             set { productsManager = value; }
         }
 
+        BillsManager billsManager;
+
+        internal BillsManager BillsManager
+        {
+            get { return billsManager; }
+            set { billsManager = value; }
+        }
+
         static JourneyManager() { }
 
         JourneyManager() { }
@@ -64,6 +72,7 @@ namespace Bar.domain
             roomManager = new RoomManager();
             ordersManager = new OrdersManager();
             productsManager = new ProductsManager();
+            billsManager = new BillsManager();
         }
 
         public void resetCurrentJourney(string room)

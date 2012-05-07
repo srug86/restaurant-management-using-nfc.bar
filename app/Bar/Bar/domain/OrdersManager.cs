@@ -149,14 +149,12 @@ namespace Bar.domain
             }
         }
 
-        public Bill generateBill(int table)
+        public void markOrdersAsPaid(int tableID)
         {
-            Bill bill = new Bill();
-            return bill;
-        }
-
-        public void confirmPayment(int table)
-        {
+            foreach (Order o in Orders)
+                if (o.TableID == tableID)
+                    o.Status = 3;
+            listOfOrdersHasChanged();
         }
 
         private static string dateTimeToString(DateTime date)

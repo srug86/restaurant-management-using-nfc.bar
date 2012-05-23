@@ -27,12 +27,34 @@ namespace Bar.domain
             set { description = value; }
         }
 
-        private double price;
+        private double price, discount;
 
         public double Price
         {
             get { return price; }
             set { price = value; }
+        }
+
+        public double Discount
+        {
+            get { return discount; }
+            set { discount = value; }
+        }
+        
+        private bool visible;
+
+        public bool Visible
+        {
+            get { return visible; }
+            set { visible = value; }
+        }
+
+        private int discountedUnit;
+
+        public int DiscountedUnit
+        {
+            get { return discountedUnit; }
+            set { discountedUnit = value; }
         }
 
         public Product() { }

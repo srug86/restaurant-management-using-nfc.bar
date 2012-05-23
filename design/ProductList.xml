@@ -1,35 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Products>
-	<Product name="Coca Cola 200ml" price="1.2">
+	<Product name="Coca Cola 200ml" price="1,2">
+		<Category>Refrescos</Category>
+		<Price>1,2</Price>
+		<Description></Description>
+		<Visible>True</Visible>
+		<Discount>0,5</Discount>
+		<DiscountedUnit>2</DiscountedUnit>
+	</Product>
+	<Product name="Fanta Naranja 200ml">
+		<Category>Refrescos</Category>
+		<Price>1,2</Price>
+		<Description></Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Agua con gas 330ml" price="1,0">
+		<Price>1,0</Price>
 		<Category>Refrescos</Category>
 		<Description></Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
 	</Product>
-	<Product name="Fanta Naranja 200ml" price="1.2">
-		<Category>Refrescos</Category>
-		<Description></Description>
-	</Product>
-	<Product name="Agua con gas 330ml" price="1.0">
-		<Category>Refrescos</Category>
-		<Description></Description>
-	</Product>
-	<Product name="Nacional" price="3.5">
+	<Product name="Nacional" price="3,5">
 		<Category>Combinados</Category>
+		<Price>3,5</Price>
 		<Description></Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
 	</Product>
-	<Product name="Importación" price="4.5">
+	<Product name="Importación" price="4,5">
 		<Category>Combinados</Category>
+		<Price>4,5</Price>
 		<Description></Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
 	</Product>
-	<Product name="Pollo asado" price="5.0">
+	<Product name="Pollo asado" price="5,0">
 		<Category>Carnes</Category>
+		<Price>5,0</Price>
 		<Description></Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
 	</Product>
-	<Product name="Solomillo a la pimienta" price="8.0">
+	<Product name="Solomillo a la pimienta">
 		<Category>Carnes</Category>
+		<Price>8,0</Price>
 		<Description></Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
 	</Product>
-	<Product name="Tarta helada" price="2.0">
+	<Product name="Tarta helada">
 		<Category>Postres</Category>
+		<Price>2,0</Price>
 		<Description></Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Arroz con leche">
+		<Category>Postres</Category>
+		<Price>2,0</Price>
+		<Description></Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Flan con nata">
+		<Category>Postres</Category>
+		<Price>1,5</Price>
+		<Description></Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Fresas con nata">
+		<Category>Postres</Category>
+		<Price>1,5</Price>
+		<Description></Description>
+		<Visible>False</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
 	</Product>
 </Products>

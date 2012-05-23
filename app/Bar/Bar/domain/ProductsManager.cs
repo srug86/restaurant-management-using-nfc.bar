@@ -48,11 +48,18 @@ namespace Bar.domain
                 {
                     Product p = new Product();
                     p.Name = Convert.ToString(product.GetAttribute("name")).Trim();
-                    p.Price = Convert.ToDouble(product.GetAttribute("price"));
+                    XmlNodeList price = ((XmlElement)product).GetElementsByTagName("Price");
+                    p.Price = Convert.ToDouble(price[0].InnerText);
                     XmlNodeList category = ((XmlElement)product).GetElementsByTagName("Category");
                     p.Category = Convert.ToString(category[0].InnerText).Trim();
                     XmlNodeList description = ((XmlElement)product).GetElementsByTagName("Description");
                     p.Description = Convert.ToString(description[0].InnerText);
+                    XmlNodeList visible = ((XmlElement)product).GetElementsByTagName("Visible");
+                    p.Visible = Convert.ToBoolean(visible[0].InnerText);
+                    XmlNodeList discount = ((XmlElement)product).GetElementsByTagName("Discount");
+                    p.Discount = Convert.ToDouble(discount[0].InnerText);
+                    XmlNodeList discountedUnit = ((XmlElement)product).GetElementsByTagName("DiscountedUnit");
+                    p.DiscountedUnit = Convert.ToInt32(discountedUnit[0].InnerText);
                     lop.Add(p);
                 }
             }
@@ -64,13 +71,16 @@ namespace Bar.domain
             List<Category> categories = new List<Category>();
             foreach (Product product in Products)
             {
-                if (categories.IndexOf(new Category(product.Category)) != -1)
-                    categories[categories.IndexOf(new Category(product.Category))].Products.Add(product.Name);
-                else
+                if (product.Visible)
                 {
-                    Category c = new Category(product.Category);
-                    c.Products.Add(product.Name);
-                    categories.Add(c);
+                    if (categories.IndexOf(new Category(product.Category)) != -1)
+                        categories[categories.IndexOf(new Category(product.Category))].Products.Add(product.Name);
+                    else
+                    {
+                        Category c = new Category(product.Category);
+                        c.Products.Add(product.Name);
+                        categories.Add(c);
+                    }
                 }
             }
             return categories;

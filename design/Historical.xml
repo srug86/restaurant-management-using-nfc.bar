@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Historical>
+	<Order>
+		<Client>05692939W</Client>
+		<Product>Coca Cola 200ml</Product>
+		<Amount>2</Amount>
+		<Date>2012-04-25 14:30:23</Date>
+	</Order>
+	<Order>
+		<Client>05692939W</Client>
+		<Product>Solomillo a la pimienta</Product>
+		<Amount>1</Amount>
+		<Date>2012-04-25 14:32:50</Date>
+	</Order>
+	<Order>
+		<Client>05692939W</Client>
+		<Product>Pollo asado</Product>
+		<Amount>1</Amount>
+		<Date>2012-04-25 14:33:43</Date>
+	</Order>
+	<Order>
+		<Client>C20120425143000</Client>
+		<Product>Nacional</Product>
+		<Amount>2</Amount>
+		<Date>2012-04-25 14:35:21</Date>
+	</Order>
+	<Order>
+		<Client>C20120425143000</Client>
+		<Product>Importación</Product>
+		<Amount>1</Amount>
+		<Date>2012-04-25 14:40:01</Date>
+	</Order>
+	<Order>
+		<Client>C20120425144000</Client>
+		<Product>Tarta helada</Product>
+		<Amount>2</Amount>
+		<Date>2012-04-25 14:43:59</Date>
+	</Order>
+</Historical>

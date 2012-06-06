@@ -11,13 +11,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Bar.domain;
+using System.Windows.Threading;
 
 namespace Bar.presentation
 {
     /// <summary>
     /// Lógica de interacción para JourneyManagerWin.xaml
     /// </summary>
-    public partial class JourneyManagerWin : Window, ObserverRE, ObserverLO
+    public partial class JourneyManagerWin : Window, ObserverRE
     {
         private JourneyManager manager = JourneyManager.Instance;
 
@@ -214,7 +215,8 @@ namespace Bar.presentation
             manager.RoomManager.loadRoom(name, reset);
             generateEmptyRoom(manager.RoomManager.Room.Name, 
                 manager.RoomManager.Room.Height, manager.RoomManager.Room.Width);
-            registerSubjects(manager.RoomManager, manager.OrdersManager);
+            registerSubjects(manager.RoomManager);
+            manager.OrdersManager.setGuiReference(this);
             manager.RoomManager.locateObjects();
             if (reset) manager.resetCurrentJourney(name);
             else
@@ -223,6 +225,7 @@ namespace Bar.presentation
                 manager.OrdersManager.updateOrders();
             }
             manager.ProductsManager.updateProducts();
+            manager.initBluetoothServer();
             openOnPerspective();
         }
 
@@ -381,10 +384,9 @@ namespace Bar.presentation
             txtbClientS.Text = txtbTableS.Text = "";
         }
 
-        private void registerSubjects(SubjectRE subjectRE, SubjectLO subjectLO)
+        private void registerSubjects(SubjectRE subjectRE)
         {
             subjectRE.registerInterest(this);
-            subjectLO.registerInterest(this);
         }
 
         public void notifyChangesInABox(int row, int column, int state)
@@ -396,7 +398,13 @@ namespace Bar.presentation
             Room[row, column].Source = bi;
         }
 
-        public void notifyChangesInListOfOrders(List<Order> orders)
+        private delegate void OrdersList(List<Order> orders);
+        public void delegateToChangeTheOrdersList(List<Order> orders)
+        {
+            Dispatcher.Invoke(DispatcherPriority.Normal, new OrdersList(this.changeTheOrdersList), orders);
+        }
+
+        public void changeTheOrdersList(List<Order> orders)
         {
             listVOrders.Items.Clear();
             listVTablesOrders.Items.Clear();
@@ -414,6 +422,7 @@ namespace Bar.presentation
                     listVOrders.Items.Add(new ListViewItem());
                     ((ListViewItem)listVOrders.Items[listVOrders.Items.Count - 1]).Content = item;
                     ((ListViewItem)listVOrders.Items[listVOrders.Items.Count - 1]).Background = itemColor[order.Status];
+                    
                 }
                 if (cbbTablesView.SelectedIndex != -1)
                     if (Convert.ToInt16(cbbTablesView.SelectedItem.ToString().Substring(5)) == order.TableID)

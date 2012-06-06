@@ -71,6 +71,11 @@ namespace Bar.communication
             return proxy.getTablesStatus();
         }
 
+        public int sendMeTable(string dni)
+        {
+            return proxy.getTableID(dni);
+        }
+
         public string sendMeTableStatus(int tableID)
         {
             return proxy.getTableStatus(tableID);

@@ -11,6 +11,8 @@ namespace Bar.domain
     {
         private AdapterWebServices adapter = AdapterWebServices.Instance;
 
+        private BluetoothServer bluetooth = BluetoothServer.Instance;
+
         static readonly JourneyManager instance = new JourneyManager();
 
         RoomManager roomManager;
@@ -60,6 +62,16 @@ namespace Bar.domain
         public bool connectToWS(string url)
         {
             return adapter.connect(url);
+        }
+
+        public void initBluetoothServer()
+        {
+            bluetooth.initBluetooth();
+        }
+
+        public void closeBluetoothServer()
+        {
+            bluetooth.closeBluetooth();
         }
 
         public List<RoomInf> consultingRooms()

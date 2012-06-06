@@ -4,14 +4,18 @@ using System.Linq;
 using System.Text;
 using Bar.communication;
 using System.Xml;
+using System.Windows.Threading;
+using Bar.presentation;
 
 namespace Bar.domain
 {
-    class OrdersManager : SubjectLO
+    class OrdersManager
     {
         private JourneyManager manager = JourneyManager.Instance;
 
         private AdapterWebServices adapter = AdapterWebServices.Instance;
+
+        private JourneyManagerWin gui;
 
         private List<ObserverLO> loObservers = new List<ObserverLO>();
 
@@ -35,10 +39,15 @@ namespace Bar.domain
 
         public OrdersManager() { }
 
+        public void setGuiReference(JourneyManagerWin gui)
+        {
+            this.gui = gui;
+        }
+
         public void updateOrders()
         {
             Orders = xmlListOfOrders(adapter.sendMeOrdersStatus());
-            listOfOrdersHasChanged();
+            gui.delegateToChangeTheOrdersList(Orders);
         }
 
         private List<Order> xmlListOfOrders(string sXml)
@@ -72,6 +81,44 @@ namespace Bar.domain
             return loo;
         }
 
+        public void manageNFCOrder(string xml)
+        {
+            List<Object> objects = xmlNFCOrderDecoder(xml);
+            int tableID = adapter.sendMeTable((string)objects[0]);
+            if (tableID != 0)
+            {
+                foreach (Order order in (List<Order>)objects[1])
+                    order.TableID = tableID;
+                addOrders((List<Order>)objects[1]);
+            }
+        }
+
+        private List<Object> xmlNFCOrderDecoder(string sXml)
+        {
+            List<Object> objects = new List<Object>();
+            List<Order> loo = new List<Order>();
+            if (!sXml.Equals(""))
+            {
+                XmlDocument xml = new XmlDocument();
+                xml.LoadXml(sXml);
+                XmlNodeList cOrder = xml.GetElementsByTagName("ClientOrder");
+                XmlNodeList client = ((XmlElement)cOrder[0]).GetElementsByTagName("Client");
+                string dni = Convert.ToString(((XmlElement)client[0]).GetAttribute("dni"));
+                objects.Add(dni);
+                XmlNodeList products = ((XmlElement)cOrder[0]).GetElementsByTagName("Products");
+                XmlNodeList pList = ((XmlElement)products[0]).GetElementsByTagName("Product");
+                foreach (XmlElement product in pList)
+                {
+                    Order o = new Order();
+                    o.Product = Convert.ToString(product.GetAttribute("name"));
+                    o.Amount = Convert.ToInt16(product.GetAttribute("amount"));
+                    loo.Add(o);
+                }
+            }
+            objects.Add(loo);
+            return objects;
+        }
+
         public string xmlNewOrder(List<Order> orders)
         {
             string xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
@@ -84,7 +131,7 @@ namespace Bar.domain
                     xml += "\t\t<Product>" + order.Product + "</Product>\n";
                     xml += "\t\t<Amount>" + order.Amount + "</Amount>\n";
                     xml += "\t\t<Status>" + order.Status + "</Status>\n";
-                    xml += "\t\t<Date>" + dateTimeToString(order.Date) + "</Date>\n";
+                    xml += "\t\t<Date>" + order.Date.ToString() + "</Date>\n";
                     xml += "\t</Order>\n";
                 }
             xml += "</Orders>";
@@ -103,7 +150,7 @@ namespace Bar.domain
             if (orders.Count > 0)
             {
                 adapter.sendNewOrder(xmlNewOrder(orders));
-                listOfOrdersHasChanged();
+                gui.delegateToChangeTheOrdersList(Orders);
             }
         }
 
@@ -116,7 +163,7 @@ namespace Bar.domain
         {
             adapter.sendChangeOrderStatus(orderID, -2);
             Orders.Remove(Orders[Orders.IndexOf(new Order(orderID))]);
-            listOfOrdersHasChanged();
+            gui.delegateToChangeTheOrdersList(Orders);
         }
 
         public void changeOrderAmount(int orderID, int amount)
@@ -125,7 +172,7 @@ namespace Bar.domain
             {
                 Orders[Orders.IndexOf(new Order(orderID))].Amount = amount;
                 adapter.sendChangeOrderAmount(orderID, amount);
-                listOfOrdersHasChanged();
+                gui.delegateToChangeTheOrdersList(Orders);
             }
         }
 
@@ -135,7 +182,7 @@ namespace Bar.domain
             {
                 Orders[Orders.IndexOf(new Order(orderID))].Status = status;
                 manager.RoomManager.xmlTablesStatus(adapter.sendChangeOrderStatus(orderID, status));
-                listOfOrdersHasChanged();
+                gui.delegateToChangeTheOrdersList(Orders);
             }
         }
 
@@ -145,7 +192,7 @@ namespace Bar.domain
             {
                 Orders[Orders.IndexOf(new Order(orderID))].TableID = tableID;
                 manager.RoomManager.xmlTablesStatus(adapter.sendChangeOrderTable(orderID, tableID));
-                listOfOrdersHasChanged();
+                gui.delegateToChangeTheOrdersList(Orders);
             }
         }
 
@@ -154,44 +201,7 @@ namespace Bar.domain
             foreach (Order o in Orders)
                 if (o.TableID == tableID)
                     o.Status = 3;
-            listOfOrdersHasChanged();
-        }
-
-        private static string dateTimeToString(DateTime date)
-        {
-            string month = date.Month.ToString(), day = date.Day.ToString(), hour = date.Hour.ToString(),
-                minute = date.Minute.ToString(), second = date.Second.ToString();
-            if (date.Month < 10) month = "0" + date.Month.ToString();
-            if (date.Day < 10) day = "0" + date.Day.ToString();
-            if (date.Hour < 10) hour = "0" + date.Hour.ToString();
-            if (date.Minute < 10) minute = "0" + date.Minute.ToString();
-            if (date.Second < 10) second = "0" + date.Second.ToString();
-            return date.Year.ToString() + "-" + month + "-" + day + " " +
-                hour + ":" + minute + ":" + second;
-        }
-
-        private void switchListOfOrders()
-        {
-            for (int i = 0; i < loObservers.Count; i++)
-            {
-                ObserverLO obs = (ObserverLO)loObservers[i];
-                obs.notifyChangesInListOfOrders(Orders);
-            }
-        }
-
-        private void listOfOrdersHasChanged()
-        {
-            DelegateOfListOfOrders oSwitchLoO = new DelegateOfListOfOrders();
-            DelegateOfListOfOrders.OrdersDelegate oLoODelegate = new DelegateOfListOfOrders.OrdersDelegate(switchListOfOrders);
-            oSwitchLoO.switchListOfOrders += oLoODelegate;
-            oSwitchLoO.changeContentsListOfOrders = Orders;
-
-            oSwitchLoO.switchListOfOrders -= oLoODelegate;
-        }
-
-        public void registerInterest(ObserverLO obs)
-        {
-            loObservers.Add(obs);
+            gui.delegateToChangeTheOrdersList(Orders);
         }
     }
 

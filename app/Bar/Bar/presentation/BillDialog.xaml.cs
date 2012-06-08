@@ -63,6 +63,8 @@ namespace Bar.presentation
             txtbAddress.Text = bill.ClientAddress.Street + ", " + bill.ClientAddress.Number;
             txtbTown.Text = bill.ClientAddress.Town;
             txtbState.Text = bill.ClientAddress.State;
+            txtbSubtotal.Text = Convert.ToString(bill.Subtotal);
+            txtbDiscount.Text = Convert.ToString(bill.Discount);
             txtbTaxBase.Text = Convert.ToString(bill.TaxBase);
             txtbIVA.Text = Convert.ToString(bill.Iva);
             txtbQuote.Text = Convert.ToString(bill.Quote);

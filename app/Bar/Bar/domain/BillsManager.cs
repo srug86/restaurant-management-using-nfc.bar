@@ -92,8 +92,6 @@ namespace Bar.domain
                     oPrice.Amount = Convert.ToInt16(amount[0].InnerText);
                     XmlNodeList price = ((XmlElement)order).GetElementsByTagName("Price");
                     oPrice.Price = Convert.ToDouble(price[0].InnerText);
-                    XmlNodeList iva = ((XmlElement)order).GetElementsByTagName("IVA");
-                    oPrice.Iva = Convert.ToDouble(iva[0].InnerText);
                     XmlNodeList discount = ((XmlElement)order).GetElementsByTagName("Discount");
                     oPrice.Discount = Convert.ToDouble(discount[0].InnerText);
                     XmlNodeList total = ((XmlElement)order).GetElementsByTagName("Total");
@@ -101,6 +99,10 @@ namespace Bar.domain
                     bill.Orders.Add(oPrice);
                 }
                 XmlNodeList amounts = ((XmlElement)b[0]).GetElementsByTagName("PriceSummary");
+                XmlNodeList subtotal = ((XmlElement)amounts[0]).GetElementsByTagName("Subtotal");
+                bill.Subtotal = Convert.ToDouble(subtotal[0].InnerText);
+                XmlNodeList discountT = ((XmlElement)amounts[0]).GetElementsByTagName("Discount");
+                bill.Discount = Convert.ToDouble(discountT[0].InnerText);
                 XmlNodeList taxBase = ((XmlElement)amounts[0]).GetElementsByTagName("TaxBase");
                 bill.TaxBase = Convert.ToDouble(taxBase[0].InnerText);
                 XmlNodeList tIva = ((XmlElement)amounts[0]).GetElementsByTagName("IVA");

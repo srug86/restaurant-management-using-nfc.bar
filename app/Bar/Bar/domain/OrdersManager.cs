@@ -81,16 +81,26 @@ namespace Bar.domain
             return loo;
         }
 
-        public void manageNFCOrder(string xml)
+        public string manageNFCOrder(string xml)
         {
-            List<Object> objects = xmlNFCOrderDecoder(xml);
-            int tableID = adapter.sendMeTable((string)objects[0]);
-            if (tableID != 0)
+            string reply = "Su pedido esta en camino...";
+            try
             {
-                foreach (Order order in (List<Order>)objects[1])
-                    order.TableID = tableID;
-                addOrders((List<Order>)objects[1]);
+                List<Object> objects = xmlNFCOrderDecoder(xml);
+                int tableID = adapter.sendMeTable((string)objects[0]);
+                if (tableID != 0)
+                {
+                    foreach (Order order in (List<Order>)objects[1])
+                    {
+                        order.TableID = tableID;
+                        if (order.Product.Equals("Solicitud de facturacion"))
+                            reply = adapter.sendMeBill(tableID);
+                    }
+                    addOrders((List<Order>)objects[1]);
+                }
             }
+            catch (Exception e) { reply = "ERROR al procesar el pedido\n" + e.ToString(); }
+            return reply;
         }
 
         private List<Object> xmlNFCOrderDecoder(string sXml)

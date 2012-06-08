@@ -38,20 +38,20 @@
 			<Product>Coca Cola 200ml</Product>
 			<Amount>2</Amount>
 			<Price>1.5<Price>
-			<IVA>0.18</IVA>
 			<Discount>0</Discount>
-			<Total>3.54</Total>
+			<Total>3</Total>
 		</Order>
 		<Order id="12">
 			<Product>Solomillo a la pimienta</Product>
 			<Amount>2</Amount>
 			<Price>5<Price>
-			<IVA>18</IVA>
 			<Discount>0</Discount>
-			<Total>11.8</Total>
+			<Total>10</Total>
 		</Order>
 	</Orders>
 	<PriceSummary>
+		<Subtotal>13</Subtotal>
+		<Discount>0</Discount>
 		<TaxBase>13</TaxBase>
 		<IVA>18</IVA>
 		<Quote>2.34</Quote>

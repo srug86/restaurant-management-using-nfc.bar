@@ -56,17 +56,22 @@ namespace Bar.communication
                     BluetoothClient client = btListener.AcceptBluetoothClient();
                     StreamReader sr = new StreamReader(client.GetStream(), Encoding.UTF8);
                     string clientData = "";
-                    do
+                    while (true)
                     {
-                        clientData += sr.ReadLine();
-                    } while (!sr.EndOfStream);
-                    sr.Close();
+                        string line = sr.ReadLine();
+                        clientData += line;
+                        if (line.Equals("</ClientOrder>")) break;
+                    }
                     manager = JourneyManager.Instance;
-                    manager.OrdersManager.manageNFCOrder(clientData.Substring(2));
+                    StreamWriter sw = new StreamWriter(client.GetStream(), Encoding.ASCII);
+                    string reply = manager.OrdersManager.manageNFCOrder(clientData.Substring(2));
+                    sw.Write(Convert.ToString(reply));
+                    sw.Flush();
+                    if (client.Connected) sw.Close();
+                    if (client.Connected) sr.Close();
                 }
                 catch (Exception e)
                 {
-                    return;
                 }
             } while (!exit);
         }

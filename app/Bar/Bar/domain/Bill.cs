@@ -71,7 +71,7 @@ namespace Bar.domain
             set { date = value; }
         }
 
-        private double iva, discount, taxBase, quote, total;
+        private double iva, discount, taxBase, quote, subtotal, total;
 
         public double Iva
         {
@@ -97,6 +97,12 @@ namespace Bar.domain
             set { quote = value; }
         }
 
+        public double Subtotal
+        {
+            get { return subtotal; }
+            set { subtotal = value; }
+        }
+
         public double Total
         {
             get { return total; }
@@ -115,7 +121,7 @@ namespace Bar.domain
         {
             Paid = 0;
             TaxBase = 0;
-            Total = 0;
+            Total = Subtotal = 0;
             CompanyInfo = new Company();
             ClientInfo = new Client();
             CompanyAddress = clientAddress = new Address();
@@ -224,18 +230,12 @@ namespace Bar.domain
             set { order = value; }
         }
 
-        private double price, iva, discount, total;
+        private double price, discount, total;
 
         public double Price
         {
             get { return price; }
             set { price = value; }
-        }
-
-        public double Iva
-        {
-            get { return iva; }
-            set { iva = value; }
         }
 
         public double Discount

@@ -45,7 +45,7 @@ namespace Bar.presentation
                 foreach (Category c in categories)
                 {
                     Button button = new Button();
-                    button.Name = "btn" + c.Name;
+                    button.Name = "btn" + c.Name.Replace(' ', '_');
                     button.Content = c.Name;
                     button.Click += new RoutedEventHandler(this.category_Click);
                     uGridCategories.Children.Add(button);
@@ -67,7 +67,7 @@ namespace Bar.presentation
         private void category_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            Category c = categories[categories.IndexOf(new Category(btn.Name.Substring(3)))];
+            Category c = categories[categories.IndexOf(new Category(btn.Name.Substring(3).Replace('_', ' ')))];
             listVProducts.Items.Clear();
             foreach (string p in c.Products)
                 listVProducts.Items.Add(p);

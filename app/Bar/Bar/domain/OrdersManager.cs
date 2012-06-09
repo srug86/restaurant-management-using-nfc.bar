@@ -94,7 +94,7 @@ namespace Bar.domain
                     {
                         order.TableID = tableID;
                         if (order.Product.Equals("Solicitud de facturacion"))
-                            reply = adapter.sendMeBill(tableID);
+                            reply = adapter.sendMeBill(tableID, true);
                     }
                     addOrders((List<Order>)objects[1]);
                 }

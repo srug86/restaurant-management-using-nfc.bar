@@ -81,9 +81,9 @@ namespace Bar.communication
             return proxy.getTableStatus(tableID);
         }
 
-        public string sendMeProducts()
+        public string sendMeProducts(bool nonVisible)
         {
-            return proxy.getProducts();
+            return proxy.getProducts(nonVisible);
         }
 
         public string sendMeOrdersStatus()
@@ -111,9 +111,9 @@ namespace Bar.communication
             return proxy.setOrderTable(orderID, tableID);
         }
 
-        public string sendMeBill(int tableID)
+        public string sendMeBill(int tableID, bool _short)
         {
-            return proxy.getBill(tableID);
+            return proxy.getBill(tableID, _short);
         }
 
         public string sendBillPayment(int billID, int type)

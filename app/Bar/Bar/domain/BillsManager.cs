@@ -29,7 +29,7 @@ namespace Bar.domain
 
         private Bill generateBill(int tableID)
         {
-            Bill bill = xmlBillDecoder(adapter.sendMeBill(tableID));
+            Bill bill = xmlBillDecoder(adapter.sendMeBill(tableID, false));
             bills.Add(bill);
             return bill;
         }

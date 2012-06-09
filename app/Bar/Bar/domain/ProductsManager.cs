@@ -31,7 +31,7 @@ namespace Bar.domain
 
         public void updateProducts()
         {
-            Products = xmlListOfProducts(adapter.sendMeProducts());
+            Products = xmlListOfProducts(adapter.sendMeProducts(false));
             Categories = getCategories();
         }
 

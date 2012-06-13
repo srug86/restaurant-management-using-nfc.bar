@@ -133,8 +133,8 @@
 		<Price>10</Price>
 		<Description>pasta,macarron,tomate</Description>
 		<Visible>True</Visible>
-		<Discount>0</Discount>
-		<DiscountedUnit>0</DiscountedUnit>
+		<Discount>0,5</Discount>
+		<DiscountedUnit>2</DiscountedUnit>
 	</Product>
 	<Product name="Cochinillo casero">
 		<Category>Carnes</Category>
@@ -173,8 +173,8 @@
 		<Price>22</Price>
 		<Description>vaca,pimienta</Description>
 		<Visible>True</Visible>
-		<Discount>0</Discount>
-		<DiscountedUnit>0</DiscountedUnit>
+		<Discount>0,5</Discount>
+		<DiscountedUnit>2</DiscountedUnit>
 	</Product>
 	<Product name="Solomillo de ternera">
 		<Category>Carnes</Category>

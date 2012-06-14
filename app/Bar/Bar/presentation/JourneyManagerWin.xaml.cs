@@ -54,8 +54,6 @@ namespace Bar.presentation
 
         private Grid[] gridsOnMode;
 
-        private ConnectDialog connect;
-
         private Dictionary<int, string> colorBox = new Dictionary<int, string> {
             {-1, "/Bar;component/Images/black.jpg"},
             {0, "/Bar;component/Images/green.jpg"},
@@ -79,7 +77,6 @@ namespace Bar.presentation
 
         public JourneyManagerWin()
         {
-            connect = new ConnectDialog();
             InitializeComponent();
             initGridsOnMode();
             openOffPerspective();
@@ -109,13 +106,8 @@ namespace Bar.presentation
 
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
-            LoadRoomDialog roomDialog = new LoadRoomDialog(this, manager.consultingRooms(), false);
+            LoadRoomDialog roomDialog = new LoadRoomDialog(this, manager.consultingCurrentRoom(), false);
             roomDialog.Show();
-        }
-
-        private void btnConnect_Click(object sender, RoutedEventArgs e)
-        {
-            connect.Show();
         }
 
         private void btnOOrders_Click(object sender, RoutedEventArgs e)
@@ -407,7 +399,7 @@ namespace Bar.presentation
         public void changeTheOrdersList(List<Order> orders)
         {
             listVOrders.Items.Clear();
-            listVTablesOrders.Items.Clear();
+            //listVTablesOrders.Items.Clear();
             foreach (Order order in orders)
             {
                 OrderTableItem item = new OrderTableItem();
@@ -424,14 +416,12 @@ namespace Bar.presentation
                     ((ListViewItem)listVOrders.Items[listVOrders.Items.Count - 1]).Background = itemColor[order.Status];
                     
                 }
-                if (cbbTablesView.SelectedIndex != -1)
-                    if (Convert.ToInt16(cbbTablesView.SelectedItem.ToString().Substring(5)) == order.TableID)
-                    {
-                        listVTablesOrders.Items.Add(new ListViewItem());
-                        ((ListViewItem)listVTablesOrders.Items[listVTablesOrders.Items.Count - 1]).Content = 
-                            new OrderTableItem(item.OrderID, item.TableID, item.Product, item.Amount, item.State, item.Date);
-                        ((ListViewItem)listVTablesOrders.Items[listVTablesOrders.Items.Count - 1]).Background = itemColor[order.Status];
-                    }
+            }
+            if (cbbTablesView.SelectedIndex != -1)
+            {
+                int tableID = Convert.ToInt16(cbbTablesView.SelectedItem.ToString().Substring(5));
+                cleanTableData();
+                loadTableData(tableID);
             }
         }
     }

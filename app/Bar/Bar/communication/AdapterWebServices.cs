@@ -32,38 +32,19 @@ namespace Bar.communication
             }
         }
 
-        public bool connect(string url)
-        {
-            try
-            {
-                Url = url;
-                return proxy.connect();
-            }
-            catch (Exception e) { return false; }
-        }
-
         public string sendMeRooms()
         {
-            try
-            {
-                return proxy.getRooms();
-            }
-            catch (EndpointNotFoundException e)
-            {
-                return "";
-            }
+            return proxy.getRooms();
+        }
+
+        public string sendMeCurrentRoom()
+        {
+            return proxy.getCurrentRoom();
         }
 
         public string sendMeRoom(string name)
         {
-            try
-            {
-                return proxy.getRoom(name);
-            }
-            catch (EndpointNotFoundException e)
-            {
-                return "";
-            }
+            return proxy.getRoom(name);
         }
 
         public string sendMeTablesStatus()

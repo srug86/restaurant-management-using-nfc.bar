@@ -59,11 +59,6 @@ namespace Bar.domain
             }
         }
 
-        public bool connectToWS(string url)
-        {
-            return adapter.connect(url);
-        }
-
         public void initBluetoothServer()
         {
             bluetooth.initBluetooth();
@@ -77,6 +72,11 @@ namespace Bar.domain
         public List<RoomInf> consultingRooms()
         {
             return xmlListOfRooms(adapter.sendMeRooms());
+        }
+
+        public List<RoomInf> consultingCurrentRoom()
+        {
+            return xmlListOfRooms(adapter.sendMeCurrentRoom());
         }
 
         public void createRoomManager()

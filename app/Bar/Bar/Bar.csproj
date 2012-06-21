@@ -64,6 +64,12 @@
     </Compile>
     <Compile Include="domain\BillsManager.cs" />
     <Compile Include="domain\Category.cs" />
+    <Compile Include="presentation\EditCategory.xaml.cs">
+      <DependentUpon>EditCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\EditProductWin.xaml.cs">
+      <DependentUpon>EditProductWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\webSercives\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -86,9 +92,6 @@
     <Compile Include="domain\Table.cs" />
     <Compile Include="presentation\BillDialog.xaml.cs">
       <DependentUpon>BillDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\ConnectDialog.xaml.cs">
-      <DependentUpon>ConnectDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="presentation\EditOrderDialog.xaml.cs">
       <DependentUpon>EditOrderDialog.xaml</DependentUpon>
@@ -144,7 +147,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="presentation\ConnectDialog.xaml">
+    <Page Include="presentation\EditCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="presentation\EditProductsWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\EditProductWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

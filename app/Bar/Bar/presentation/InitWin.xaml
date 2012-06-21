@@ -44,7 +44,7 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Button Margin="20,0,20,-209" Height="100" Content="Editar productos" Grid.Row="2" VerticalAlignment="Bottom" FontFamily="Trebuchet MS" FontSize="24" Opacity="0.8" FontWeight="Normal" x:Name="btnRoom" BorderThickness="5,5,5,5" HorizontalAlignment="Stretch" Click="btnRoom_Click">
+                <Button Margin="20,0,20,-209" Height="100" Content="Editar productos" Grid.Row="2" VerticalAlignment="Bottom" FontFamily="Trebuchet MS" FontSize="24" Opacity="0.8" FontWeight="Normal" x:Name="btnEditProducts" BorderThickness="5,5,5,5" HorizontalAlignment="Stretch" Click="btnEditProducts_Click">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF3F3F3" Offset="0"/>

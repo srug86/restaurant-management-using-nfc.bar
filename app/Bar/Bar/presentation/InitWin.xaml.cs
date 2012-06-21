@@ -29,7 +29,7 @@ namespace Bar.presentation
             startJourney();
         }
 
-        private void btnRoom_Click(object sender, RoutedEventArgs e)
+        private void btnEditProducts_Click(object sender, RoutedEventArgs e)
         {
             editProducts();
         }

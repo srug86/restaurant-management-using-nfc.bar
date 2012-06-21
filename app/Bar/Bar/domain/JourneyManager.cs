@@ -81,9 +81,29 @@ namespace Bar.domain
 
         public void createRoomManager()
         {
+            initRoomManager();
+            initOrdersManager();
+            initProductsManager();
+            initBillsManager();
+        }
+
+        private void initRoomManager()
+        {
             roomManager = new RoomManager();
+        }
+
+        private void initOrdersManager()
+        {
             ordersManager = new OrdersManager();
+        }
+
+        public void initProductsManager()
+        {
             productsManager = new ProductsManager();
+        }
+
+        private void initBillsManager()
+        {
             billsManager = new BillsManager();
         }
 

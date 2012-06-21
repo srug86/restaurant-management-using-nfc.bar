@@ -216,7 +216,7 @@ namespace Bar.presentation
                 manager.RoomManager.updateTables();
                 manager.OrdersManager.updateOrders();
             }
-            manager.ProductsManager.updateProducts();
+            manager.ProductsManager.updateProducts(true);
             manager.initBluetoothServer();
             openOnPerspective();
         }
@@ -399,7 +399,6 @@ namespace Bar.presentation
         public void changeTheOrdersList(List<Order> orders)
         {
             listVOrders.Items.Clear();
-            //listVTablesOrders.Items.Clear();
             foreach (Order order in orders)
             {
                 OrderTableItem item = new OrderTableItem();

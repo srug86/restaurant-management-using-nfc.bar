@@ -1,8 +1,8 @@
 ﻿<Window x:Class="Bar.presentation.EditOrderDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MobiCarta - Editar pedido" Height="300" Width="500" Icon="/Bar;component/Images/ico.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-    <Grid>
+        Title="MobiCarta - Editar pedido" Height="300" Width="500" Icon="/Bar;component/Images/ico.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ShowInTaskbar="False">
+    <Grid Background="Gainsboro">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.25*" />
             <ColumnDefinition Width="0.25*" />

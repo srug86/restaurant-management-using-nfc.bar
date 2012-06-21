@@ -23,6 +23,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getCurrentRoom">
+        <s:complexType />
+      </s:element>
+      <s:element name="getCurrentRoomResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCurrentRoomResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getRoom">
         <s:complexType>
           <s:sequence>
@@ -354,6 +364,12 @@
   <wsdl:message name="getRoomsSoapOut">
     <wsdl:part name="parameters" element="tns:getRoomsResponse" />
   </wsdl:message>
+  <wsdl:message name="getCurrentRoomSoapIn">
+    <wsdl:part name="parameters" element="tns:getCurrentRoom" />
+  </wsdl:message>
+  <wsdl:message name="getCurrentRoomSoapOut">
+    <wsdl:part name="parameters" element="tns:getCurrentRoomResponse" />
+  </wsdl:message>
   <wsdl:message name="getRoomSoapIn">
     <wsdl:part name="parameters" element="tns:getRoom" />
   </wsdl:message>
@@ -515,6 +531,11 @@
       <wsdl:input message="tns:getRoomsSoapIn" />
       <wsdl:output message="tns:getRoomsSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getCurrentRoom">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con la especificación del restaurante actualmente cargado</wsdl:documentation>
+      <wsdl:input message="tns:getCurrentRoomSoapIn" />
+      <wsdl:output message="tns:getCurrentRoomSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="getRoom">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devuelve una cadena en formato XML con la especificación de los elementos del restaurante 'name'</wsdl:documentation>
       <wsdl:input message="tns:getRoomSoapIn" />
@@ -654,6 +675,15 @@
     </wsdl:operation>
     <wsdl:operation name="getRooms">
       <soap:operation soapAction="http://localhost/MobiCarta/getRooms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCurrentRoom">
+      <soap:operation soapAction="http://localhost/MobiCarta/getCurrentRoom" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -900,6 +930,15 @@
     </wsdl:operation>
     <wsdl:operation name="getRooms">
       <soap12:operation soapAction="http://localhost/MobiCarta/getRooms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCurrentRoom">
+      <soap12:operation soapAction="http://localhost/MobiCarta/getCurrentRoom" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

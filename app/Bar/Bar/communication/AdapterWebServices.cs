@@ -62,6 +62,11 @@ namespace Bar.communication
             return proxy.getTableStatus(tableID);
         }
 
+        public void sendProductList(string products)
+        {
+            proxy.saveProductsList(products);
+        }
+
         public string sendMeProducts(bool nonVisible)
         {
             return proxy.getProducts(nonVisible);

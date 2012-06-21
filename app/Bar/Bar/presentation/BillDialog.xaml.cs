@@ -60,7 +60,8 @@ namespace Bar.presentation
             txtbDate.Text = Convert.ToString(bill.Date);
             txtbDNI.Text = bill.ClientInfo.Dni;
             txtbName.Text = bill.ClientInfo.Name + " " + bill.ClientInfo.Surname;
-            txtbAddress.Text = bill.ClientAddress.Street + ", " + bill.ClientAddress.Number;
+            if (!bill.ClientAddress.Street.Equals(""))
+                txtbAddress.Text = bill.ClientAddress.Street + ", " + bill.ClientAddress.Number;
             txtbTown.Text = bill.ClientAddress.Town;
             txtbState.Text = bill.ClientAddress.State;
             txtbSubtotal.Text = Convert.ToString(bill.Subtotal);

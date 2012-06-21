@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bar.domain
 {
-    class Product
+    public class Product
     {
         private string name, category, description;
 
@@ -57,7 +57,22 @@ namespace Bar.domain
             set { discountedUnit = value; }
         }
 
-        public Product() { }
+        public Product()
+        {
+            Name = Category = Description = "";
+            Price = Discount = 0.0;
+            DiscountedUnit = 0;
+            Visible = false;
+        }
+
+        public Product(string name)
+        {
+            Name = name;
+            Category = Description = "";
+            Price = Discount = 0.0;
+            DiscountedUnit = 0;
+            Visible = false;
+        }
 
         public override bool Equals(object obj)
         {

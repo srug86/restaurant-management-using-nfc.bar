@@ -1,46 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE Orders SYSTEM "Orders.dtd">
 <Orders>
-	<Order id="1">
+	<Order id="8">
 		<Table>7</Table>
-		<Product>Coca Cola 200ml</Product>
-		<Amount>2</Amount>
-		<Status>2</Status>
-		<Date>2012-04-25 14:30:23</Date>
-	</Order>
-	<Order id="2">
-		<Table>7</Table>
-		<Product>Solomillo a la pimienta</Product>
-		<Amount>1</Amount>
-		<Status>2</Status>
-		<Date>2012-04-25 14:32:50</Date>
-	</Order>
-	<Order id="3">
-		<Table>7</Table>
-		<Product>Pollo asado</Product>
-		<Amount>1</Amount>
-		<Status>1</Status>
-		<Date>2012-04-25 14:33:43</Date>
-	</Order>
-	<Order id="4">
-		<Table>5</Table>
-		<Product>Nacional</Product>
-		<Amount>2</Amount>
-		<Status>3</Status>
-		<Date>2012-04-25 14:35:21</Date>
-	</Order>
-	<Order id="5">
-		<Table>8</Table>
-		<Product>Importación</Product>
-		<Amount>1</Amount>
-		<Status>3</Status>
-		<Date>2012-04-25 14:40:01</Date>
-	</Order>
-	<Order id="6">
-		<Table>4</Table>
-		<Product>Tarta helada</Product>
+		<Product>Macarrones con tomate</Product>
 		<Amount>2</Amount>
 		<Status>0</Status>
-		<Date>2012-04-25 14:43:59</Date>
+		<Date>2012-04-25 14:30:23</Date>
+	</Order>
+	<Order id="9">
+		<Table>7</Table>
+		<Product>Sepia a la plancha</Product>
+		<Amount>1</Amount>
+		<Status>0</Status>
+		<Date>2012-04-25 14:32:50</Date>
 	</Order>
 </Orders>

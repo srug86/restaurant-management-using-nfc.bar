@@ -95,8 +95,8 @@ namespace Bar.domain
                         order.TableID = tableID;
                         if (order.Product.Equals("Solicitud de facturacion"))
                             reply = adapter.sendMeBill(tableID, true);
+                        else addOrders(new List<Order> { order });
                     }
-                    addOrders((List<Order>)objects[1]);
                 }
             }
             catch (Exception e) { reply = "ERROR al procesar el pedido\n" + e.ToString(); }

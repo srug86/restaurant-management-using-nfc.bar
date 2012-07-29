@@ -1,0 +1,66 @@
+﻿<Window x:Class="Bar.presentation.EditProductWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MobiCarta - Editar producto" Height="340" Width="500" Icon="/Bar;component/Images/ico.png" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" WindowStartupLocation="CenterScreen" Name="wEditProduct">
+    <Grid Background="Red">
+        <Grid Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="grid1" VerticalAlignment="Stretch" Width="Auto" Background="Gainsboro">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.22*" />
+                <ColumnDefinition Width="0.28*" />
+                <ColumnDefinition Width="0.11*" />
+                <ColumnDefinition Width="0.11*" />
+                <ColumnDefinition Width="0.03*" />
+                <ColumnDefinition Width="0.25*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*" />
+                <RowDefinition Height="0.12*" />
+                <RowDefinition Height="0.12*" />
+                <RowDefinition Height="0.12*" />
+                <RowDefinition Height="0.12*" />
+                <RowDefinition Height="0.25*" />
+                <RowDefinition Height="0.12*" />
+            </Grid.RowDefinitions>
+            <Label Content="Nombre:" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="label1" VerticalAlignment="Stretch" FontWeight="Bold" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Content="Visible:" Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="label2" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Content="Categoría:" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="label3" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Content="Precio (€):" Grid.Row="3" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="label4" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Grid Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="2" Height="Auto" HorizontalAlignment="Stretch" Margin="0,0,5,0" Name="grid2" VerticalAlignment="Stretch" Width="Auto" Background="LightYellow">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="0.5*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.6*" />
+                    <ColumnDefinition Width="0.4*" />
+                </Grid.ColumnDefinitions>
+                <Label Content="%:" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="label7" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" />
+                <Label Content="Unidad descontada:" Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="label8" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" />
+                <TextBox Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" Margin="10,3" Name="txtbDiscount" VerticalAlignment="Stretch" Width="Auto" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="14" />
+                <TextBox Grid.Column="1" Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="10,3" Name="txtbDiscountedUnit" VerticalAlignment="Stretch" Width="Auto" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="14" />
+            </Grid>
+            <Grid Grid.ColumnSpan="2" Grid.Row="4" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="grid3" VerticalAlignment="Stretch" Width="Auto">
+                <Label Content="Descuento:" Height="Auto" HorizontalAlignment="Stretch" Margin="5,0,0,0" Name="label6" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Background="LightYellow" Padding="0" />
+            </Grid>
+            <Grid Grid.ColumnSpan="6" Grid.Row="5" Height="Auto" HorizontalAlignment="Stretch" Margin="5,0" Name="grid4" VerticalAlignment="Stretch" Width="Auto" Background="LightBlue">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*" />
+                    <ColumnDefinition Width="0.75*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.4*" />
+                    <RowDefinition Height="0.6*" />
+                </Grid.RowDefinitions>
+                <Label Content="Palabras clave:" Height="Auto" HorizontalAlignment="Stretch" Margin="10,3" Name="label5" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" />
+                <TextBox HorizontalAlignment="Stretch" Margin="10,5" Name="txtbDescription" VerticalAlignment="Stretch" FontSize="14" Grid.ColumnSpan="2" Grid.Row="1" VerticalContentAlignment="Center" />
+            </Grid>
+            <Button Content="Cancelar" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="6" Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="btnCancel" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" Click="btnCancel_Click" />
+            <Button Content="Aceptar" Grid.Column="5" Grid.Row="6" Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="btnAccept" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" Click="btnAccept_Click" />
+            <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="5" Height="Auto" HorizontalAlignment="Stretch" Margin="10,3,5,3" Name="txtbName" VerticalAlignment="Stretch" Width="Auto" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="14" />
+            <TextBox Grid.Column="1" Grid.Row="3" Height="Auto" HorizontalAlignment="Stretch" Margin="10,3" Name="txtbPrice" VerticalAlignment="Stretch" Width="Auto" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="14" />
+            <ComboBox Grid.Column="4" Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="10,3,5,3" Name="cbbCategories" VerticalAlignment="Stretch" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Grid.ColumnSpan="2" />
+            <CheckBox Grid.Column="1" Grid.Row="2" Height="Auto" HorizontalAlignment="Center" Name="checkBVisible" VerticalAlignment="Center" Width="Auto" FlowDirection="RightToLeft" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Content="Establezca los nuevos valores para el producto:" Grid.ColumnSpan="6" Height="Auto" HorizontalAlignment="Stretch" Margin="10,3" Name="lblInstructions" VerticalAlignment="Stretch" Width="Auto" VerticalContentAlignment="Center" />
+        </Grid>
+    </Grid>
+</Window>

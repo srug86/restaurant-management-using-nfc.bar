@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1D4D716F-CF65-4E1E-B141-20A2DD2DEBBE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bar</RootNamespace>
+    <AssemblyName>Bar</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="InTheHand.Net.Personal, Version=3.3.909.0, Culture=neutral, PublicKeyToken=ea38caa273134499, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\32feet.NET\NET\InTheHand.Net.Personal.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="domain\BillsManager.cs" />
+    <Compile Include="domain\Category.cs" />
+    <Compile Include="presentation\EditCategory.xaml.cs">
+      <DependentUpon>EditCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\EditProductWin.xaml.cs">
+      <DependentUpon>EditProductWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\webSercives\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="communication\AdapterWebServices.cs" />
+    <Compile Include="communication\BluetoothServer.cs" />
+    <Compile Include="domain\Bill.cs" />
+    <Compile Include="domain\Client.cs" />
+    <Compile Include="domain\JourneyManager.cs" />
+    <Compile Include="domain\Order.cs" />
+    <Compile Include="domain\OrdersManager.cs" />
+    <Compile Include="domain\Product.cs" />
+    <Compile Include="domain\ProductsManager.cs" />
+    <Compile Include="domain\RoomDef.cs" />
+    <Compile Include="domain\RoomInf.cs" />
+    <Compile Include="domain\RoomManager.cs" />
+    <Compile Include="domain\Table.cs" />
+    <Compile Include="presentation\BillDialog.xaml.cs">
+      <DependentUpon>BillDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\EditOrderDialog.xaml.cs">
+      <DependentUpon>EditOrderDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\EditProductsWin.xaml.cs">
+      <DependentUpon>EditProductsWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\InitWin.xaml.cs">
+      <DependentUpon>InitWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\JourneyManagerWin.xaml.cs">
+      <DependentUpon>JourneyManagerWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\LoadRoomDialog.xaml.cs">
+      <DependentUpon>LoadRoomDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\MessageDialog.xaml.cs">
+      <DependentUpon>MessageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\NewOrderWin.xaml.cs">
+      <DependentUpon>NewOrderWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\webSercives\Services.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="presentation\BillDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\EditCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\EditOrderDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\EditProductsWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\EditProductWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\InitWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\JourneyManagerWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\LoadRoomDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\MessageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\NewOrderWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\webSercives\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\webSercives\Services.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\webSercives\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\webSercives\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\webSercives\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\network.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pgreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\orders.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\OView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\black.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\green.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\orange.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pgreen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\red.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\white.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\yellow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\attended.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\served.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\stopped.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\unattended.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\new1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\remove1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\dgreen.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

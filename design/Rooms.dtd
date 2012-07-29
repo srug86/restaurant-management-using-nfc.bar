@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Rooms (Room)+>
+<!ELEMENT Room (Width, Height, Tables, Capacity)>
+<!ATTLIST Room name(#PCDATA)>
+<!ELEMENT Width (#PCDATA)>
+<!ELEMENT Height (#PCDATA)>
+<!ELEMENT Tables (#PCDATA)>
+<!ELEMENT Capacity (#PCDATA)>

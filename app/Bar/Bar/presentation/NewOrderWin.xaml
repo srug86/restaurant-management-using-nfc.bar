@@ -1,0 +1,90 @@
+﻿<Window x:Class="Bar.presentation.NewOrderWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MobiCarta - Nuevo pedido" Height="600" Width="800" Icon="/Bar;component/Images/ico.png" Topmost="True" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Background="Azure">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*" />
+            <ColumnDefinition Width="0.6*" />
+        </Grid.ColumnDefinitions>
+        <Grid Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="grid1" VerticalAlignment="Stretch" Width="Auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="0.5*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.08*" />
+                <RowDefinition Height="0.84*" />
+                <RowDefinition Height="0.08*" />
+            </Grid.RowDefinitions>
+            <ComboBox Height="Auto" HorizontalAlignment="Stretch" Margin="10,5" Name="cbbOrdersTable" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontWeight="Bold" />
+            <ListView Grid.ColumnSpan="2" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="10,2" Name="listVOrders" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" FontSize="14" FontWeight="Bold">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nº" DisplayMemberBinding="{Binding Path=Id}" Width="Auto" />
+                        <GridViewColumn Header="Producto" DisplayMemberBinding="{Binding Path=Product}" Width="Auto" />
+                        <GridViewColumn Header="Cantidad" DisplayMemberBinding="{Binding Path=Amount}" Width="Auto" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Grid Grid.ColumnSpan="2" Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="10,2" Name="grid5" VerticalAlignment="Stretch" Width="Auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*" />
+                    <ColumnDefinition Width="0.25*" />
+                    <ColumnDefinition Width="0.5*" />
+                </Grid.ColumnDefinitions>
+                <Button Content="+" Height="Auto" HorizontalAlignment="Stretch" Margin="3" Name="btnAdd" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="20" Click="btnAdd_Click" FontStretch="Expanded" />
+                <Button Content="-" Height="Auto" HorizontalAlignment="Stretch" Margin="3" Name="btnSubtract" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="20" Click="btnSubtract_Click" Grid.Column="1" FontStretch="Expanded" />
+                <Button Content="X" Height="Auto" HorizontalAlignment="Stretch" Margin="10,3" Name="btnRemove" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="20" Click="btnRemove_Click" Grid.Column="2" FontStretch="Expanded" Foreground="Red" />
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="grid2" VerticalAlignment="Stretch" Width="Auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*" />
+                <RowDefinition Height="0.55*" />
+                <RowDefinition Height="0.15*" />
+                <RowDefinition Height="0.1*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="5,2" Name="grid3" VerticalAlignment="Stretch" Width="Auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.14*" />
+                    <ColumnDefinition Width="0.12*" />
+                    <ColumnDefinition Width="0.12*" />
+                    <ColumnDefinition Width="0.12*" />
+                    <ColumnDefinition Width="0.12*" />
+                    <ColumnDefinition Width="0.12*" />
+                    <ColumnDefinition Width="0.12*" />
+                    <ColumnDefinition Width="0.14*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="0.5*" />
+                </Grid.RowDefinitions>
+                <Button Content="1" Grid.Column="1" Grid.Row="0" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="btn1" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="18" Click="btnNumber_Click" />
+                <Button Content="2" Grid.Column="2" Grid.Row="0" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="btn2" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="18" Click="btnNumber_Click" />
+                <Button Content="3" Grid.Column="3" Grid.Row="0" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="btn3" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="18" Click="btnNumber_Click" />
+                <Button Content="4" Grid.Column="4" Grid.Row="0" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="btn4" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="18" Click="btnNumber_Click" />
+                <Button Content="5" Grid.Column="5" Grid.Row="0" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="btn5" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="18" Click="btnNumber_Click" />
+                <Button Content="." Grid.Column="6" Grid.Row="0" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="btnPoint" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="18" Click="btnPoint_Click" />
+                <Button Content="Intro" Grid.Column="7" Grid.Row="0" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="btnIntro" VerticalAlignment="Stretch" Width="Auto" Grid.RowSpan="2" FontWeight="Bold" FontSize="18" Click="btnIntro_Click" />
+                <Button Content="6" Grid.Column="1" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="btn6" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="18" Click="btnNumber_Click" />
+                <Button Content="7" Grid.Column="2" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="btn7" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="18" Click="btnNumber_Click" />
+                <Button Content="8" Grid.Column="3" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="btn8" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="18" Click="btnNumber_Click" />
+                <Button Content="9" Grid.Column="4" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="btn9" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="18" Click="btnNumber_Click" />
+                <Button Content="0" Grid.Column="5" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="btn0" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="18" Click="btnNumber_Click" />
+                <Button Content="C" Grid.Column="6" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="btnClear" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" FontSize="18" Click="btnClear_Click" Foreground="Red" />
+                <TextBox HorizontalAlignment="Stretch" Margin="2,0" Name="txtbOperation" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" IsReadOnly="True" TextAlignment="Center" Grid.RowSpan="2" Grid.Row="0" FontSize="20" />
+            </Grid>
+            <UniformGrid Height="Auto" HorizontalAlignment="Stretch" Margin="5,2" Name="uGridCategories" VerticalAlignment="Stretch" Width="Auto" />
+            <ListView Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="5,2" Name="listVProducts" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold" />
+            <Grid Grid.Row="3" Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="grid4" VerticalAlignment="Stretch" Width="Auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.5*" />
+                </Grid.ColumnDefinitions>
+                <Button Content="Cancelar" Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="btnCancel" VerticalAlignment="Stretch" Width="Auto" Click="btnCancel_Click" />
+                <Button Content="Aceptar" Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="btnAccept" VerticalAlignment="Stretch" Width="Auto" Click="btnAccept_Click" IsEnabled="False" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

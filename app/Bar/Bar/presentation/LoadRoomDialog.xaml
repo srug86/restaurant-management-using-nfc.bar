@@ -1,0 +1,34 @@
+﻿<Window x:Class="Bar.presentation.LoadRoomDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MobiCarta - Empezar una nueva jornada" Height="300" Width="500" WindowStartupLocation="CenterScreen" Topmost="True" ResizeMode="NoResize" Name="wLoadRoom" Icon="/Bar;component/Images/ico.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.14*" />
+            <RowDefinition Height="0.54*" />
+            <RowDefinition Height="0.14*" />
+            <RowDefinition Height="0.18*" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Seleccione uno de los restaurantes y pulse 'Cargar'." Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="lblInstructions" VerticalAlignment="Stretch" Width="Auto" IsEnabled="False" />
+        <ListView Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="listVRooms" VerticalAlignment="Stretch" Width="Auto" SelectionMode="Single" FontFamily="Tahoma" SelectionChanged="listVRooms_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nombre del restaurante" DisplayMemberBinding="{Binding Path=Name}" Width="200" />
+                    <GridViewColumn Header="Tamaño de la rejilla" DisplayMemberBinding="{Binding Path=Size}" Width="120" />
+                    <GridViewColumn Header="Nº de mesas" DisplayMemberBinding="{Binding Path=Tables}" Width="75" />
+                    <GridViewColumn Header="Capacidad" DisplayMemberBinding="{Binding Path=Capacity}" Width="80" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Grid.Row="2" Content="* Se resetearán los valores de la jornada anterior." Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="lblLoadMessage" VerticalAlignment="Stretch" Width="Auto" IsEnabled="False" />
+        <Grid Grid.Row="3" Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="grid1" VerticalAlignment="Stretch" Width="Auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*" />
+            </Grid.ColumnDefinitions>
+            <Button Content="Cancelar" Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="btnCancel" VerticalAlignment="Stretch" Width="Auto" Click="btnCancel_Click" />
+            <Button Content="Cargar" Grid.Column="2" Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="btnLoad" VerticalAlignment="Stretch" Width="Auto" IsEnabled="False" Click="btnLoad_Click" />
+        </Grid>
+    </Grid>
+</Window>

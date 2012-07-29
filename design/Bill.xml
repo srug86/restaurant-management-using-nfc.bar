@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bill>
+	<Company name="Restaurante MobiCarta">
+		<NIF>05692940A</NIF>
+		<Address>
+			<Street>C/Pedro Oviedo</Street>
+			<Number>38</Number>
+			<ZipCode>13270</ZipCode>
+			<Town>Almagro</Town>
+			<State>Ciudad Real</State>
+		</Address>
+		<Contact>
+			<Phone>926860595</Phone>
+			<Fax>926860595</Fax>
+			<Email>clients@mobicarta.es</Email>
+		</Contact>
+	</Company>
+	<Client>
+		<DNI>05692939W</DNI>
+		<Name>Sergio</Name>
+		<Surname>de la Rubia García-Carpintero</Surname>
+		<Address>
+			<Street>C/Pedro Oviedo</Street>
+			<Number>36</Number>
+			<ZipCode>13270</ZipCode>
+			<Town>Almagro</Town>
+			<State>Ciudad Real</State>
+		</Address>
+	</Client>
+	<Info>
+		<Number>1</Number>
+		<Serial>1</Serial>
+		<Date>2012:04:04 22:18:55</Date>
+		<Table>2</Table>
+	</Info>
+	<Orders>
+		<Order id="4">
+			<Product>Coca Cola 200ml</Product>
+			<Amount>2</Amount>
+			<Price>1.5<Price>
+			<Discount>0</Discount>
+			<Total>3</Total>
+		</Order>
+		<Order id="12">
+			<Product>Solomillo a la pimienta</Product>
+			<Amount>2</Amount>
+			<Price>5<Price>
+			<Discount>0</Discount>
+			<Total>10</Total>
+		</Order>
+	</Orders>
+	<PriceSummary>
+		<Subtotal>13</Subtotal>
+		<Discount>0</Discount>
+		<TaxBase>13</TaxBase>
+		<IVA>18</IVA>
+		<Quote>2.34</Quote>
+		<Total>15.34</Total>
+	</PriceSummary>
+	<Paid>0</Paid>
+</Bill>

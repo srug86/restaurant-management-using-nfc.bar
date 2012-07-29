@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Orders>
+	<Order id="8">
+		<Table>7</Table>
+		<Product>Macarrones con tomate</Product>
+		<Amount>2</Amount>
+		<Status>0</Status>
+		<Date>2012-04-25 14:30:23</Date>
+	</Order>
+	<Order id="9">
+		<Table>7</Table>
+		<Product>Sepia a la plancha</Product>
+		<Amount>1</Amount>
+		<Status>0</Status>
+		<Date>2012-04-25 14:32:50</Date>
+	</Order>
+</Orders>

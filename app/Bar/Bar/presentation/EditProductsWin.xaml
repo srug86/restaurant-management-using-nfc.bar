@@ -11,10 +11,10 @@
         <ToolBar Height="Auto" VerticalAlignment="Stretch" Grid.Row="0" Grid.RowSpan="1" MinHeight="60" MaxHeight="Infinity">
             <StackPanel Height="Auto" Orientation="Horizontal" Width="Auto" MaxHeight="Infinity" MinHeight="60">
                 <Button Background="#00000000" Cursor="Hand" Foreground="#E6FFFFFF" Height="Auto" Margin="5,5,5,5" Name="btnLoadPL" ToolTip="Cargar lista de productos" Width="Auto" Click="btnLoadPL_Click">
-                    <Image Name="imgLoad" ToolTip="Cargar lista de productos" Source="/Bar;component/Images/loadDB21.png" />
+                    <Image Name="imgLoad" ToolTip="Cargar lista de productos" Source="/Bar;component/Images/loadDB22.png" />
                 </Button>
                 <Button Background="#00000000" BorderBrush="#00000000" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnSavePL" ToolTip="Guardar lista de productos" Width="Auto" Click="btnSavePL_Click">
-                    <Image Name="imgSave" ToolTip="Guardar lista de productos" Source="/Bar;component/Images/saveDB21.png" />
+                    <Image Name="imgSave" ToolTip="Guardar lista de productos" Source="/Bar;component/Images/saveDB22.png" />
                 </Button>
             </StackPanel>
         </ToolBar>
@@ -31,13 +31,13 @@
                 </Grid.RowDefinitions>
                 <StackPanel Height="Auto" HorizontalAlignment="Stretch" Name="stackPanelCat" VerticalAlignment="Stretch" Width="Auto" Orientation="Horizontal" Grid.Row="2" MaxHeight="Infinity" Background="MediumBlue">
                     <Button Background="{x:Null}" Cursor="Hand" Foreground="{x:Null}" Height="Auto" Margin="5,5,5,5" Name="btnAddCat" ToolTip="Añadir categoría" Width="Auto" Click="btnAddCat_Click" BorderBrush="DarkGoldenrod">
-                        <Image Name="imgAddCat" ToolTip="Añadir categoría" Source="/Bar;component/Images/addC1.png" />
+                        <Image Name="imgAddCat" ToolTip="Añadir categoría" Source="/Bar;component/Images/addC2.png" />
                     </Button>
                     <Button Background="#00000000" BorderBrush="DarkGoldenrod" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnRemoveCat" ToolTip="Eliminar categoría" Width="Auto" Click="btnRemoveCat_Click">
-                        <Image Name="imgRemoveCat" ToolTip="Eliminar categoría" Source="/Bar;component/Images/removeC1.png" />
+                        <Image Name="imgRemoveCat" ToolTip="Eliminar categoría" Source="/Bar;component/Images/removeC2.png" />
                     </Button>
                     <Button Background="#00000000" BorderBrush="DarkGoldenrod" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnEditCat" ToolTip="Editar categoría" Width="Auto" Click="btnEditCat_Click">
-                        <Image Name="imgEditCat" ToolTip="Editar categoría" Source="/Bar;component/Images/editC1.png" />
+                        <Image Name="imgEditCat" ToolTip="Editar categoría" Source="/Bar;component/Images/editC2.png" />
                     </Button>
                 </StackPanel>
                 <Label Content="Categorías" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="label1" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold" Background="MediumBlue" Foreground="White" />
@@ -57,13 +57,13 @@
                 </Grid.RowDefinitions>
                 <StackPanel Height="Auto" HorizontalAlignment="Stretch" Name="stackPanelPro" VerticalAlignment="Stretch" Width="Auto" Orientation="Horizontal" Grid.Row="2" MaxHeight="Infinity" Background="Red">
                     <Button Background="{x:Null}" Cursor="Hand" Foreground="{x:Null}" Height="Auto" Margin="5,5,5,5" Name="btnAddPro" ToolTip="Añadir producto" Width="Auto" Click="btnAddPro_Click" BorderBrush="DarkGoldenrod">
-                        <Image Name="imgAddPro" ToolTip="Añadir producto" Source="/Bar;component/Images/addP1.png" />
+                        <Image Name="imgAddPro" ToolTip="Añadir producto" Source="/Bar;component/Images/addP2.png" />
                     </Button>
                     <Button Background="#00000000" BorderBrush="DarkGoldenrod" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnRemovePro" ToolTip="Eliminar producto" Width="Auto" Click="btnRemovePro_Click">
-                        <Image Name="imgRemovePro" ToolTip="Eliminar producto" Source="/Bar;component/Images/removeP1.png" />
+                        <Image Name="imgRemovePro" ToolTip="Eliminar producto" Source="/Bar;component/Images/removeP2.png" />
                     </Button>
                     <Button Background="#00000000" BorderBrush="DarkGoldenrod" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnEditPro" ToolTip="Editar producto" Width="Auto" Click="btnEditPro_Click">
-                        <Image Name="imgEditPro" ToolTip="Editar producto" Source="/Bar;component/Images/editP1.png" />
+                        <Image Name="imgEditPro" ToolTip="Editar producto" Source="/Bar;component/Images/editP2.png" />
                     </Button>
                 </StackPanel>
                 <Label Content="Productos" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="label2" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold" Background="Red" Foreground="White" />

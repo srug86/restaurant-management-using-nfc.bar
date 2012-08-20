@@ -301,6 +301,36 @@
   <ItemGroup>
     <Resource Include="Images\dgreen.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\loadDB22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\loadJ1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\newJ1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\removeC2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\removeP2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\saveDB22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\addC2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\addP2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\editC2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\editP2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

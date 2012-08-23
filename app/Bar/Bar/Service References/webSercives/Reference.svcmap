@@ -18,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:49504/Services.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://161.67.140.37:3500/ServicioMobiCarta/Services.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Services.disco" MetadataType="Disco" ID="38deee96-de95-4510-8281-e89ede37c2c7" SourceId="1" SourceUrl="http://localhost:49504/Services.asmx?disco" />
-    <MetadataFile FileName="Services.wsdl" MetadataType="Wsdl" ID="89e2ce9f-f449-405c-a980-e844b79f746c" SourceId="1" SourceUrl="http://localhost:49504/Services.asmx?wsdl" />
+    <MetadataFile FileName="Services1.disco" MetadataType="Disco" ID="d5c87c5f-b597-49ff-87e9-ac236fa9dc24" SourceId="1" SourceUrl="http://161.67.140.37:3500/ServicioMobiCarta/Services.asmx?disco" />
+    <MetadataFile FileName="Services1.wsdl" MetadataType="Wsdl" ID="64ecacdb-8875-497e-b0e5-ff29ea046c4c" SourceId="1" SourceUrl="http://161.67.140.37:3500/ServicioMobiCarta/Services.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

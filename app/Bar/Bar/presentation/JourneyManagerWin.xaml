@@ -11,19 +11,14 @@
         <ToolBar Height="Auto" VerticalAlignment="Stretch" Grid.Row="0" Grid.RowSpan="1" MinHeight="60" MaxHeight="Infinity">
             <StackPanel Height="50" Orientation="Horizontal" Width="760" MaxHeight="Infinity" MinHeight="60">
                 <Button Background="#00000000" Cursor="Hand" Foreground="#E6FFFFFF" Height="Auto" Margin="5,5,5,5" Name="btnNew" ToolTip="Nueva jornada" Width="50" Click="btnNew_Click">
-                    <Image Name="imgNew" ToolTip="Nueva jornada" Source="/Bar;component/Images/newJ1.png" />
+                    <Image Name="imgNew" ToolTip="Nueva jornada" Source="/Bar;component/Images/newJ.png" />
                 </Button>
                 <Button Background="#00000000" BorderBrush="#00000000" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnOpen" ToolTip="Cargar jornada" Width="50" Click="btnLoad_Click">
-                    <Image Name="imgOpen" ToolTip="Cargar jornada" Source="/Bar;component/Images/loadJ1.png" />
+                    <Image Name="imgOpen" ToolTip="Cargar jornada" Source="/Bar;component/Images/loadJ.png" />
                 </Button>
             </StackPanel>
         </ToolBar>
-        <StatusBar Height="Auto" HorizontalAlignment="Stretch" Name="statusBar1" VerticalAlignment="Stretch" Width="Auto" Grid.RowSpan="1" Grid.Row="2" MinHeight="30">
-            <TextBlock Name="txtb1">Listo</TextBlock>
-            <Separator />
-            <TextBlock Name="txtb2">---</TextBlock>
-        </StatusBar>
-        <Grid Name="gridBG" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Grid.Row="1" Margin="0" Grid.Column="1" Background="Gainsboro">
+        <Grid Name="gridBG" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Grid.Row="1" Margin="0" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.2*" />
                 <ColumnDefinition Width="0.8*" />
@@ -33,20 +28,16 @@
                     <RowDefinition Height="0.5*" />
                     <RowDefinition Height="0.5*" />
                 </Grid.RowDefinitions>
-                <Button Height="Auto" HorizontalAlignment="Stretch" Name="btnOOrders" VerticalAlignment="Stretch" Width="Auto" Grid.Row="0" Click="btnOOrders_Click" ToolTip="Ver pedidos">
+                <Button Height="Auto" HorizontalAlignment="Stretch" Name="btnOOrders" VerticalAlignment="Stretch" Width="Auto" Grid.Row="0" Click="btnOOrders_Click" ToolTip="Ver pedidos" Cursor="Hand">
                     <Image Name="imgOOrders" Stretch="Uniform" Source="/Bar;component/Images/orders.png" />
                 </Button>
-                <Button Height="Auto" HorizontalAlignment="Stretch" Name="btnOView" VerticalAlignment="Stretch" Width="Auto" Grid.Row="1" Click="btnOView_Click" ToolTip="Vista general">
+                <Button Height="Auto" HorizontalAlignment="Stretch" Name="btnOView" VerticalAlignment="Stretch" Width="Auto" Grid.Row="1" Click="btnOView_Click" ToolTip="Vista general" Cursor="Hand">
                     <Image Name="imgOView" Stretch="Uniform" Margin="0" Grid.Row="1" Source="/Bar;component/Images/OView.png" />
                 </Button>
             </Grid>
             <Grid HorizontalAlignment="Stretch" Name="gridInitial" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Grid.Row="1" Grid.Column="1" FlowDirection="LeftToRight" Visibility="Visible">
                 <Grid.Background>
-                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-                        <GradientStop Color="#FF313030" Offset="0" />
-                        <GradientStop Color="White" Offset="1" />
-                        <GradientStop Color="#FFD7D7D7" Offset="0.921" />
-                    </LinearGradientBrush>
+                    <ImageBrush ImageSource="/Bar;component/Images/background.png" />
                 </Grid.Background>
             </Grid>
             <Grid Height="Auto" HorizontalAlignment="Stretch" Name="gridORoomView" Grid.Row="1" Grid.Column="1" Visibility="Hidden" VerticalAlignment="Stretch" Width="Auto" Background="MediumBlue">
@@ -56,7 +47,9 @@
                     <RowDefinition Height="0.2*" />
                 </Grid.RowDefinitions>
                 <UniformGrid Grid.Row="0" Height="Auto" HorizontalAlignment="Stretch" Margin="10" Name="uGridStatus" VerticalAlignment="Stretch" Width="Auto" Background="Gray" />
-                <Grid Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="8" Name="grid3" VerticalAlignment="Stretch" Width="Auto" Background="#CEFFFFFF" />
+                <Grid Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="8" Name="grid3" VerticalAlignment="Stretch" Width="Auto" Background="#CEFFFFFF">
+                    <RichTextBox Height="Auto" HorizontalAlignment="Stretch" Margin="2" Name="rtbEvents" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" IsReadOnly="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
+                </Grid>
                 <Grid Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="8,0" Name="grid1" VerticalAlignment="Stretch" Width="Auto">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.15*" />
@@ -137,24 +130,24 @@
                     <Button Background="{x:Null}" Cursor="Hand" Foreground="{x:Null}" Height="Auto" Margin="5,5,5,5" Name="btnAddOT" ToolTip="Nuevo pedido" Width="Auto" Click="btnAddOrder_Click" BorderBrush="DarkGoldenrod">
                         <Image Name="imgAddOT" ToolTip="Nuevo pedido" Source="/Bar;component/Images/new1.png" />
                     </Button>
-                        <Button Background="#00000000" BorderBrush="DarkGoldenrod" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnRemoveOT" ToolTip="Eliminar pedido" Width="Auto" Click="btnRemoveOrder_Click">
+                    <Button Background="#00000000" BorderBrush="DarkGoldenrod" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnRemoveOT" ToolTip="Eliminar pedido" Width="Auto" Click="btnRemoveOrder_Click">
                         <Image Name="imgRemoveOT" ToolTip="Eliminar pedido" Source="/Bar;component/Images/remove1.png" />
                     </Button>
-                        <Button Background="#00000000" BorderBrush="DarkGoldenrod" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnEditOT" ToolTip="Editar pedido" Width="Auto" Click="btnEditOrder_Click">
+                    <Button Background="#00000000" BorderBrush="DarkGoldenrod" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnEditOT" ToolTip="Editar pedido" Width="Auto" Click="btnEditOrder_Click">
                         <Image Name="imgEditOT" ToolTip="Editar pedido" Source="/Bar;component/Images/edit1.png" />
                     </Button>
                 </StackPanel>
                 <StackPanel Height="Auto" HorizontalAlignment="Left" Margin="0" Name="stackPanel4" VerticalAlignment="Stretch" Width="Auto" Orientation="Vertical" Grid.RowSpan="1" Grid.ColumnSpan="1" Grid.Row="1" MaxWidth="Infinity" Background="MediumBlue">
-                        <Button Background="#00000000" Cursor="Hand" Foreground="#E6FFFFFF" Height="Auto" Margin="5,5,5,5" Name="btnUnattenderOT" ToolTip="Pedido no atendido" Width="Auto" Click="btnUnattender_Click">
+                    <Button Background="#00000000" Cursor="Hand" Foreground="#E6FFFFFF" Height="Auto" Margin="5,5,5,5" Name="btnUnattenderOT" ToolTip="Pedido no atendido" Width="Auto" Click="btnUnattender_Click">
                         <Image Name="imgUnattendedOT" ToolTip="Pedido no atendido" Source="/Bar;component/Images/unattended.png" />
                     </Button>
-                        <Button Background="#00000000" BorderBrush="#00000000" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnAttendedOT" ToolTip="Pedido atendido" Width="Auto" Click="btnAttended_Click">
+                    <Button Background="#00000000" BorderBrush="#00000000" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnAttendedOT" ToolTip="Pedido atendido" Width="Auto" Click="btnAttended_Click">
                         <Image Name="imgAttendedOT" ToolTip="Pedido atendido" Source="/Bar;component/Images/attended.png" />
                     </Button>
-                        <Button Background="#00000000" BorderBrush="#00000000" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnServedOT" ToolTip="Pedido servido" Width="Auto" Click="btnServed_Click">
+                    <Button Background="#00000000" BorderBrush="#00000000" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnServedOT" ToolTip="Pedido servido" Width="Auto" Click="btnServed_Click">
                         <Image Name="imgServedOT" ToolTip="Pedido servido" Source="/Bar;component/Images/served.png" />
                     </Button>
-                        <Button Background="#00000000" BorderBrush="#00000000" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnStoppedOT" ToolTip="Pedido detenido" Width="Auto" Click="btnStopped_Click">
+                    <Button Background="#00000000" BorderBrush="#00000000" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnStoppedOT" ToolTip="Pedido detenido" Width="Auto" Click="btnStopped_Click">
                         <Image Name="imgStoppedOT" ToolTip="Pedido detenido" Source="/Bar;component/Images/stopped.png" />
                     </Button>
                 </StackPanel>
@@ -237,6 +230,12 @@
                     </Grid>
                 </Grid>
             </Grid>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop Color="SkyBlue" Offset="0" />
+                    <GradientStop Color="White" Offset="0.201" />
+                </LinearGradientBrush>
+            </Grid.Background>
         </Grid>
     </Grid>
 </Window>

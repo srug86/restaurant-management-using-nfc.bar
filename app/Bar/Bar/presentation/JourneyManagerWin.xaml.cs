@@ -54,6 +54,8 @@ namespace Bar.presentation
 
         private Grid[] gridsOnMode;
 
+        private FlowDocument fdEvents;
+
         private Dictionary<int, string> colorBox = new Dictionary<int, string> {
             {-1, "/Bar;component/Images/black.jpg"},
             {0, "/Bar;component/Images/green.jpg"},
@@ -65,7 +67,7 @@ namespace Bar.presentation
             {6, "/Bar;component/Images/pgreen.jpg"},
         };
 
-        private Dictionary<int, string> tableStatus = new Dictionary<int,string> {
+        private Dictionary<int, string> tableStatus = new Dictionary<int, string> {
             {-1, "Vacía"}, {0, "Ocupada"}, {1, "Esperando pedido"}, {2, "Servida"}, {3, "Cobrada"},};
 
         private Dictionary<int, string> orderStatus = new Dictionary<int, string> {
@@ -197,7 +199,7 @@ namespace Bar.presentation
 
         private void btnCheckIn_Click(object sender, RoutedEventArgs e)
         {
-            BillDialog billDialog = new BillDialog(manager.BillsManager.getBill(Convert.ToInt16(txtbTableID.Text)));
+            BillDialog billDialog = new BillDialog(this, manager.BillsManager.generateBill(Convert.ToInt16(txtbTableID.Text)));
             billDialog.Show();
         }
 
@@ -205,7 +207,7 @@ namespace Bar.presentation
         {
             manager.createRoomManager();
             manager.RoomManager.loadRoom(name, reset);
-            generateEmptyRoom(manager.RoomManager.Room.Name, 
+            generateEmptyRoom(manager.RoomManager.Room.Name,
                 manager.RoomManager.Room.Height, manager.RoomManager.Room.Width);
             registerSubjects(manager.RoomManager);
             manager.OrdersManager.setGuiReference(this);
@@ -218,6 +220,7 @@ namespace Bar.presentation
             }
             manager.ProductsManager.updateProducts(true);
             manager.initBluetoothServer();
+            this.delegateToShowReceiverEvent(reset ? 0 : 1, new Order(), 0);
             openOnPerspective();
         }
 
@@ -230,6 +233,9 @@ namespace Bar.presentation
             if (uGridStatus.Children.Count > 0) uGridStatus.Children.Clear();
             uGridStatus.Rows = RoomHeight;
             uGridStatus.Columns = RoomWidth;
+            fdEvents = new FlowDocument();
+            fdEvents.LineHeight = 0.2;
+            rtbEvents.Document = fdEvents;
             for (int i = 0; i < RoomHeight; i++)
                 for (int j = 0; j < RoomWidth; j++)
                 {
@@ -244,6 +250,7 @@ namespace Bar.presentation
 
         private void openOrdersPerspective()
         {
+            manager.OrdersManager.updateOrders();
             showOnModeGrid(gridOOrdersList);
         }
 
@@ -390,6 +397,63 @@ namespace Bar.presentation
             Room[row, column].Source = bi;
         }
 
+        private delegate void ReceiverEvent(int type, Order order, int tableID);
+        public void delegateToShowReceiverEvent(int type, Order order, int tableID)
+        {
+            Dispatcher.Invoke(DispatcherPriority.Normal, new ReceiverEvent(this.rcvEvent), type, order, tableID);
+        }
+
+        public void rcvEvent(int type, Order order, int tableID)
+        {
+            Paragraph p = new Paragraph();
+            string message = "";
+            switch (type)
+            {
+                case 0: p.Foreground = Brushes.DarkBlue;    // Inicio de jornada
+                    message = "(" + DateTime.Now + ")\tSe inicia de una nueva jornada.";
+                    break;
+                case 1: p.Foreground = Brushes.DarkBlue;    // Inicio de jornada
+                    message = "(" + DateTime.Now + ")\tSe inicia una jornada existente.";
+                    break;
+                case 2: p.Foreground = Brushes.Black;       // Añadido nuevo pedido
+                    message = "(" + order.Date + ")\tPedido añadido:\t\t" + order.Amount +
+                        " de " + order.Product + ", Mesa: " + order.TableID + ".";
+                    break;
+                case 3: p.Foreground = Brushes.Black;       // Eliminado pedido
+                    message = "(" + order.Date + ")\tPedido eliminado:\t" + order.Amount +
+                        " de " + order.Product + ", Mesa: " + order.TableID + ".";
+                    break;
+                case 4: p.Foreground = Brushes.Black;       // Editado pedido
+                    message = "(" + order.Date + ")\tPedido editado:\t\t" + order.Amount +
+                        " de " + order.Product + ", Mesa: " + order.TableID + ".";
+                    break;
+                case 5: p.Foreground = Brushes.DarkOrange;  // Mesa cobrada
+                    message = "(" + DateTime.Now + ")\tLa mesa " + tableID + " ha sido cobrada.";
+                    break;
+                case 6: p.Foreground = Brushes.Black;       // Producto "No atendido"
+                    message = "(" + order.Date + ")\tPedido 'no atendido':\t" + order.Amount +
+                        " de " + order.Product + ", Mesa: " + order.TableID + ".";
+                    break;
+                case 7: p.Foreground = Brushes.Gold;        // Producto "Atendido"
+                    message = "(" + order.Date + ")\tPedido 'atentido':\t" + order.Amount +
+                        " de " + order.Product + ", Mesa: " + order.TableID + ".";
+                    break;
+                case 8: p.Foreground = Brushes.DarkGreen;   // Producto "Servido"
+                    message = "(" + order.Date + ")\tPedido 'servido':\t\t" + order.Amount +
+                        " de " + order.Product + ", Mesa: " + order.TableID + ".";
+                    break;
+                case 9: p.Foreground = Brushes.DarkRed;     // Producto "Detenido"
+                    message = "(" + order.Date + ")\tPedido 'detenido':\t" + order.Amount +
+                        " de " + order.Product + ", Mesa: " + order.TableID + ".";
+                    break;
+                default: break;
+            }
+            p.Inlines.Add(new Bold(new Run(message)));
+            if (fdEvents.Blocks.Count > 0)
+                fdEvents.Blocks.InsertBefore(fdEvents.Blocks.FirstBlock, p);
+            else fdEvents.Blocks.Add(p);
+        }
+
         private delegate void OrdersList(List<Order> orders);
         public void delegateToChangeTheOrdersList(List<Order> orders)
         {
@@ -413,7 +477,7 @@ namespace Bar.presentation
                     listVOrders.Items.Add(new ListViewItem());
                     ((ListViewItem)listVOrders.Items[listVOrders.Items.Count - 1]).Content = item;
                     ((ListViewItem)listVOrders.Items[listVOrders.Items.Count - 1]).Background = itemColor[order.Status];
-                    
+
                 }
             }
             if (cbbTablesView.SelectedIndex != -1)

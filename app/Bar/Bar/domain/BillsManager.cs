@@ -13,32 +13,68 @@ namespace Bar.domain
 
         private AdapterWebServices adapter = AdapterWebServices.Instance;
 
-        private List<Bill> bills;
+        static readonly BillsManager instance = new BillsManager();
 
-        public BillsManager() {
-            bills = new List<Bill>();
+        static BillsManager() { }
+
+        BillsManager() { }
+
+        public static BillsManager Instance
+        {
+            get
+            {
+                return instance;
+            }
         }
 
-        public Bill getBill(int tableID)
+        public Bill getBill(int billID)
         {
-            foreach (Bill bill in bills)
-                if (bill.TableID == tableID)
-                    return bill;
-            return generateBill(tableID);
+            return xmlBillDecoder(adapter.sendMeBill(billID));
         }
 
-        private Bill generateBill(int tableID)
+        public List<ShortBill> getBills(int amount, bool ascending)
         {
-            Bill bill = xmlBillDecoder(adapter.sendMeBill(tableID, false));
-            bills.Add(bill);
-            return bill;
+            return xmlBillsDecoder(adapter.sendMeBills(amount, ascending));
         }
 
-        public void payBill(int billID, int type)
+        public Bill generateBill(int tableID)
         {
-            adapter.sendBillPayment(billID, type);
-            bills[bills.IndexOf(new Bill(billID))].Paid = type;
-            manager.OrdersManager.markOrdersAsPaid(bills[bills.IndexOf(new Bill(billID))].TableID);
+            return xmlBillDecoder(adapter.sendMeBill(tableID, false));
+        }
+
+        public void payBill(int billID, int table, int type)
+        {
+            manager.RoomManager.xmlTablesStatus(adapter.sendBillPayment(billID, type));
+            manager.OrdersManager.markOrdersAsPaid(table);
+        }
+
+        private List<ShortBill> xmlBillsDecoder(string sXml)
+        {
+            List<ShortBill> lob = new List<ShortBill>();
+            if (!sXml.Equals(""))
+            {
+                XmlDocument xml = new XmlDocument();
+                xml.LoadXml(sXml);
+                XmlNodeList bills = xml.GetElementsByTagName("Bills");
+                XmlNodeList bList = ((XmlElement)bills[0]).GetElementsByTagName("Bill");
+                foreach (XmlElement bill in bList)
+                {
+                    ShortBill sb = new ShortBill();
+                    sb.Id = Convert.ToInt32(bill.GetAttribute("id"));
+                    XmlNodeList table = ((XmlElement)bill).GetElementsByTagName("Table");
+                    sb.TableID = Convert.ToInt32(table[0].InnerText);
+                    XmlNodeList client = ((XmlElement)bill).GetElementsByTagName("Client");
+                    sb.Client = Convert.ToString(client[0].InnerText).Trim();
+                    XmlNodeList date = ((XmlElement)bill).GetElementsByTagName("Date");
+                    sb.Date = Convert.ToDateTime(date[0].InnerText);
+                    XmlNodeList total = ((XmlElement)bill).GetElementsByTagName("Total");
+                    sb.Total = Convert.ToDouble(total[0].InnerText);
+                    XmlNodeList paid = ((XmlElement)bill).GetElementsByTagName("Paid");
+                    sb.Paid = Convert.ToInt32(paid[0].InnerText);
+                    lob.Add(sb);
+                }
+            }
+            return lob;
         }
 
         private Bill xmlBillDecoder(string sXml)
@@ -87,7 +123,7 @@ namespace Bar.domain
                     OrderPrice oPrice = new OrderPrice();
                     oPrice.Id = Convert.ToInt16(order.GetAttribute("id"));
                     XmlNodeList product = ((XmlElement)order).GetElementsByTagName("Product");
-                    oPrice.Product= product[0].InnerText;
+                    oPrice.Product = product[0].InnerText;
                     XmlNodeList amount = ((XmlElement)order).GetElementsByTagName("Amount");
                     oPrice.Amount = Convert.ToInt16(amount[0].InnerText);
                     XmlNodeList price = ((XmlElement)order).GetElementsByTagName("Price");

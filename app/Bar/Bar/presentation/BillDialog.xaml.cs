@@ -21,7 +21,11 @@ namespace Bar.presentation
     {
         private JourneyManager manager = JourneyManager.Instance;
 
+        private JourneyManagerWin super;
+
         private Bill bill;
+
+        private bool viewMode;
 
         public Bill Bill
         {
@@ -33,13 +37,29 @@ namespace Bar.presentation
         {
             Bill = bill;
             InitializeComponent();
+            showViewOptions();
+            viewMode = true;
+            initializeData();
+        }
+
+        public BillDialog(JourneyManagerWin super, Bill bill)
+        {
+            this.super = super;
+            Bill = bill;
+            InitializeComponent();
+            viewMode = false;
             initializeData();
         }
 
         private void btnCharge_Click(object sender, RoutedEventArgs e)
         {
-            manager.BillsManager.payBill(Convert.ToInt32(txtbBill.Text), 1);
-            charged();
+            if (!viewMode)
+            {
+                manager.BillsManager.payBill(bill.Id, bill.TableID, 1);
+                super.delegateToShowReceiverEvent(5, new Order(), bill.TableID);
+                charged();
+            }
+            else this.Visibility = Visibility.Hidden;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -47,32 +67,31 @@ namespace Bar.presentation
             this.Visibility = Visibility.Hidden;
         }
 
-        private void btnPrint_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        private void btnPrint_Click(object sender, RoutedEventArgs e) { }
 
         private void initializeData()
         {
-            txtbBill.Text = Convert.ToString(bill.Id);
-            txtbSerial.Text = Convert.ToString(bill.Serial);
-            txtbTable.Text = Convert.ToString(bill.TableID);
-            txtbDate.Text = Convert.ToString(bill.Date);
-            txtbDNI.Text = bill.ClientInfo.Dni;
-            txtbName.Text = bill.ClientInfo.Name + " " + bill.ClientInfo.Surname;
-            if (!bill.ClientAddress.Street.Equals(""))
-                txtbAddress.Text = bill.ClientAddress.Street + ", " + bill.ClientAddress.Number;
-            txtbTown.Text = bill.ClientAddress.Town;
-            txtbState.Text = bill.ClientAddress.State;
-            txtbSubtotal.Text = Convert.ToString(bill.Subtotal);
-            txtbDiscount.Text = Convert.ToString(bill.Discount);
-            txtbTaxBase.Text = Convert.ToString(bill.TaxBase);
-            txtbIVA.Text = Convert.ToString(bill.Iva);
-            txtbQuote.Text = Convert.ToString(bill.Quote);
-            txtbTotal.Text = Convert.ToString(bill.Total);
-            foreach (OrderPrice oPrice in bill.Orders)
+            if (!viewMode)
+                if (super.btnCheckIn.Content.Equals("Ver factura")) charged();
+            txtbBill.Text = Convert.ToString(Bill.Id);
+            txtbSerial.Text = Convert.ToString(Bill.Serial);
+            txtbTable.Text = Convert.ToString(Bill.TableID);
+            txtbDate.Text = Convert.ToString(Bill.Date);
+            txtbDNI.Text = Bill.ClientInfo.Dni;
+            txtbName.Text = Bill.ClientInfo.Name + " " + Bill.ClientInfo.Surname;
+            if (!Bill.ClientAddress.Street.Equals(""))
+                txtbAddress.Text = Bill.ClientAddress.Street + ", " + Bill.ClientAddress.Number;
+            txtbTown.Text = Bill.ClientAddress.Town;
+            txtbState.Text = Bill.ClientAddress.State;
+            txtbSubtotal.Text = Convert.ToString(Bill.Subtotal);
+            txtbDiscount.Text = Convert.ToString(Bill.Discount);
+            txtbTaxBase.Text = Convert.ToString(Bill.TaxBase);
+            txtbIVA.Text = Convert.ToString(Bill.Iva);
+            txtbQuote.Text = Convert.ToString(Bill.Quote);
+            txtbTotal.Text = Convert.ToString(Bill.Total);
+            foreach (OrderPrice oPrice in Bill.Orders)
                 listVBill.Items.Add(oPrice);
-            if (bill.Paid > 0) charged();
+            if (Bill.Paid > 0) charged();
         }
 
         private void charged()
@@ -80,6 +99,12 @@ namespace Bar.presentation
             btnCharge.Content = "COBRADA";
             btnCharge.IsEnabled = false;
             btnCancel.Content = "Salir";
+        }
+
+        private void showViewOptions()
+        {
+            btnCharge.Content = "Salir";
+            btnCancel.Visibility = Visibility.Hidden;
         }
     }
 }

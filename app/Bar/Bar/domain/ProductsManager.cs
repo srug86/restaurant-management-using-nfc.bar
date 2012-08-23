@@ -189,7 +189,7 @@ namespace Bar.domain
                     XmlNodeList category = ((XmlElement)product).GetElementsByTagName("Category");
                     p.Category = Convert.ToString(category[0].InnerText).Trim();
                     XmlNodeList description = ((XmlElement)product).GetElementsByTagName("Description");
-                    p.Description = Convert.ToString(description[0].InnerText);
+                    p.Description = Convert.ToString(description[0].InnerText).Trim();
                     XmlNodeList visible = ((XmlElement)product).GetElementsByTagName("Visible");
                     p.Visible = Convert.ToBoolean(visible[0].InnerText);
                     XmlNodeList discount = ((XmlElement)product).GetElementsByTagName("Discount");

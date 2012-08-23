@@ -92,9 +92,9 @@ namespace Bar.domain
             roomManager = new RoomManager();
         }
 
-        private void initOrdersManager()
+        public void initOrdersManager()
         {
-            ordersManager = new OrdersManager();
+            ordersManager = OrdersManager.Instance;
         }
 
         public void initProductsManager()
@@ -102,9 +102,9 @@ namespace Bar.domain
             productsManager = new ProductsManager();
         }
 
-        private void initBillsManager()
+        public void initBillsManager()
         {
-            billsManager = new BillsManager();
+            billsManager = BillsManager.Instance;
         }
 
         public void resetCurrentJourney(string room)

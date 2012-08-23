@@ -52,5 +52,11 @@ namespace Bar.presentation
             EditProductsWin editor = new EditProductsWin();
             editor.Show();
         }
+
+        private void btnStatistics_Click(object sender, RoutedEventArgs e)
+        {
+            StatisticsWin statistics = new StatisticsWin();
+            statistics.Show();
+        }
     }
 }

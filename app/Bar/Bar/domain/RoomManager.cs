@@ -69,7 +69,7 @@ namespace Bar.domain
 
         public void loadRoom(string name, bool newJourney)
         {
-            xmlDistributionOfRoom(adapter.sendMeRoom(name));
+            xmlDistributionOfRoom(adapter.sendMeRoom(name, newJourney));
         }
 
         public int selectedBox(int row, int column)

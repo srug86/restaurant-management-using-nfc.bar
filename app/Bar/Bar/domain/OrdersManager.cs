@@ -27,17 +27,21 @@ namespace Bar.domain
             set { orders = value; }
         }
 
-        private List<Bill> bills;
-
-        internal List<Bill> Bills
-        {
-            get { return bills; }
-            set { bills = value; }
-        }
-
         private int lastOrderID;
 
-        public OrdersManager() { }
+        static readonly OrdersManager instance = new OrdersManager();
+
+        static OrdersManager() { }
+
+        OrdersManager() { }
+
+        public static OrdersManager Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
 
         public void setGuiReference(JourneyManagerWin gui)
         {
@@ -48,6 +52,11 @@ namespace Bar.domain
         {
             Orders = xmlListOfOrders(adapter.sendMeOrdersStatus());
             gui.delegateToChangeTheOrdersList(Orders);
+        }
+
+        public List<HOrder> getHistoricalOrders(int amount, bool ascending)
+        {
+            return xmlHOrdersDecoder(adapter.sendMeHOrders(amount, ascending));
         }
 
         private List<Order> xmlListOfOrders(string sXml)
@@ -129,6 +138,32 @@ namespace Bar.domain
             return objects;
         }
 
+        private List<HOrder> xmlHOrdersDecoder(string sXml)
+        {
+            List<HOrder> lho = new List<HOrder>();
+            if (sXml != "")
+            {
+                XmlDocument xml = new XmlDocument();
+                xml.LoadXml(sXml);
+                XmlNodeList hOrders = xml.GetElementsByTagName("Historical");
+                XmlNodeList hoList = ((XmlElement)hOrders[0]).GetElementsByTagName("Order");
+                foreach (XmlElement hOrder in hoList)
+                {
+                    HOrder ho = new HOrder();
+                    XmlNodeList client = ((XmlElement)hOrder).GetElementsByTagName("Client");
+                    ho.Client = Convert.ToString(client[0].InnerText).Trim();
+                    XmlNodeList product = ((XmlElement)hOrder).GetElementsByTagName("Product");
+                    ho.Product = Convert.ToString(product[0].InnerText).Trim();
+                    XmlNodeList amount = ((XmlElement)hOrder).GetElementsByTagName("Amount");
+                    ho.Amount = Convert.ToInt32(amount[0].InnerText);
+                    XmlNodeList date = ((XmlElement)hOrder).GetElementsByTagName("Date");
+                    ho.Date = Convert.ToDateTime(date[0].InnerText);
+                    lho.Add(ho);
+                }
+            }
+            return lho;
+        }
+
         public string xmlNewOrder(List<Order> orders)
         {
             string xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
@@ -156,6 +191,7 @@ namespace Bar.domain
                 order.Status = 0;
                 order.Date = DateTime.Now;
                 Orders.Add(order);
+                gui.delegateToShowReceiverEvent(2, order, order.TableID);
             }
             if (orders.Count > 0)
             {
@@ -171,37 +207,53 @@ namespace Bar.domain
 
         public void removeOrder(int orderID)
         {
+            Order o = Orders[Orders.IndexOf(new Order(orderID))];
             adapter.sendChangeOrderStatus(orderID, -2);
-            Orders.Remove(Orders[Orders.IndexOf(new Order(orderID))]);
+            Orders.Remove(o);
+            gui.delegateToShowReceiverEvent(3, o, o.TableID);
             gui.delegateToChangeTheOrdersList(Orders);
         }
 
         public void changeOrderAmount(int orderID, int amount)
         {
-            if (Orders[Orders.IndexOf(new Order(orderID))].Amount != amount)
+            Order o = Orders[Orders.IndexOf(new Order(orderID))];
+            if (o.Amount != amount)
             {
-                Orders[Orders.IndexOf(new Order(orderID))].Amount = amount;
+                o.Amount = amount;
                 adapter.sendChangeOrderAmount(orderID, amount);
+                gui.delegateToShowReceiverEvent(4, o, o.TableID);
                 gui.delegateToChangeTheOrdersList(Orders);
             }
         }
 
         public void changeOrderStatus(int orderID, int status)
         {
-            if (Orders[Orders.IndexOf(new Order(orderID))].Status != status)
+            Order o = Orders[Orders.IndexOf(new Order(orderID))];
+            if (o.Status != status)
             {
-                Orders[Orders.IndexOf(new Order(orderID))].Status = status;
+                o.Status = status;
                 manager.RoomManager.xmlTablesStatus(adapter.sendChangeOrderStatus(orderID, status));
+                int eventN = 4;
+                switch (status)
+                {
+                    case -1: eventN = 9; break;
+                    case 0: eventN = 6; break;
+                    case 1: eventN = 7; break;
+                    case 2: eventN = 8; break;
+                }
+                gui.delegateToShowReceiverEvent(eventN, o, o.TableID);
                 gui.delegateToChangeTheOrdersList(Orders);
             }
         }
 
         public void changeOrderTable(int orderID, int tableID)
         {
-            if (Orders[Orders.IndexOf(new Order(orderID))].TableID != tableID)
+            Order o = Orders[Orders.IndexOf(new Order(orderID))];
+            if (o.TableID != tableID)
             {
-                Orders[Orders.IndexOf(new Order(orderID))].TableID = tableID;
+                o.TableID = tableID;
                 manager.RoomManager.xmlTablesStatus(adapter.sendChangeOrderTable(orderID, tableID));
+                gui.delegateToShowReceiverEvent(4, o, tableID);
                 gui.delegateToChangeTheOrdersList(Orders);
             }
         }

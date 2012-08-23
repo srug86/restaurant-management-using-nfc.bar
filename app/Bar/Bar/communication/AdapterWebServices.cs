@@ -42,9 +42,9 @@ namespace Bar.communication
             return proxy.getCurrentRoom();
         }
 
-        public string sendMeRoom(string name)
+        public string sendMeRoom(string name, bool save)
         {
-            return proxy.getRoom(name);
+            return proxy.getRoom(name, save);
         }
 
         public string sendMeTablesStatus()
@@ -72,6 +72,11 @@ namespace Bar.communication
             return proxy.getProducts(nonVisible);
         }
 
+        public string sendMeHOrders(int amount, bool ascending)
+        {
+            return proxy.getHOrders(amount, ascending);
+        }
+
         public string sendMeOrdersStatus()
         {
             return proxy.getOrdersStatus();
@@ -97,14 +102,24 @@ namespace Bar.communication
             return proxy.setOrderTable(orderID, tableID);
         }
 
+        public string sendMeBills(int amount, bool ascending)
+        {
+            return proxy.getBills(amount, ascending);
+        }
+
+        public string sendMeBill(int billID)
+        {
+            return proxy.getStaticBill(billID);
+        }
+
         public string sendMeBill(int tableID, bool _short)
         {
             return proxy.getBill(tableID, _short);
         }
 
-        public string sendBillPayment(int billID, int type)
+        public string sendBillPayment(int tableID, int type)
         {
-            return proxy.payBill(billID, type);
+            return proxy.payBill(tableID, type);
         }
 
         public void sendResetJourney(string room)

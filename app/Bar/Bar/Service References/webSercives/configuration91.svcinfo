@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="KoUJm19TmasJcY37cdEJ9PKCWq8=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="TVBkXIibaW+M/K6yXUy4VpoO+qA=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="MobiCartaWebServicesSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="MobiCartaWebServicesSoap" contract="webSercives.MobiCartaWebServicesSoap" bindingType="basicHttpBinding" address="http://localhost:49504/Services.asmx" bindingConfiguration="MobiCartaWebServicesSoap">
+    <endpoint name="MobiCartaWebServicesSoap" contract="webSercives.MobiCartaWebServicesSoap" bindingType="basicHttpBinding" address="http://161.67.140.37:3500/ServicioMobiCarta/Services.asmx" bindingConfiguration="MobiCartaWebServicesSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:49504/Services.asmx</serializedValue>
+          <serializedValue>http://161.67.140.37:3500/ServicioMobiCarta/Services.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

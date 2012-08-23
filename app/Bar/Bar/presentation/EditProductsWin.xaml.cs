@@ -33,6 +33,7 @@ namespace Bar.presentation
         {
             manager.ProductsManager.updateProducts(true);
             manager.ProductsManager.updateGuiCategories();
+            btnSavePL.IsEnabled = IsEnabled;
         }
 
         private void btnSavePL_Click(object sender, RoutedEventArgs e)

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Products>
+	<Product name="Ensalada mixta">
+		<Category>Entrantes</Category>
+		<Price>5</Price>
+		<Description>ensalada,vegetal,tomate,lechuga</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Sopa de marisco">
+		<Category>Entrantes</Category>
+		<Price>6</Price>
+		<Description>sopa,marisco</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Bandeja de jamon">
+		<Category>Entrantes</Category>
+		<Price>8</Price>
+		<Description>jamon,embutido</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Mejillones al vapor">
+		<Category>Entrantes</Category>
+		<Price>7</Price>
+		<Description>mejillon,molusco</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Chipirones fritos">
+		<Category>Entrantes</Category>
+		<Price>12</Price>
+		<Description>chipiron,molusco</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Pulpo a la gallega">
+		<Category>Entrantes</Category>
+		<Price>12</Price>
+		<Description>pulpo,molusco</Description>
+		<Visible>False</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Paella de marisco">
+		<Category>Arroces y pastas</Category>
+		<Price>12,5</Price>
+		<Description>arroz,marisco</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Fideua blanca">
+		<Category>Arroces y pastas</Category>
+		<Price>13,5</Price>
+		<Description>pasta,fideo</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Spaghetti a la bolognesa">
+		<Category>Arroces y pastas</Category>
+		<Price>10,5</Price>
+		<Description>pasta,spaghetti</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Macarrones con tomate">
+		<Category>Arroces y pastas</Category>
+		<Price>10</Price>
+		<Description>pasta,macarron,tomate</Description>
+		<Visible>True</Visible>
+		<Discount>0,5</Discount>
+		<DiscountedUnit>2</DiscountedUnit>
+	</Product>
+	<Product name="Costillas de cordero">
+		<Category>Carnes</Category>
+		<Price>12,5</Price>
+		<Description>costilla,cordero</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Solomillo de ternera">
+		<Category>Carnes</Category>
+		<Price>23</Price>
+		<Description>solomillo,ternera</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Pollo al horno">
+		<Category>Carnes</Category>
+		<Price>8,55</Price>
+		<Description>pollo,horno</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Sepia a la plancha">
+		<Category>Pescados y mariscos</Category>
+		<Price>13,5</Price>
+		<Description>molusco,plancha</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Rape a la marinera">
+		<Category>Pescados y mariscos</Category>
+		<Price>20</Price>
+		<Description>pescado,rape</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Merluza a la vasca">
+		<Category>Pescados y mariscos</Category>
+		<Price>21,4</Price>
+		<Description>pescado,merluza</Description>
+		<Visible>False</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Lenguado a la plancha">
+		<Category>Pescados y mariscos</Category>
+		<Price>20,35</Price>
+		<Description>pescado,lenguado,plancha</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Lubina al horno">
+		<Category>Pescados y mariscos</Category>
+		<Price>22,5</Price>
+		<Description>pescado,lubina,horno</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Ostras de Arcade">
+		<Category>Pescados y mariscos</Category>
+		<Price>24</Price>
+		<Description>marisco,molusco</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+	<Product name="Almejas de Carril">
+		<Category>Pescados y mariscos</Category>
+		<Price>15</Price>
+		<Description>marisco,molusco</Description>
+		<Visible>True</Visible>
+		<Discount>0</Discount>
+		<DiscountedUnit>0</DiscountedUnit>
+	</Product>
+</Products>

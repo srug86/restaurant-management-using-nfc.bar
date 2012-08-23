@@ -1,0 +1,38 @@
+﻿<Window x:Class="Bar.presentation.ConsultDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MobiCarta" Height="250" Width="400" Icon="/Bar;component/Images/ico.png" Name="wConsult" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False">
+    <Grid>
+        <Grid Height="Auto" HorizontalAlignment="Stretch" Margin="5" Name="grid1" VerticalAlignment="Stretch" Width="Auto" Background="Gainsboro">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="0.5*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.24*" />
+                <RowDefinition Height="0.23*" />
+                <RowDefinition Height="0.23*" />
+                <RowDefinition Height="0.30*" />
+            </Grid.RowDefinitions>
+            <Label Content="Establezca los parámetros de búsqueda:" Height="Auto" HorizontalAlignment="Stretch" Margin="10,3" Name="lblInstructions" VerticalAlignment="Stretch" Width="Auto" Grid.ColumnSpan="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+            <Button Content="Cancelar" Grid.Row="3" Height="Auto" HorizontalAlignment="Stretch" Margin="20,8" Name="btnCancel" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" Click="btnCancel_Click" />
+            <Button Content="Aceptar" Grid.Column="1" Grid.Row="3" Height="Auto" HorizontalAlignment="Stretch" Margin="20,8" Name="btnAccept" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" Click="btnAccept_Click" />
+            <ComboBox Grid.Column="1" Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="10,5" Name="cbbAsc" VerticalAlignment="Stretch" Width="Auto" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <ComboBoxItem Content="Ascendente" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Center" IsSelected="False" VerticalContentAlignment="Center" />
+                <ComboBoxItem Content="Descendente" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsSelected="True" />
+            </ComboBox>
+            <Label Content="Tamaño de la muestra:" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="10,5" Name="lblSize" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Content="Sentido de la búsqueda:" Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="10,5" Name="lblAsc" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Grid Grid.Column="1" Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="grid2" VerticalAlignment="Stretch" Width="Auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*" />
+                    <ColumnDefinition Width="112*" />
+                    <ColumnDefinition Width="37*" />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0,5" Name="txtbSize" VerticalAlignment="Stretch" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="14" Text="25" />
+                <Button Content="&lt;" Height="Auto" HorizontalAlignment="Stretch" Margin="10,5,0,5" Name="btnDec" VerticalAlignment="Stretch" Width="Auto" FontSize="12" FontWeight="Bold" Click="btnDec_Click" />
+                <Button Content="&gt;" Grid.Column="2" Height="Auto" HorizontalAlignment="Stretch" Margin="0,5,10,5" Name="btnInc" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" Click="btnInc_Click" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

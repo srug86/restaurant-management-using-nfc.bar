@@ -1,0 +1,90 @@
+﻿<Window x:Class="Bar.presentation.StatisticsWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MobiCarta - Histórico de facturas y pedidos" Height="600" Width="800" Icon="/Bar;component/Images/ico.png" WindowStartupLocation="CenterScreen">
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.12*" />
+            <RowDefinition Height="0.83*" />
+            <RowDefinition Height="0.05*" />
+        </Grid.RowDefinitions>
+        <ToolBar Height="Auto" VerticalAlignment="Stretch" Grid.Row="0" Grid.RowSpan="1" MinHeight="60" MaxHeight="Infinity">
+            <StackPanel Height="Auto" Orientation="Horizontal" Width="Auto" MaxHeight="Infinity" MinHeight="60">
+                <Button Background="#00000000" BorderBrush="#00000000" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnLoadBills" ToolTip="Cargar lista de facturas" Width="Auto" IsEnabled="True" Click="btnLoadBills_Click">
+                    <Image Name="imgLoadB" ToolTip="Cargar lista de facturas" Source="/Bar;component/Images/loadBills.png" />
+                </Button>
+                <Button Background="#00000000" Cursor="Hand" Foreground="#E6FFFFFF" Height="Auto" Margin="5,5,5,5" Name="btnLoadOrders" ToolTip="Cargar lista de pedidos" Width="Auto" Click="btnLoadOrders_Click">
+                    <Image Name="imgLoadO" ToolTip="Cargar lista de pedidos" Source="/Bar;component/Images/loadHOrders.png" />
+                </Button>
+            </StackPanel>
+        </ToolBar>
+        <Grid Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="grid1" VerticalAlignment="Stretch" Width="Auto" Visibility="Visible">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop Color="SkyBlue" Offset="0" />
+                    <GradientStop Color="White" Offset="0.227" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.8*" />
+            </Grid.ColumnDefinitions>
+            <Grid Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="gridOptions" VerticalAlignment="Center" Width="Auto" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="0.5*" />
+                </Grid.RowDefinitions>
+                <Button Height="Auto" HorizontalAlignment="Stretch" Name="btnOBills" VerticalAlignment="Stretch" Width="Auto" Grid.Row="0" Click="btnOBills_Click" ToolTip="Ver facturas" IsEnabled="False" Cursor="Hand">
+                    <Image Name="imgOBills" Stretch="Uniform" Source="/Bar;component/Images/bills.png" />
+                </Button>
+                <Button Height="Auto" HorizontalAlignment="Stretch" Name="btnOOrders" VerticalAlignment="Stretch" Width="Auto" Grid.Row="1" Click="btnOOrders_Click" ToolTip="Ver pedidos" IsEnabled="False" Cursor="Hand">
+                    <Image Name="imgOOrders" Stretch="Uniform" Margin="0" Grid.Row="1" Source="/Bar;component/Images/orders.png" />
+                </Button>
+            </Grid>
+            <Grid HorizontalAlignment="Stretch" Name="gridInitial" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Grid.Row="1" Grid.Column="1" FlowDirection="LeftToRight" Visibility="Visible">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Bar;component/Images/background.png" />
+                </Grid.Background>
+            </Grid>
+            <Grid Height="Auto" Grid.Row="1" Grid.Column="1" Visibility="Hidden" Name="gridOBillsList" VerticalAlignment="Stretch" Width="Auto" Background="DarkGreen">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.9*" />
+                    <RowDefinition Height="0.1*" />
+                </Grid.RowDefinitions>
+                <ListView Height="Auto" HorizontalAlignment="Stretch" Name="listVBills" VerticalAlignment="Stretch" FontSize="14" FontWeight="Bold" FontStretch="Expanded" HorizontalContentAlignment="Center" Margin="10,8,10,0" Background="Azure">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Path=Id}" Width="Auto" />
+                            <GridViewColumn Header="Mesa" DisplayMemberBinding="{Binding Path=TableID}" Width="Auto" />
+                            <GridViewColumn Header="Cliente" DisplayMemberBinding="{Binding Path=ClientID}" Width="Auto" />
+                            <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding Path=Date}" Width="Auto" />
+                            <GridViewColumn Header="Importe total" DisplayMemberBinding="{Binding Path=Total}" Width="Auto" />
+                            <GridViewColumn Header="Pagada" DisplayMemberBinding="{Binding Path=Paid}" Width="Auto" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Grid Grid.Row="1" Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="grid2" VerticalAlignment="Stretch" Width="Auto">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.75*" />
+                        <ColumnDefinition Width="0.25
+                                      *" />
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Consultar" Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" Margin="20,5" Name="btnConsult" VerticalAlignment="Stretch" Width="Auto" FontWeight="Bold" Click="btnConsult_Click" />
+                </Grid>
+            </Grid>
+            <Grid Height="Auto" Grid.Row="1" Grid.Column="1" Visibility="Hidden" Name="gridOOrdersList" VerticalAlignment="Stretch" Width="Auto" Background="Goldenrod">
+                <ListView Height="Auto" HorizontalAlignment="Stretch" Name="listVOrders" VerticalAlignment="Stretch" FontSize="14" FontWeight="Bold" FontStretch="Expanded" HorizontalContentAlignment="Center" Margin="10,8" Background="Ivory">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Path=Id}" Width="Auto" />
+                            <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding Path=Date}" Width="Auto" />
+                            <GridViewColumn Header="Producto" DisplayMemberBinding="{Binding Path=Product}" Width="Auto" />
+                            <GridViewColumn Header="Cantidad" DisplayMemberBinding="{Binding Path=Amount}" Width="Auto" />
+                            <GridViewColumn Header="Cliente" DisplayMemberBinding="{Binding Path=Client}" Width="Auto" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

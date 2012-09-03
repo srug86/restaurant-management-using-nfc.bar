@@ -57,14 +57,14 @@ namespace Bar.presentation
         private FlowDocument fdEvents;
 
         private Dictionary<int, string> colorBox = new Dictionary<int, string> {
-            {-1, "/Bar;component/Images/black.jpg"},
-            {0, "/Bar;component/Images/green.jpg"},
-            {1, "/Bar;component/Images/white.jpg"},
-            {2, "/Bar;component/Images/dgreen.jpg"},
-            {3, "/Bar;component/Images/orange.jpg"},
-            {4, "/Bar;component/Images/red.jpg"},
-            {5, "/Bar;component/Images/yellow.jpg"},
-            {6, "/Bar;component/Images/pgreen.jpg"},
+            {-1, "/Bar;component/Images/black.png"},
+            {0, "/Bar;component/Images/green.png"},
+            {1, "/Bar;component/Images/white.png"},
+            {2, "/Bar;component/Images/dgreen.png"},
+            {3, "/Bar;component/Images/orange.png"},
+            {4, "/Bar;component/Images/red.png"},
+            {5, "/Bar;component/Images/yellow.png"},
+            {6, "/Bar;component/Images/pgreen.png"},
         };
 
         private Dictionary<int, string> tableStatus = new Dictionary<int, string> {

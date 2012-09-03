@@ -228,15 +228,6 @@
     <Resource Include="Images\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\network.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\new.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\open.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\orange.png" />
   </ItemGroup>
   <ItemGroup>
@@ -261,36 +252,6 @@
     <Resource Include="Images\black.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\black.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\green.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\orange.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\pgreen.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\red.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\white.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\yellow.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\edit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\remove.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\attended.png" />
   </ItemGroup>
   <ItemGroup>
@@ -303,34 +264,13 @@
     <Resource Include="Images\unattended.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\edit1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\new1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\remove1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\dgreen.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\loadDB22.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\loadJ1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\newJ1.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\removeC2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\removeP2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\saveDB22.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\addC2.png" />
@@ -348,37 +288,13 @@
     <None Include="Service References\webSercives\Services1.disco" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\newJ2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\newJ.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\loadJ.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\loadCat.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\saveCat.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\addC.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\removeC.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\editC.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\addP.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\removeP.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\editP.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\loadBills.png" />
@@ -388,6 +304,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\bills.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\remove.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

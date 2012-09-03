@@ -14,7 +14,7 @@
                     <Image Name="imgNew" ToolTip="Nueva jornada" Source="/Bar;component/Images/newJ.png" />
                 </Button>
                 <Button Background="#00000000" BorderBrush="#00000000" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnOpen" ToolTip="Cargar jornada" Width="50" Click="btnLoad_Click">
-                    <Image Name="imgOpen" ToolTip="Cargar jornada" Source="/Bar;component/Images/loadJ.png" />
+                    <Image Name="imgOpen" ToolTip="Cargar jornada" Source="/Bar;component/Images/loadJ1.png" />
                 </Button>
             </StackPanel>
         </ToolBar>
@@ -79,13 +79,13 @@
                 </Grid.RowDefinitions>
                 <StackPanel Height="Auto" HorizontalAlignment="Stretch" Margin="0" Name="stackPanel1" VerticalAlignment="Stretch" Width="Auto" Orientation="Horizontal" Grid.RowSpan="1" Grid.ColumnSpan="2" MaxHeight="Infinity" Background="DarkGoldenrod">
                     <Button Background="{x:Null}" Cursor="Hand" Foreground="{x:Null}" Height="Auto" Margin="5,5,5,5" Name="btnAdd" ToolTip="Nuevo pedido" Width="Auto" Click="btnAddOrder_Click" BorderBrush="DarkGoldenrod">
-                        <Image Name="imgAdd" ToolTip="Nuevo pedido" Source="/Bar;component/Images/new1.png" />
+                        <Image Name="imgAdd" ToolTip="Nuevo pedido" Source="/Bar;component/Images/new.png" />
                     </Button>
                     <Button Background="#00000000" BorderBrush="DarkGoldenrod" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnRemove" ToolTip="Eliminar pedido" Width="Auto" Click="btnRemoveOrder_Click">
-                        <Image Name="imgRemove" ToolTip="Eliminar pedido" Source="/Bar;component/Images/remove1.png" />
+                        <Image Name="imgRemove" ToolTip="Eliminar pedido" Source="/Bar;component/Images/remove.png" />
                     </Button>
                     <Button Background="#00000000" BorderBrush="DarkGoldenrod" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnEdit" ToolTip="Editar pedido" Width="Auto" Click="btnEditOrder_Click">
-                        <Image Name="imgEdit" ToolTip="Editar pedido" Source="/Bar;component/Images/edit1.png" />
+                        <Image Name="imgEdit" ToolTip="Editar pedido" Source="/Bar;component/Images/edit.png" />
                     </Button>
                 </StackPanel>
                 <StackPanel Height="Auto" HorizontalAlignment="Left" Margin="0" Name="stackPanel2" VerticalAlignment="Stretch" Width="Auto" Orientation="Vertical" Grid.RowSpan="1" Grid.ColumnSpan="1" Grid.Row="1" MaxWidth="Infinity" Background="DarkGoldenrod">
@@ -128,13 +128,13 @@
                 </Grid.RowDefinitions>
                 <StackPanel Height="Auto" HorizontalAlignment="Stretch" Name="stackPanel3" VerticalAlignment="Stretch" Width="Auto" Orientation="Horizontal" Grid.ColumnSpan="2" MaxHeight="Infinity" Background="MediumBlue">
                     <Button Background="{x:Null}" Cursor="Hand" Foreground="{x:Null}" Height="Auto" Margin="5,5,5,5" Name="btnAddOT" ToolTip="Nuevo pedido" Width="Auto" Click="btnAddOrder_Click" BorderBrush="DarkGoldenrod">
-                        <Image Name="imgAddOT" ToolTip="Nuevo pedido" Source="/Bar;component/Images/new1.png" />
+                        <Image Name="imgAddOT" ToolTip="Nuevo pedido" Source="/Bar;component/Images/new.png" />
                     </Button>
                     <Button Background="#00000000" BorderBrush="DarkGoldenrod" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnRemoveOT" ToolTip="Eliminar pedido" Width="Auto" Click="btnRemoveOrder_Click">
-                        <Image Name="imgRemoveOT" ToolTip="Eliminar pedido" Source="/Bar;component/Images/remove1.png" />
+                        <Image Name="imgRemoveOT" ToolTip="Eliminar pedido" Source="/Bar;component/Images/remove.png" />
                     </Button>
                     <Button Background="#00000000" BorderBrush="DarkGoldenrod" Cursor="Hand" Height="Auto" Margin="5,5,5,5" Name="btnEditOT" ToolTip="Editar pedido" Width="Auto" Click="btnEditOrder_Click">
-                        <Image Name="imgEditOT" ToolTip="Editar pedido" Source="/Bar;component/Images/edit1.png" />
+                        <Image Name="imgEditOT" ToolTip="Editar pedido" Source="/Bar;component/Images/edit.png" />
                     </Button>
                 </StackPanel>
                 <StackPanel Height="Auto" HorizontalAlignment="Left" Margin="0" Name="stackPanel4" VerticalAlignment="Stretch" Width="Auto" Orientation="Vertical" Grid.RowSpan="1" Grid.ColumnSpan="1" Grid.Row="1" MaxWidth="Infinity" Background="MediumBlue">

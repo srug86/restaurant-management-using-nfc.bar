@@ -15,6 +15,7 @@ namespace Bar.communication
         private JourneyManager manager;
 
         BluetoothListener btListener;
+        // UID del servicio de la aplicación de la barra
         Guid service = new Guid("888794c2-65ce-4de1-aa15-74a11342bc64");
 
         private bool exit;

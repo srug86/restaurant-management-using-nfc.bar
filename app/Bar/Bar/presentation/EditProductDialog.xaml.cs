@@ -23,6 +23,7 @@ namespace Bar.presentation
 
         private string oldName;
 
+        // Método constructor
         public EditProductWin(Product product)
         {
             this.oldName = product.Name;
@@ -30,6 +31,7 @@ namespace Bar.presentation
             initializeData(product);
         }
 
+        // Inicializa los datos de la ventana con la información del producto
         private void initializeData(Product product)
         {
             txtbName.Text = product.Name;
@@ -53,11 +55,14 @@ namespace Bar.presentation
             }
         }
 
+        /* Lógica de control de eventos */
+        // Click en el botón 'Cancelar'
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden;
         }
 
+        // Click en el botón 'Aceptar' para confirmar la edición de la información del producto
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
             try

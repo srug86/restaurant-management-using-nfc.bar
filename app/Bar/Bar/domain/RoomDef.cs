@@ -5,10 +5,12 @@ using System.Text;
 
 namespace Bar.domain
 {
+    // 'RoomDef' define una plantilla y los objetos que la ocupan
     class RoomDef
     {
+        /* Atributos del objeto */
+        // Nombre de la plantilla
         private string name;
-
         public string Name
         {
             get { return name; }
@@ -16,13 +18,13 @@ namespace Bar.domain
         }
 
         private int height, width;
-
+        // Altura (número de filas)
         public int Height
         {
             get { return height; }
             set { height = value; }
         }
-
+        // Anchura (número de columnas)
         public int Width
         {
             get { return width; }
@@ -30,38 +32,41 @@ namespace Bar.domain
         }
 
         private List<int[]> receiver, bar;
-
+        // Casillas que ocupa el 'recibidor'
         public List<int[]> Receiver
         {
             get { return receiver; }
             set { receiver = value; }
         }
-
+        // Casillas que ocupa la 'barra'
         public List<int[]> Bar
         {
             get { return bar; }
             set { bar = value; }
         }
 
-        private List<Table> tables;
-
-        internal List<Table> Tables
+        // Lista de mesas de la plantilla
+        private List<TableInf> tables;
+        internal List<TableInf> Tables
         {
             get { return tables; }
             set { tables = value; }
         }
 
+        // Método constructor
         public RoomDef() { }
 
+        // Calcula el número de mesas del restaurante
         public int getNTables()
         {
             return tables.Count;
         }
 
+        // Calcula la capacidad total del salón
         public int getTCapacity()
         {
             int total = 0;
-            foreach (Table table in tables)
+            foreach (TableInf table in tables)
                 total += table.Capacity;
             return total;
         }

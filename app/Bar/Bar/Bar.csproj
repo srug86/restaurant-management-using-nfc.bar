@@ -69,11 +69,11 @@
     <Compile Include="presentation\ConsultDialog.xaml.cs">
       <DependentUpon>ConsultDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="presentation\EditCategory.xaml.cs">
-      <DependentUpon>EditCategory.xaml</DependentUpon>
+    <Compile Include="presentation\EditCategoryDialog.xaml.cs">
+      <DependentUpon>EditCategoryDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="presentation\EditProductWin.xaml.cs">
-      <DependentUpon>EditProductWin.xaml</DependentUpon>
+    <Compile Include="presentation\EditProductDialog.xaml.cs">
+      <DependentUpon>EditProductDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="presentation\StatisticsWin.xaml.cs">
       <DependentUpon>StatisticsWin.xaml</DependentUpon>
@@ -97,7 +97,7 @@
     <Compile Include="domain\RoomDef.cs" />
     <Compile Include="domain\RoomInf.cs" />
     <Compile Include="domain\RoomManager.cs" />
-    <Compile Include="domain\Table.cs" />
+    <Compile Include="domain\TableInf.cs" />
     <Compile Include="presentation\BillDialog.xaml.cs">
       <DependentUpon>BillDialog.xaml</DependentUpon>
     </Compile>
@@ -115,9 +115,6 @@
     </Compile>
     <Compile Include="presentation\LoadRoomDialog.xaml.cs">
       <DependentUpon>LoadRoomDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\MessageDialog.xaml.cs">
-      <DependentUpon>MessageDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="presentation\NewOrderWin.xaml.cs">
       <DependentUpon>NewOrderWin.xaml</DependentUpon>
@@ -159,7 +156,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="presentation\EditCategory.xaml">
+    <Page Include="presentation\EditCategoryDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,7 +168,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="presentation\EditProductWin.xaml">
+    <Page Include="presentation\EditProductDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,10 +181,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="presentation\LoadRoomDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="presentation\MessageDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

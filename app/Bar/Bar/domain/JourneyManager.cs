@@ -15,38 +15,40 @@ namespace Bar.domain
 
         static readonly JourneyManager instance = new JourneyManager();
 
+        /* Atributos de la clase */
+        // Gestor de las mesas del restaurante
         RoomManager roomManager;
-
         internal RoomManager RoomManager
         {
             get { return roomManager; }
             set { roomManager = value; }
         }
 
+        // Gestor de pedidos del restaurante
         OrdersManager ordersManager;
-
         internal OrdersManager OrdersManager
         {
             get { return ordersManager; }
             set { ordersManager = value; }
         }
 
+        // Gestor de productos del restaurante
         ProductsManager productsManager;
-
         internal ProductsManager ProductsManager
         {
             get { return productsManager; }
             set { productsManager = value; }
         }
 
+        // Gestor de facturas del restaurante
         BillsManager billsManager;
-
         internal BillsManager BillsManager
         {
             get { return billsManager; }
             set { billsManager = value; }
         }
 
+        /* Implementación de un 'Singleton' para esta clase */
         static JourneyManager() { }
 
         JourneyManager() { }
@@ -59,26 +61,31 @@ namespace Bar.domain
             }
         }
 
+        // Inicializa el servidor Bluetooth
         public void initBluetoothServer()
         {
             bluetooth.initBluetooth();
         }
-
+        
+        // Cierra el servidor Bluetooth
         public void closeBluetoothServer()
         {
             bluetooth.closeBluetooth();
         }
 
+        // Devuelve el listado de plantillas del restaurante
         public List<RoomInf> consultingRooms()
         {
             return xmlListOfRooms(adapter.sendMeRooms());
         }
 
+        // Devuelve la plantilla de la jornada actual
         public List<RoomInf> consultingCurrentRoom()
         {
             return xmlListOfRooms(adapter.sendMeCurrentRoom());
         }
 
+        // Inicializa todos los gestores
         public void createRoomManager()
         {
             initRoomManager();
@@ -87,31 +94,37 @@ namespace Bar.domain
             initBillsManager();
         }
 
+        // Inicializa el gestor de mesas
         private void initRoomManager()
         {
             roomManager = new RoomManager();
         }
 
+        // Inicializa el gestor de pedidos
         public void initOrdersManager()
         {
             ordersManager = OrdersManager.Instance;
         }
 
+        // Inicializa el gestor de productos
         public void initProductsManager()
         {
             productsManager = new ProductsManager();
         }
 
+        // Inicializa el gestor de facturas
         public void initBillsManager()
         {
             billsManager = BillsManager.Instance;
         }
 
+        // 'Resetea' los valores de la jornada actual para iniciar una nueva jornada
         public void resetCurrentJourney(string room)
         {
             adapter.sendResetJourney(room);
         }
 
+        // Decodifica XML de la lista de plantillas para el restaurante
         private List<RoomInf> xmlListOfRooms(string sXml)
         {
             List<RoomInf> listOfRooms = new List<RoomInf>();

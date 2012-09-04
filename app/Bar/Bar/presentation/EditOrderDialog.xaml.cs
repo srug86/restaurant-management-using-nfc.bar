@@ -23,6 +23,7 @@ namespace Bar.presentation
 
         private Order order;
 
+        // Método constructor
         public EditOrderDialog(Order order)
         {
             this.order = order;
@@ -30,6 +31,7 @@ namespace Bar.presentation
             initializeData();
         }
 
+        // Inicializa el contenido de los atributos del pedido
         private void initializeData()
         {
             txtbId.Text = order.Id.ToString();
@@ -46,12 +48,15 @@ namespace Bar.presentation
             }
         }
 
+        /* Lógica de control de eventos */
+        // Click en el botón "Incrementar número de productos"
         private void btnPlus_Click(object sender, RoutedEventArgs e)
         {
             if (txtbAmount.Text != "")
                 txtbAmount.Text = Convert.ToString(Convert.ToInt16(txtbAmount.Text) + 1);
         }
 
+        // Click en el botón "Decrementar número de productos"
         private void btnMinus_Click(object sender, RoutedEventArgs e)
         {
             if (txtbAmount.Text != "")
@@ -59,11 +64,13 @@ namespace Bar.presentation
                     txtbAmount.Text = Convert.ToString(Convert.ToInt16(txtbAmount.Text) - 1);
         }
 
+        // Click para cancelar la edición de un producto
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden;
         }
 
+        // Click para confirmar la edición de un producto
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
             if (cbbTable.SelectedIndex != -1 && 

@@ -22,8 +22,9 @@ namespace Bar.presentation
     {
         private JourneyManager manager = JourneyManager.Instance;
 
+        /* Atributos de la clase */
+        // Nombre de la plantilla
         private string roomName;
-
         public string RoomName
         {
             get { return roomName; }
@@ -31,21 +32,21 @@ namespace Bar.presentation
         }
 
         private int roomHeight, roomWidth;
-
+        // Número de filas de la plantilla
         public int RoomHeight
         {
             get { return roomHeight; }
             set { roomHeight = value; }
         }
-
+        // Número de columnas de la plantilla
         public int RoomWidth
         {
             get { return roomWidth; }
             set { roomWidth = value; }
         }
 
+        // Matriz de casillas de la plantilla
         private Image[,] room;
-
         public Image[,] Room
         {
             get { return room; }
@@ -54,8 +55,10 @@ namespace Bar.presentation
 
         private Grid[] gridsOnMode;
 
+        // 'Logger'
         private FlowDocument fdEvents;
 
+        // Diccionario que relaciona el estado de una mesa con el color que la representa
         private Dictionary<int, string> colorBox = new Dictionary<int, string> {
             {-1, "/Bar;component/Images/black.png"},
             {0, "/Bar;component/Images/green.png"},
@@ -67,16 +70,20 @@ namespace Bar.presentation
             {6, "/Bar;component/Images/pgreen.png"},
         };
 
+        // Diccionario que relaciona el número de estado de una mesa con el mensaje que se muestra
         private Dictionary<int, string> tableStatus = new Dictionary<int, string> {
             {-1, "Vacía"}, {0, "Ocupada"}, {1, "Esperando pedido"}, {2, "Servida"}, {3, "Cobrada"},};
 
+        // Diccionario que relaciona el número de estado de un pedido con el mensaje que se muestra
         private Dictionary<int, string> orderStatus = new Dictionary<int, string> {
             {-1, "Detenido"}, {0, "No atendido"}, {1, "Atendido"}, {2, "Servido"}, {3, "Pagado"},};
 
+        // Diccionario que relaciona el estado de un pedido con el color que lo representa
         private Dictionary<int, Brush> itemColor = new Dictionary<int, Brush> {
             {-1, Brushes.IndianRed}, {0, Brushes.WhiteSmoke}, {1, Brushes.Yellow},
             {2, Brushes.LightGreen}, {3, Brushes.Orange},};
 
+        // Método constructor
         public JourneyManagerWin()
         {
             InitializeComponent();
@@ -84,6 +91,7 @@ namespace Bar.presentation
             openOffPerspective();
         }
 
+        // Generación de una matriz con los 'grids' de los modos de una jornada
         private void initGridsOnMode()
         {
             gridsOnMode = new Grid[] { gridORoomView, gridOOrdersList, gridOSeeTable };
@@ -91,6 +99,7 @@ namespace Bar.presentation
                 g.Visibility = Visibility.Hidden;
         }
 
+        // Muestra el 'grid' de un modo concreto
         private void showOnModeGrid(Grid grid)
         {
             foreach (Grid g in gridsOnMode)
@@ -100,130 +109,48 @@ namespace Bar.presentation
             }
         }
 
-        private void btnNew_Click(object sender, RoutedEventArgs e)
+        // 'Setea' los 'grids' para el modo 'OFF' del "gestor de mesas"
+        private void openOffPerspective()
         {
-            LoadRoomDialog roomDialog = new LoadRoomDialog(this, manager.consultingRooms(), true);
-            roomDialog.Show();
+            gridInitial.Visibility = Visibility.Visible;
+            gridOptions.Visibility = Visibility.Hidden;
+            btnOOrders.IsEnabled = false;
+            btnOView.IsEnabled = false;
         }
 
-        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        // 'Setea' los 'grids' para el modo 'ON' del "gestor de mesas"
+        private void openOnPerspective()
         {
-            LoadRoomDialog roomDialog = new LoadRoomDialog(this, manager.consultingCurrentRoom(), false);
-            roomDialog.Show();
-        }
-
-        private void btnOOrders_Click(object sender, RoutedEventArgs e)
-        {
-            openOrdersPerspective();
-        }
-
-        private void btnOView_Click(object sender, RoutedEventArgs e)
-        {
+            gridInitial.Visibility = Visibility.Hidden;
+            gridOptions.Visibility = Visibility.Visible;
+            btnOOrders.IsEnabled = true;
+            btnOView.IsEnabled = true;
             openViewPerspective();
         }
 
-        private void btnSeeTable_Click(object sender, RoutedEventArgs e)
-        {
-            openTablesInfoPerspective();
-        }
-
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            openViewPerspective();
-        }
-
-        private void btnAddOrder_Click(object sender, RoutedEventArgs e)
-        {
-            NewOrderWin newOrder = new NewOrderWin(manager.ProductsManager.Categories, manager.RoomManager.getCandidateTables());
-            if (((Button)sender).Name == "btnAddOT") newOrder.selectTable(cbbTablesView.SelectedIndex);
-            newOrder.Show();
-        }
-
-        private void btnRemoveOrder_Click(object sender, RoutedEventArgs e)
-        {
-            if (((Button)sender).Name == "btnRemove" && listVOrders.SelectedIndex != -1)
-                manager.OrdersManager.removeOrder(((OrderTableItem)((ListViewItem)listVOrders.SelectedItem).Content).OrderID);
-            else if (((Button)sender).Name == "btnRemoveOT" && listVTablesOrders.SelectedIndex != -1)
-            {
-                manager.OrdersManager.removeOrder(((OrderTableItem)((ListViewItem)listVTablesOrders.SelectedItem).Content).OrderID);
-                listVTablesOrders.Items.Remove(listVTablesOrders.SelectedItem);
-            }
-        }
-
-        private void btnEditOrder_Click(object sender, RoutedEventArgs e)
-        {
-            EditOrderDialog editOrder;
-            if (((Button)sender).Name == "btnEdit" && listVOrders.SelectedIndex != -1)
-            {
-                editOrder = new EditOrderDialog(manager.OrdersManager.getOrder(((OrderTableItem)((ListViewItem)listVOrders.SelectedItem).Content).OrderID));
-                editOrder.Show();
-            }
-            else if (((Button)sender).Name == "btnEditOT" && listVTablesOrders.SelectedIndex != -1)
-            {
-                editOrder = new EditOrderDialog(manager.OrdersManager.getOrder(((OrderTableItem)((ListViewItem)listVTablesOrders.SelectedItem).Content).OrderID));
-                editOrder.Show();
-            }
-        }
-
-        private void btnUnattender_Click(object sender, RoutedEventArgs e)
-        {
-            if (((Button)sender).Name == "btnUnattender" && listVOrders.SelectedIndex != -1)
-                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVOrders.SelectedItem).Content).OrderID, 0);
-            else if (((Button)sender).Name == "btnUnattenderOT" && listVTablesOrders.SelectedIndex != -1)
-                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVTablesOrders.SelectedItem).Content).OrderID, 0);
-        }
-
-        private void btnAttended_Click(object sender, RoutedEventArgs e)
-        {
-            if (((Button)sender).Name == "btnAttended" && listVOrders.SelectedIndex != -1)
-                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVOrders.SelectedItem).Content).OrderID, 1);
-            else if (((Button)sender).Name == "btnAttendedOT" && listVTablesOrders.SelectedIndex != -1)
-                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVTablesOrders.SelectedItem).Content).OrderID, 1);
-        }
-
-        private void btnServed_Click(object sender, RoutedEventArgs e)
-        {
-            if (((Button)sender).Name == "btnServed" && listVOrders.SelectedIndex != -1)
-                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVOrders.SelectedItem).Content).OrderID, 2);
-            else if (((Button)sender).Name == "btnServedOT" && listVTablesOrders.SelectedIndex != -1)
-                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVTablesOrders.SelectedItem).Content).OrderID, 2);
-        }
-
-        private void btnStopped_Click(object sender, RoutedEventArgs e)
-        {
-            if (((Button)sender).Name == "btnStopped" && listVOrders.SelectedIndex != -1)
-                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVOrders.SelectedItem).Content).OrderID, -1);
-            else if (((Button)sender).Name == "btnStoppedOT" && listVTablesOrders.SelectedIndex != -1)
-                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVTablesOrders.SelectedItem).Content).OrderID, -1);
-        }
-
-        private void btnCheckIn_Click(object sender, RoutedEventArgs e)
-        {
-            BillDialog billDialog = new BillDialog(this, manager.BillsManager.generateBill(Convert.ToInt16(txtbTableID.Text)));
-            billDialog.Show();
-        }
-
+        // Carga una nueva jornada o una jornada existente
         public void loadSelectedRoom(string name, bool reset)
         {
             manager.createRoomManager();
-            manager.RoomManager.loadRoom(name, reset);
+            manager.RoomManager.loadRoom(name, reset);  // Carga la plantilla seleccionada
             generateEmptyRoom(manager.RoomManager.Room.Name,
                 manager.RoomManager.Room.Height, manager.RoomManager.Room.Width);
-            registerSubjects(manager.RoomManager);
+            registerSubjects(manager.RoomManager);      // Se registra como 'Observer'
             manager.OrdersManager.setGuiReference(this);
-            manager.RoomManager.locateObjects();
-            if (reset) manager.resetCurrentJourney(name);
+            manager.RoomManager.locateObjects();        // Carga los objetos en la plantilla
+            if (reset) manager.resetCurrentJourney(name);   // 'Resetea' la información de la jornada anterior
             else
             {
-                manager.RoomManager.updateTables();
-                manager.OrdersManager.updateOrders();
+                manager.RoomManager.updateTables();         // o carga el estado de las mesas
+                manager.OrdersManager.updateOrders();       // y de los pedidos de la jornada anterior
             }
-            manager.ProductsManager.updateProducts(true);
-            manager.initBluetoothServer();
-            this.delegateToShowReceiverEvent(reset ? 0 : 1, new Order(), 0);
+            manager.ProductsManager.updateProducts(true);   // Carga los productos disponibles
+            manager.initBluetoothServer();                  // Inicializa el servidor Bluetooth
+            this.delegateToShowBarEvent(reset ? 0 : 1, new Order(), 0);
             openOnPerspective();
         }
 
+        // Genera una plantilla de restaurante vacía
         private void generateEmptyRoom(string name, int height, int width)
         {
             RoomName = name;
@@ -248,12 +175,14 @@ namespace Bar.presentation
                 }
         }
 
+        // Abrir la perspectiva del modo "Ver pedidos"
         private void openOrdersPerspective()
         {
             manager.OrdersManager.updateOrders();
             showOnModeGrid(gridOOrdersList);
         }
 
+        // Abrir la perspectiva del modo "Ver mesa"
         private void openTablesInfoPerspective()
         {
             if (Convert.ToInt16(txtbTableS.Text) > 0)
@@ -264,6 +193,7 @@ namespace Bar.presentation
             }
         }
 
+        // Abrir la perspectiva del modo "Vista general"
         private void openViewPerspective()
         {
             resetProvisionalData();
@@ -271,6 +201,7 @@ namespace Bar.presentation
             showOnModeGrid(gridORoomView);
         }
 
+        // 'Resetea' la información residual de la información de una mesa que ya no se muestra
         private void cleanTableData()
         {
             cbbTablesView.Items.Clear();
@@ -281,44 +212,45 @@ namespace Bar.presentation
             listVTablesOrders.Items.Clear();
         }
 
+        // Carga la información detallada de una mesa
         private void loadTableData(int tableID)
         {
             List<int> tables = manager.RoomManager.getCandidateTables();
             int i = 0;
-            foreach (int table in tables)
+            foreach (int table in tables)   // Carga las mesas ocupadas
             {
                 cbbTablesView.Items.Add("Mesa " + table);
                 if (tableID == table) cbbTablesView.SelectedIndex = i;
                 i++;
             }
-            List<Object> info = manager.RoomManager.updateTable(tableID);
+            List<Object> info = manager.RoomManager.updateTable(tableID);   // Devuelve el estado actualizado de la mesa
             foreach (Object o in info)
             {
-                if (o.GetType() == typeof(Client))
+                if (o.GetType() == typeof(Client))  // Información del cliente que ocupa la mesa
                 {
                     txtbDNI.Text = ((Client)o).Dni;
                     txtbName.Text = ((Client)o).Name;
                     txtbSurname.Text = ((Client)o).Surname;
                     txtbAppearances.Text = Convert.ToString(((Client)o).Appearances);
                 }
-                else if (o.GetType() == typeof(Bar.domain.Table))
+                else if (o.GetType() == typeof(Bar.domain.TableInf))   // Información de la mesa
                 {
-                    txtbTableID.Text = Convert.ToString(((Bar.domain.Table)o).Id);
-                    txtbTableStatus.Text = tableStatus[((Bar.domain.Table)o).Status];
-                    if (((Bar.domain.Table)o).Status == 2)
+                    txtbTableID.Text = Convert.ToString(((Bar.domain.TableInf)o).Id);
+                    txtbTableStatus.Text = tableStatus[((Bar.domain.TableInf)o).Status];
+                    if (((Bar.domain.TableInf)o).Status == 2)
                     {
                         btnCheckIn.IsEnabled = true;
                         btnCheckIn.Content = "Facturar";
                     }
-                    else if (((Bar.domain.Table)o).Status == 3)
+                    else if (((Bar.domain.TableInf)o).Status == 3)
                     {
                         btnCheckIn.IsEnabled = true;
                         btnCheckIn.Content = "Ver factura";
                     }
-                    txtbTableOccupation.Text = Convert.ToString(((Bar.domain.Table)o).Guests) +
-                        "/" + Convert.ToString(((Bar.domain.Table)o).Capacity);
+                    txtbTableOccupation.Text = Convert.ToString(((Bar.domain.TableInf)o).Guests) +
+                        "/" + Convert.ToString(((Bar.domain.TableInf)o).Capacity);
                 }
-                else if (o.GetType() == typeof(List<Order>))
+                else if (o.GetType() == typeof(List<Order>))    // Lista de pedidos de la mesa
                     foreach (Order order in ((List<Order>)o))
                     {
                         OrderTableItem item = new OrderTableItem();
@@ -335,59 +267,20 @@ namespace Bar.presentation
             }
         }
 
-        private void box_Click(object sender, MouseButtonEventArgs e)
-        {
-            Image img = (Image)sender;
-            string box = img.Name.Substring(3);
-            string[] coordinates = box.Split('x');
-            int selectedTable = manager.RoomManager.selectedBox(Convert.ToInt16(coordinates[0]),
-                Convert.ToInt16(coordinates[1]));
-            if (selectedTable != -1)
-            {
-                txtbTableS.Text = Convert.ToString(selectedTable);
-                txtbClientS.Text = manager.RoomManager.getClientsTable(selectedTable);
-                btnSeeTable.IsEnabled = true;
-            }
-        }
-
-        private void btnConsultTable_Click(object sender, RoutedEventArgs e)
-        {
-            if (cbbTablesView.SelectedIndex != -1)
-            {
-                int tableID = Convert.ToInt16(cbbTablesView.SelectedItem.ToString().Substring(5));
-                cleanTableData();
-                loadTableData(tableID);
-            }
-        }
-
-        private void openOffPerspective()
-        {
-            gridInitial.Visibility = Visibility.Visible;
-            gridOptions.Visibility = Visibility.Hidden;
-            btnOOrders.IsEnabled = false;
-            btnOView.IsEnabled = false;
-        }
-
-        private void openOnPerspective()
-        {
-            gridInitial.Visibility = Visibility.Hidden;
-            gridOptions.Visibility = Visibility.Visible;
-            btnOOrders.IsEnabled = true;
-            btnOView.IsEnabled = true;
-            openViewPerspective();
-        }
-
+        // Elimina la información residual del modo "Vista general"
         private void resetProvisionalData()
         {
             btnSeeTable.IsEnabled = false;
             txtbClientS.Text = txtbTableS.Text = "";
         }
 
+        /* Métodos para implementar el patrón 'Observer' de la GUI*/
         private void registerSubjects(SubjectRE subjectRE)
         {
             subjectRE.registerInterest(this);
         }
 
+        // Método 'notify' que avisa del cambio de estado de una de las casillas de la plantilla
         public void notifyChangesInABox(int row, int column, int state)
         {
             BitmapImage bi = new BitmapImage();
@@ -397,13 +290,15 @@ namespace Bar.presentation
             Room[row, column].Source = bi;
         }
 
-        private delegate void ReceiverEvent(int type, Order order, int tableID);
-        public void delegateToShowReceiverEvent(int type, Order order, int tableID)
+        /* Delegados de la GUI */
+        // Delegado que registra los eventos producidos en el 'logger' del modo "Vista general"
+        private delegate void BarEvent(int type, Order order, int tableID);
+        public void delegateToShowBarEvent(int type, Order order, int tableID)
         {
-            Dispatcher.Invoke(DispatcherPriority.Normal, new ReceiverEvent(this.rcvEvent), type, order, tableID);
+            Dispatcher.Invoke(DispatcherPriority.Normal, new BarEvent(this.barEvent), type, order, tableID);
         }
 
-        public void rcvEvent(int type, Order order, int tableID)
+        public void barEvent(int type, Order order, int tableID)
         {
             Paragraph p = new Paragraph();
             string message = "";
@@ -454,6 +349,7 @@ namespace Bar.presentation
             else fdEvents.Blocks.Add(p);
         }
 
+        // Delegado que registra los cambios en la lista de pedidos
         private delegate void OrdersList(List<Order> orders);
         public void delegateToChangeTheOrdersList(List<Order> orders)
         {
@@ -487,24 +383,170 @@ namespace Bar.presentation
                 loadTableData(tableID);
             }
         }
+
+        /* Lógica de control de eventos */
+        // Click en el botón "Nueva jornada"
+        private void btnNew_Click(object sender, RoutedEventArgs e)
+        {
+            LoadRoomDialog roomDialog = new LoadRoomDialog(this, manager.consultingRooms(), true);
+            roomDialog.Show();
+        }
+
+        // Click en el botón "Cargar jornada existente"
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            LoadRoomDialog roomDialog = new LoadRoomDialog(this, manager.consultingCurrentRoom(), false);
+            roomDialog.Show();
+        }
+
+        // Click en el botón del modo "Ver pedidos"
+        private void btnOOrders_Click(object sender, RoutedEventArgs e)
+        {
+            openOrdersPerspective();
+        }
+
+        // Click en el botón del modo "Vista general"
+        private void btnOView_Click(object sender, RoutedEventArgs e)
+        {
+            openViewPerspective();
+        }
+
+        // Click en el botón del modo "Ver mesa"
+        private void btnSeeTable_Click(object sender, RoutedEventArgs e)
+        {
+            openTablesInfoPerspective();
+        }
+
+        // Click en el botón del modo "Atrás" para volver al modo "Vista general"
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            openViewPerspective();
+        }
+
+        // Click en el botón "Añadir pedido"
+        private void btnAddOrder_Click(object sender, RoutedEventArgs e)
+        {
+            NewOrderWin newOrder = new NewOrderWin(manager.ProductsManager.Categories, manager.RoomManager.getCandidateTables());
+            if (((Button)sender).Name == "btnAddOT") newOrder.selectTable(cbbTablesView.SelectedIndex);
+            newOrder.Show();
+        }
+
+        // Click en el botón "Eliminar pedido"
+        private void btnRemoveOrder_Click(object sender, RoutedEventArgs e)
+        {
+            if (((Button)sender).Name == "btnRemove" && listVOrders.SelectedIndex != -1)
+                manager.OrdersManager.removeOrder(((OrderTableItem)((ListViewItem)listVOrders.SelectedItem).Content).OrderID);
+            else if (((Button)sender).Name == "btnRemoveOT" && listVTablesOrders.SelectedIndex != -1)
+            {
+                manager.OrdersManager.removeOrder(((OrderTableItem)((ListViewItem)listVTablesOrders.SelectedItem).Content).OrderID);
+                listVTablesOrders.Items.Remove(listVTablesOrders.SelectedItem);
+            }
+        }
+
+        // Click en el botón "Editar pedido"
+        private void btnEditOrder_Click(object sender, RoutedEventArgs e)
+        {
+            EditOrderDialog editOrder;
+            if (((Button)sender).Name == "btnEdit" && listVOrders.SelectedIndex != -1)
+            {
+                editOrder = new EditOrderDialog(manager.OrdersManager.getOrder(((OrderTableItem)((ListViewItem)listVOrders.SelectedItem).Content).OrderID));
+                editOrder.Show();
+            }
+            else if (((Button)sender).Name == "btnEditOT" && listVTablesOrders.SelectedIndex != -1)
+            {
+                editOrder = new EditOrderDialog(manager.OrdersManager.getOrder(((OrderTableItem)((ListViewItem)listVTablesOrders.SelectedItem).Content).OrderID));
+                editOrder.Show();
+            }
+        }
+
+        // Click en el botón "No atendido" para cambiar el estado del pedido
+        private void btnUnattender_Click(object sender, RoutedEventArgs e)
+        {
+            if (((Button)sender).Name == "btnUnattender" && listVOrders.SelectedIndex != -1)
+                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVOrders.SelectedItem).Content).OrderID, 0);
+            else if (((Button)sender).Name == "btnUnattenderOT" && listVTablesOrders.SelectedIndex != -1)
+                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVTablesOrders.SelectedItem).Content).OrderID, 0);
+        }
+
+        // Click en el botón "Atendido" para cambiar el estado del pedido
+        private void btnAttended_Click(object sender, RoutedEventArgs e)
+        {
+            if (((Button)sender).Name == "btnAttended" && listVOrders.SelectedIndex != -1)
+                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVOrders.SelectedItem).Content).OrderID, 1);
+            else if (((Button)sender).Name == "btnAttendedOT" && listVTablesOrders.SelectedIndex != -1)
+                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVTablesOrders.SelectedItem).Content).OrderID, 1);
+        }
+
+        // Click en el botón "Servido" para cambiar el estado del pedido
+        private void btnServed_Click(object sender, RoutedEventArgs e)
+        {
+            if (((Button)sender).Name == "btnServed" && listVOrders.SelectedIndex != -1)
+                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVOrders.SelectedItem).Content).OrderID, 2);
+            else if (((Button)sender).Name == "btnServedOT" && listVTablesOrders.SelectedIndex != -1)
+                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVTablesOrders.SelectedItem).Content).OrderID, 2);
+        }
+
+        // Click en el botón "Detenido" para cambiar el estado del pedido
+        private void btnStopped_Click(object sender, RoutedEventArgs e)
+        {
+            if (((Button)sender).Name == "btnStopped" && listVOrders.SelectedIndex != -1)
+                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVOrders.SelectedItem).Content).OrderID, -1);
+            else if (((Button)sender).Name == "btnStoppedOT" && listVTablesOrders.SelectedIndex != -1)
+                manager.OrdersManager.changeOrderStatus(((OrderTableItem)((ListViewItem)listVTablesOrders.SelectedItem).Content).OrderID, -1);
+        }
+
+        // Click en el botón "Facturar" para facturar una mesa
+        private void btnCheckIn_Click(object sender, RoutedEventArgs e)
+        {
+            BillDialog billDialog = new BillDialog(this, manager.BillsManager.generateBill(Convert.ToInt16(txtbTableID.Text)));
+            billDialog.Show();
+        }
+
+        // Click en alguna de las casillas de la plantilla del restaurante
+        private void box_Click(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            string box = img.Name.Substring(3);
+            string[] coordinates = box.Split('x');
+            int selectedTable = manager.RoomManager.selectedBox(Convert.ToInt16(coordinates[0]),
+                Convert.ToInt16(coordinates[1]));
+            if (selectedTable != -1)
+            {
+                txtbTableS.Text = Convert.ToString(selectedTable);
+                txtbClientS.Text = manager.RoomManager.getClientsTable(selectedTable);
+                btnSeeTable.IsEnabled = true;
+            }
+        }
+
+        // Click en el botón "Ver mesa"
+        private void btnConsultTable_Click(object sender, RoutedEventArgs e)
+        {
+            if (cbbTablesView.SelectedIndex != -1)
+            {
+                int tableID = Convert.ToInt16(cbbTablesView.SelectedItem.ToString().Substring(5));
+                cleanTableData();
+                loadTableData(tableID);
+            }
+        }
     }
 
+    /* Clase auxiliar para representar la información de una pedido en la lista de pedidos */
     public class OrderTableItem : ListViewItem
     {
         private int orderID, amount, tableID;
-
+        // Identificador del pedido
         public int OrderID
         {
             get { return orderID; }
             set { orderID = value; }
         }
-
+        // Cantidad de productos del mismo tipo
         public int Amount
         {
             get { return amount; }
             set { amount = value; }
         }
-
+        // Identificador de la mesa solicitante
         public int TableID
         {
             get { return tableID; }
@@ -512,25 +554,26 @@ namespace Bar.presentation
         }
 
         private string product, state, date;
-
+        // Producto solicitado
         public string Product
         {
             get { return product; }
             set { product = value; }
         }
-
+        // Estado del pedido
         public string State
         {
             get { return state; }
             set { state = value; }
         }
-
+        // Fecha de la solicitud
         public string Date
         {
             get { return date; }
             set { date = value; }
         }
 
+        /* Métodos constructores */
         public OrderTableItem() { }
 
         public OrderTableItem(int orderID, int tableID, string product, int amount,

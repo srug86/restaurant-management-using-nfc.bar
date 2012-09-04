@@ -15,6 +15,7 @@ namespace Bar.domain
 
         static readonly BillsManager instance = new BillsManager();
 
+        /* Implementación de un 'Singleton' para esta clase */
         static BillsManager() { }
 
         BillsManager() { }
@@ -27,27 +28,32 @@ namespace Bar.domain
             }
         }
 
+        // Devuelve los datos de una factura a través de su identificador
         public Bill getBill(int billID)
         {
             return xmlBillDecoder(adapter.sendMeBill(billID));
         }
 
+        // Devuelve el histórico de facturas
         public List<ShortBill> getBills(int amount, bool ascending)
         {
             return xmlBillsDecoder(adapter.sendMeBills(amount, ascending));
         }
 
+        // Genera los datos de una factura a través del identificador de la mesa
         public Bill generateBill(int tableID)
         {
             return xmlBillDecoder(adapter.sendMeBill(tableID, false));
         }
 
+        // Cobra los pedidos de una mesa
         public void payBill(int billID, int table, int type)
         {
             manager.RoomManager.xmlTablesStatus(adapter.sendBillPayment(billID, type));
             manager.OrdersManager.markOrdersAsPaid(table);
         }
 
+        // Decodifica XML con el histórico de facturas del restaurante
         private List<ShortBill> xmlBillsDecoder(string sXml)
         {
             List<ShortBill> lob = new List<ShortBill>();
@@ -77,6 +83,7 @@ namespace Bar.domain
             return lob;
         }
 
+        // Decodifica XML con los datos de una factura
         private Bill xmlBillDecoder(string sXml)
         {
             Bill bill = new Bill();
@@ -153,6 +160,7 @@ namespace Bar.domain
             return bill;
         }
 
+        // Decodifica XML con el domicilio de un cliente o del restaurante
         private void xmlAddressDecoder(XmlElement xml, Address address)
         {
             XmlNodeList street = xml.GetElementsByTagName("Street");

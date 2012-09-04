@@ -19,21 +19,13 @@ namespace Bar.presentation
     /// </summary>
     public partial class InitWin : Window
     {
+        // Método constructor
         public InitWin()
         {
             InitializeComponent();
         }
 
-        private void btnBegin_Click(object sender, RoutedEventArgs e)
-        {
-            startJourney();
-        }
-
-        private void btnEditProducts_Click(object sender, RoutedEventArgs e)
-        {
-            editProducts();
-        }
-
+        // Método que cierra los subprocesos de la aplicación tras el cierre de esta
         private void Close_Program(object sender, EventArgs e)
         {
             App.Current.Shutdown();
@@ -41,18 +33,22 @@ namespace Bar.presentation
                 if (p.ProcessName == "Bar.vshost") p.Kill();
         }
 
-        private void startJourney()
+        /* Lógica de control de eventos */
+        // Click en el botón "Iniciar jornada"
+        private void btnBegin_Click(object sender, RoutedEventArgs e)
         {
             JourneyManagerWin manager = new JourneyManagerWin();
             manager.Show();
         }
 
-        private void editProducts()
+        // Click en el botón "Editar productos"
+        private void btnEditProducts_Click(object sender, RoutedEventArgs e)
         {
             EditProductsWin editor = new EditProductsWin();
             editor.Show();
         }
 
+        // Click en el botón "Histórico de pedidos y facturas"
         private void btnStatistics_Click(object sender, RoutedEventArgs e)
         {
             StatisticsWin statistics = new StatisticsWin();

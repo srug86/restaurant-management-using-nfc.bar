@@ -23,44 +23,13 @@ namespace Bar.presentation
 
         private OrdersManager ordersManager = OrdersManager.Instance;
 
+        // Método constructor
         public StatisticsWin()
         {
             InitializeComponent();
         }
 
-        private void btnLoadBills_Click(object sender, RoutedEventArgs e)
-        {
-            ConsultDialog cd = new ConsultDialog(this, 1);
-            cd.Show();
-        }
-
-        private void btnLoadOrders_Click(object sender, RoutedEventArgs e)
-        {
-            ConsultDialog cd = new ConsultDialog(this, 2);
-            cd.Show();
-        }
-
-        private void btnConsult_Click(object sender, RoutedEventArgs e)
-        {
-            if (listVBills.SelectedIndex != -1)
-            {
-                BillDialog billDialog = new BillDialog(billsManager.getBill(((BillItem)((ListViewItem)listVBills.SelectedItem).Content).Id));
-                billDialog.Show();
-            }
-        }
-
-        private void btnOBills_Click(object sender, RoutedEventArgs e)
-        {
-            gridOOrdersList.Visibility = Visibility.Hidden;
-            gridOBillsList.Visibility = Visibility.Visible;
-        }
-
-        private void btnOOrders_Click(object sender, RoutedEventArgs e)
-        {
-            gridOBillsList.Visibility = Visibility.Hidden;
-            gridOOrdersList.Visibility = Visibility.Visible;
-        }
-
+        // Carga la lista del histórico de facturas
         public void loadBillsList(int amount, bool ascending)
         {
             List<ShortBill> bills = billsManager.getBills(amount, ascending);
@@ -70,6 +39,7 @@ namespace Bar.presentation
             gridOptions.Visibility = Visibility.Visible;
         }
 
+        // Carga la lista del histórico de pedidos
         public void loadHOrdersList(int amount, bool ascending)
         {
             List<HOrder> orders = ordersManager.getHistoricalOrders(amount, ascending);
@@ -79,6 +49,7 @@ namespace Bar.presentation
             gridOptions.Visibility = Visibility.Visible;
         }
 
+        // Genera la lista del histórico de facturas
         private void generateBillsList(List<ShortBill> bills)
         {
             listVBills.Items.Clear();
@@ -90,7 +61,7 @@ namespace Bar.presentation
                 bi.ClientID = b.Client;
                 bi.Date = b.Date.ToString();
                 bi.Total = b.Total;
-                switch (b.Paid)
+                switch (b.Paid) // ¿Pagado? ¿Por qué método?
                 {
                     case 0: bi.Paid = "No"; break;
                     case 1: bi.Paid = "Si"; break;
@@ -102,6 +73,7 @@ namespace Bar.presentation
             }
         }
 
+        // Genera la lista del histórico de pedidos
         private void generateHOrdersList(List<HOrder> orders)
         {
             listVOrders.Items.Clear();
@@ -117,18 +89,58 @@ namespace Bar.presentation
                 ((ListViewItem)listVOrders.Items[listVOrders.Items.Count - 1]).Content = hoi;
             }
         }
+
+        /* Lógica de control de eventos */
+        // Click en el botón "Cargar histórico de facturas"
+        private void btnLoadBills_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultDialog cd = new ConsultDialog(this, 1);
+            cd.Show();
+        }
+
+        // Click en el botón "Cargar histórico de pedidos"
+        private void btnLoadOrders_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultDialog cd = new ConsultDialog(this, 2);
+            cd.Show();
+        }
+
+        // Click en el botón "Consultar" para ver los detalles de la factura seleccionada
+        private void btnConsult_Click(object sender, RoutedEventArgs e)
+        {
+            if (listVBills.SelectedIndex != -1)
+            {
+                BillDialog billDialog = new BillDialog(billsManager.getBill(((BillItem)((ListViewItem)listVBills.SelectedItem).Content).Id));
+                billDialog.Show();
+            }
+        }
+
+        // Click para abrir el modo "Ver facturas"
+        private void btnOBills_Click(object sender, RoutedEventArgs e)
+        {
+            gridOOrdersList.Visibility = Visibility.Hidden;
+            gridOBillsList.Visibility = Visibility.Visible;
+        }
+
+        // Click para abrir el modo "Ver pedidos"
+        private void btnOOrders_Click(object sender, RoutedEventArgs e)
+        {
+            gridOBillsList.Visibility = Visibility.Hidden;
+            gridOOrdersList.Visibility = Visibility.Visible;
+        }
     }
 
+    /* Clase auxiliar para representar la información de una factura en una lista */
     public class BillItem : ListViewItem
     {
         private int id, tableID;
-
+        // Identificador
         public int Id
         {
             get { return id; }
             set { id = value; }
         }
-
+        // Mesa
         public int TableID
         {
             get { return tableID; }
@@ -136,19 +148,19 @@ namespace Bar.presentation
         }
 
         private string clientID, date, paid;
-
+        // DNI del cliente
         public string ClientID
         {
             get { return clientID; }
             set { clientID = value; }
         }
-
+        // Fecha de facturación
         public string Date
         {
             get { return date; }
             set { date = value; }
         }
-
+        // Estado del cobro: 'No', 'Si', "Si (NFC)"
         public string Paid
         {
             get { return paid; }
@@ -156,32 +168,34 @@ namespace Bar.presentation
         }
 
         private double total;
-
+        // Importe total
         public double Total
         {
             get { return total; }
             set { total = value; }
         }
 
+        // Método constructor
         public BillItem() { }
     }
 
+    /* Clase auxiliar para representar la información de un pedido en una lista */
     public class HOrderItem : ListViewItem
     {
         string date, product, client;
-
+        // Fecha de la solicitud
         public string Date
         {
             get { return date; }
             set { date = value; }
         }
-
+        // Producto solicitado
         public string Product
         {
             get { return product; }
             set { product = value; }
         }
-
+        // Cliente que lo solicitó
         public string Client
         {
             get { return client; }
@@ -189,19 +203,20 @@ namespace Bar.presentation
         }
 
         int id, amount;
-
+        // Identificador del pedido en la lista
         public int Id
         {
             get { return id; }
             set { id = value; }
         }
-
+        // Cantidad de productos del mismo tipo
         public int Amount
         {
             get { return amount; }
             set { amount = value; }
         }
 
+        // Método constructor
         public HOrderItem() { }
     }
 }

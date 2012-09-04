@@ -23,6 +23,7 @@ namespace Bar.presentation
 
         private string oldCategory;
 
+        // Método constructor
         public EditCategory(string category)
         {
             this.oldCategory = category;
@@ -30,6 +31,7 @@ namespace Bar.presentation
             initializeData(category);
         }
 
+        // Inicializa el contenido de la ventana
         private void initializeData(string category)
         {
             txtbName.Text = category;
@@ -41,11 +43,14 @@ namespace Bar.presentation
             }
         }
 
+        /* Lógica de control de eventos */
+        // Click para cancelar la edición de la categoría
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden;
         }
 
+        // Click para aceptar la edición de la categoría
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
             if (!txtbName.Text.Equals(""))

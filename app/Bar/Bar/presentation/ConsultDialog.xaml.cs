@@ -22,6 +22,7 @@ namespace Bar.presentation
 
         private int mode;
 
+        // Método constructor
         public ConsultDialog(StatisticsWin super, int mode)
         {
             this.super = super;
@@ -30,15 +31,16 @@ namespace Bar.presentation
             initializeData();
         }
 
+        // Inicialización del aspecto de la ventana según el modo
         private void initializeData()
         {
             switch (mode)
             {
-                case 1:
+                case 1: // Modo "Cargar histórico de facturas"
                     wConsult.Title = "MobiCarta - Cargar historial de facturas";
                     wConsult.Background = Brushes.DarkGreen;
                     break;
-                case 2:
+                case 2: // Modo "Cargar histórico de pedidos"
                     wConsult.Title = "MobiCarta - Cargar historial de pedidos";
                     wConsult.Background = Brushes.Goldenrod;
                     break;
@@ -46,18 +48,21 @@ namespace Bar.presentation
             }
         }
 
+        /* Lógica de control de eventos */
+        // Click para cancelar la búsqueda del histórico en la BD
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden;
         }
 
+        // Click para confirmar la búsqueda del histórico en la BD
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
             if (Convert.ToInt16(txtbSize.Text) > 0 && cbbAsc.SelectedIndex != -1)
             {
                 bool asc = (cbbAsc.SelectedIndex == 0);
                 int amount = Convert.ToInt16(txtbSize.Text);
-                switch (mode)
+                switch (mode)   // Modo de búsqueda: (1) Facturas, (2) Pedidos.
                 {
                     case 1: super.loadBillsList(amount, asc); break;
                     case 2: super.loadHOrdersList(amount,asc); break;
@@ -67,6 +72,7 @@ namespace Bar.presentation
             }
         }
 
+        // Click para decrementar el número de elementos a devolver en la búsqueda
         private void btnDec_Click(object sender, RoutedEventArgs e)
         {
             int value = Convert.ToInt16(txtbSize.Text);
@@ -74,6 +80,7 @@ namespace Bar.presentation
                 txtbSize.Text = (--value).ToString();
         }
 
+        // Click para incrementar el número de elementos a devolver en la búsqueda
         private void btnInc_Click(object sender, RoutedEventArgs e)
         {
             int value = Convert.ToInt16(txtbSize.Text);

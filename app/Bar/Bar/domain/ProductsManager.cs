@@ -14,8 +14,8 @@ namespace Bar.domain
 
         private EditProductsWin gui;
 
+        /* Atributos de la clase */
         private List<Product> products;
-
         internal List<Product> Products
         {
             get { return products; }
@@ -23,30 +23,27 @@ namespace Bar.domain
         }
 
         private List<Category> categories;
-
         internal List<Category> Categories
         {
             get { return categories; }
             set { categories = value; }
         }
 
+        // Método constructor
         public ProductsManager()
         {
             Products = new List<Product>();
             Categories = new List<Category>();
         }
 
-        public void setGuiReference(EditProductsWin gui)
-        {
-            this.gui = gui;
-        }
-
+        // Actualiza la lista de productos
         public void updateProducts(bool notVisibles)
         {
             Products = xmlProductsDecoder(adapter.sendMeProducts(notVisibles));
             Categories = getCategories();
         }
 
+        // Devuelve uno de los productos de la lista
         public Product getProduct(string name)
         {
             foreach (Product p in Products)
@@ -55,6 +52,7 @@ namespace Bar.domain
             return new Product();
         }
 
+        // Devuelve la lista de categorías a partir de la lista de productos
         public List<Category> getCategories()
         {
             List<Category> categories = new List<Category>();
@@ -75,16 +73,19 @@ namespace Bar.domain
             return categories;
         }
 
+        // Guarda la lista de productos en la BD
         public void saveProducts()
         {
             adapter.sendProductList(xmlProductsBuilder(Products));
         }
 
+        // Actualiza la lista de categorías
         public void updateGuiCategories()
         {
             gui.delegateToChangeCategoriesList(Categories);
         }
 
+        // Actualiza la lista de productos
         public void updateGuiProducts(string category)
         {
             List<Product> ps = new List<Product>();
@@ -94,6 +95,7 @@ namespace Bar.domain
             gui.delegateToChangeProductList(ps);
         }
 
+        // Añadir producto a la lista de productos
         public void addProduct(Product p)
         {
             if (Products.IndexOf(p) == -1)
@@ -104,6 +106,7 @@ namespace Bar.domain
             }
         }
 
+        // Guardar la información asociada a un producto
         public void saveProduct(string oldName, Product p)
         {
             int i = Products.IndexOf(new Product(oldName));
@@ -118,6 +121,7 @@ namespace Bar.domain
             }
         }
 
+        // Eliminar producto de la lista de productos
         public void removeProduct(string name, string category)
         {
             int i = Products.IndexOf(new Product(name));
@@ -132,6 +136,7 @@ namespace Bar.domain
             }
         }
 
+        // Añadir categoría a la lista de categorías
         public void addCategory(string name)
         {
             if (Categories.IndexOf(new Category(name)) == -1)
@@ -141,6 +146,7 @@ namespace Bar.domain
             }
         }
 
+        // Guarda la información asociada a una categoría
         public void saveCategory(string oldName, string newName)
         {
             int i = Categories.IndexOf(new Category(oldName));
@@ -154,6 +160,7 @@ namespace Bar.domain
             }
         }
 
+        // Eliminar categoría de la lista de categorías
         public void removeCategory(string name)
         {
             int i = Categories.IndexOf(new Category(name));
@@ -171,6 +178,12 @@ namespace Bar.domain
             }
         }
 
+        public void setGuiReference(EditProductsWin gui)
+        {
+            this.gui = gui;
+        }
+
+        // Decodifica el XML con la lista de productos del restaurante
         private List<Product> xmlProductsDecoder(string sXml)
         {
             List<Product> lop = new List<Product>();
@@ -202,6 +215,7 @@ namespace Bar.domain
             return lop;
         }
 
+        // Codifica un XML con la lista de productos editada
         public static string xmlProductsBuilder(List<Product> products)
         {
             string xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Products>\n";
